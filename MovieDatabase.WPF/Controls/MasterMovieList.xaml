@@ -13,7 +13,7 @@
     <Grid>
         <ListView>
             <ListViewItem>
-                <StackPanel Orientation=""
+                <StackPanel Orientation="Vertical"></StackPanel>
             </ListViewItem>
         </ListView>
     </Grid>

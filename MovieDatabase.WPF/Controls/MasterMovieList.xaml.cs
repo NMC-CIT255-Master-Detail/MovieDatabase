@@ -35,7 +35,7 @@ namespace MovieDatabase.WPF.Controls
             movie.Add(new Movie() { Id = 9, Title = "Harry Potter", Description = "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.", IMDBLink = "https://www.imdb.com", Producer = null, Studio = null, ReleaseDate = new DateTime(2020 - 12 - 25), Runtime = 180 });
             movie.Add(new Movie() { Id = 10, Title = "Harry Potter", Description = "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.", IMDBLink = "https://www.imdb.com", Producer = null, Studio = null, ReleaseDate = new DateTime(2020 - 12 - 25), Runtime = 180 });
 
-            MovieList.DataContext = movie;
+            
         }
     }
 }
