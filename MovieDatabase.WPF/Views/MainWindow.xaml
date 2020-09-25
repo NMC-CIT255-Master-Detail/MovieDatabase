@@ -8,17 +8,18 @@
         mc:Ignorable="d"
         Title="Movie Database" Height="1080" Width="1920">
     <Grid>
-        <uc:RibbonMenu />
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="7*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            
+            <uc:RibbonMenu Grid.ColumnSpan="2"/>
             <Label 
                 Content="Movie Database" 
                 HorizontalAlignment="Center" 
@@ -26,189 +27,15 @@
                 FontSize="36px" 
                 Margin="0 10 0 0" 
                 Grid.ColumnSpan="2"
-                Grid.Row="2" />
-            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="800">
-                <DockPanel 
-                Grid.Row="1"
-                Height="280"
-                Width="550"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Margin="20 50 0 0"
-                >
+                Grid.Row="1" />
+            <uc:SearchSortFilterUserControl Grid.Row="1"/>
 
-                    <Label 
-                    Content="Search By Movie Name"
-                    FontSize="18"
-                    DockPanel.Dock="Top"
-                    />
-                    <TextBox 
-                    Width="500"
-                    Height="25"
-                    HorizontalAlignment="Left"
-                    DockPanel.Dock="Top"
-                    />
+            <!--<Separator Grid.Row="2" Width="800" Height="10" Margin="0 -200 0 0"/>-->
 
-                    <Label 
-                    Content="Search By Producer"
-                    FontSize="18" 
-                    DockPanel.Dock="Top"
-                    />
-                    <ComboBox 
-                    Width="250"
-                    HorizontalAlignment="Left"
-                    DockPanel.Dock="Top"
-                    />
-
-                    <Label 
-                    Content="Search By Studio"
-                    FontSize="18" 
-                    DockPanel.Dock="Top"
-                    />
-                    <ComboBox 
-                    Width="250"
-                    HorizontalAlignment="Left"
-                    DockPanel.Dock="Top"
-                    />
-
-                    <StackPanel 
-                    Orientation="Vertical"
-                    DockPanel.Dock="Bottom">
-                        <Label 
-                    Content="Sort By"
-                    FontSize="18"
-                    />
-                        <StackPanel Orientation="Horizontal">
-                            <RadioButton Content="Producer" Margin=" 0 0 10 0"/>
-                            <RadioButton Content="Studio" Margin="0 0 10 0"/>
-                            <RadioButton Content="Year"/>
-                        </StackPanel>
-                    </StackPanel>
-
-                    <Label
-                    Content="Filter By Length"
-                    FontSize="18"
-                    DockPanel.Dock="Top"
-                    />
-
-                    <TextBox
-                    Width="50"
-                    FontSize="22"
-                    HorizontalAlignment="Left"
-                    DockPanel.Dock="Left"
-                    Margin="0 0 10 0"
-                    />
-                    <Label 
-                    Content="And"
-                    DockPanel.Dock="Left"
-                    Margin="0 0 10 0"
-                    />
-                    <TextBox
-                    Width="50"
-                    FontSize="22"
-                    HorizontalAlignment="Left"
-                    DockPanel.Dock="Left"
-                    />
-                </DockPanel>
-
-                <DockPanel 
-                Grid.Row="1"
-                Width="400"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                Height="300"
-                Margin="0 50 0 0">
-                    <StackPanel 
-                    Orientation="Vertical">
-                        <TextBlock 
-                        FontSize="27"
-                        />
-                        <Button 
-                        Content="Search"
-                        Width="50"
-                        HorizontalAlignment="Left"
-                        Background="Green"
-                        Foreground="White"/>
-                        <TextBlock 
-                        FontSize="28"/>
-                        <Button 
-                        Content="Search"
-                        Width="50"
-                        HorizontalAlignment="Left"
-                        Background="Green"
-                        Foreground="White"/>
-                        <TextBlock 
-                        FontSize="28"/>
-                        <Button 
-                        Content="Search"
-                        Width="50"
-                        HorizontalAlignment="Left"
-                        Background="Green"
-                        Foreground="White"/>
-                        <TextBlock 
-                        FontSize="28"/>
-                        <Button 
-                        Content="Filter"
-                        Width="50"
-                        HorizontalAlignment="Left"
-                        Background="Green"
-                        Foreground="White"/>
-                        <TextBlock 
-                        FontSize="28"/>
-                        <Button 
-                        Content="Sort"
-                        Width="50"
-                        HorizontalAlignment="Left"
-                        Background="Green"
-                        Foreground="White"/>
-                    </StackPanel>
-                </DockPanel>
-            </StackPanel>
+            <Label Content="Master List" Grid.Row="2" Margin="0 370 0 0" HorizontalAlignment="Center" FontSize="24"/>
             
-            <Separator Grid.Row="1" Width="800" Height="10" Margin="0 -200 0 0"/>
-
-            <Label Content="Master List" Grid.Row="1" Margin="0 370 0 0" HorizontalAlignment="Center" FontSize="24"/>
-            <uc:MasterMovieList Grid.Row="1" VerticalAlignment="Bottom" Height="500" Margin="30 0 30 0"/>
-            <!--<ListView Grid.Row="1" Height="520" VerticalAlignment="Bottom" Margin="30 0 30 10" ScrollViewer.VerticalScrollBarVisibility="Visible">
-                <ListViewItem Content="Coffie"></ListViewItem>
-                <ListViewItem Content="Tea"></ListViewItem>
-                <ListViewItem Content="Orange Juice"></ListViewItem>
-                <ListViewItem Content="Milk"></ListViewItem>
-                <ListViewItem Content="Iced Tea"></ListViewItem>
-                <ListViewItem Content="Mango Shake"></ListViewItem>
-                <ListViewItem Content="Coffie"></ListViewItem>
-                <ListViewItem Content="Tea"></ListViewItem>
-                <ListViewItem Content="Orange Juice"></ListViewItem>
-                <ListViewItem Content="Milk"></ListViewItem>
-                <ListViewItem Content="Iced Tea"></ListViewItem>
-                <ListViewItem Content="Mango Shake"></ListViewItem>
-                <ListViewItem Content="Coffie"></ListViewItem>
-                <ListViewItem Content="Tea"></ListViewItem>
-                <ListViewItem Content="Orange Juice"></ListViewItem>
-                <ListViewItem Content="Milk"></ListViewItem>
-                <ListViewItem Content="Iced Tea"></ListViewItem>
-                <ListViewItem Content="Mango Shake"></ListViewItem>
-                <ListViewItem Content="Coffie"></ListViewItem>
-                <ListViewItem Content="Tea"></ListViewItem>
-                <ListViewItem Content="Orange Juice"></ListViewItem>
-                <ListViewItem Content="Milk"></ListViewItem>
-                <ListViewItem Content="Iced Tea"></ListViewItem>
-                <ListViewItem Content="Mango Shake"></ListViewItem>
-                <ListViewItem Content="Coffie"></ListViewItem>
-                <ListViewItem Content="Tea"></ListViewItem>
-                <ListViewItem Content="Orange Juice"></ListViewItem>
-                <ListViewItem Content="Milk"></ListViewItem>
-                <ListViewItem Content="Iced Tea"></ListViewItem>
-                <ListViewItem Content="Mango Shake"></ListViewItem>
-                <ListViewItem Content="Coffie"></ListViewItem>
-                <ListViewItem Content="Tea"></ListViewItem>
-                <ListViewItem Content="Orange Juice"></ListViewItem>
-                <ListViewItem Content="Milk"></ListViewItem>
-                <ListViewItem Content="Iced Tea"></ListViewItem>
-                <ListViewItem Content="Mango Shake"></ListViewItem>
-            </ListView>-->
-
-            <uc:MovieDetailUserControl Grid.Row="1" Grid.Column="1" Margin="100 50"/>
+            <uc:MasterMovieList Grid.Row="2" VerticalContentAlignment="bottom" Height="400" Margin="30 0 30 0"/>
+            <uc:MovieDetailUserControl Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Margin="100 50"/>
 
         </Grid>
     </Grid>

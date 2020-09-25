@@ -8,33 +8,125 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/> 
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Movie Name" HorizontalAlignment="Center"/>
-        <Image Source="/Images/personal.png" Grid.Row="1"/>
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
+        <TextBlock Text="Movie Name" HorizontalAlignment="Center" Margin="0 0 0 10"/>
+        <Image Source="/Images/spongebob.jpg" Height="200" Grid.Row="1"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
             <TextBlock Text="Release Date: "/>
             <TextBlock Text="12/25/2020" />
+            <TextBlock Text=" - " />
+            <TextBlock Text="Run Time: " />
+            <TextBlock Text="180" />
+            <TextBlock Text=" mins" />
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="3" Margin="0 10 0 10">
+            <TextBlock Text="Description:"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="4" VerticalScrollBarVisibility="auto" >
+            <TextBox IsReadOnly="True" TextWrapping="Wrap" Text="This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works! This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!" />
+        </ScrollViewer>
+        <StackPanel Orientation="Vertical" Grid.Row="5" Margin="0 10 0 10">
+            <TextBlock Text="IMDB Link:" />
+            <TextBlock Text="https://www.imdb.com" />
+        </StackPanel>
+        <Separator Grid.Row="6"/>
+        <TextBlock Text="Producer" Grid.Row="7"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="8" >
+            <TextBlock Text="Producer Name: "/>
+            <TextBlock Text="Peter Steele" />
+            <TextBlock Text=" - " />
+            <TextBlock Text="DOB: "/>
+            <TextBlock Text="05-01-1990"/>
+        </StackPanel>
+        <TextBlock Text="Biography" Grid.Row="9"/>
+        <ScrollViewer Grid.Row="10" VerticalScrollBarVisibility="auto">
+            <TextBox IsReadOnly="True" TextWrapping="Wrap" Text="This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works! This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!This is a bunch of text that I am putting in. I hope that this is input properly and not as one line.
+                     Lets hope this works!"/>
+        </ScrollViewer>
+        <Separator Grid.Row="11"/>
+        <TextBlock Text="Studio" Grid.Row="12"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="13">
+            <TextBlock Text="Name: "/>
+            <TextBlock Text="Fairy Tale Studios" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="14">
+            <TextBlock Text="Phone: "/>
+            <TextBlock Text="231-357-1970" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="15">
+            <TextBlock Text="Email: "/>
+            <TextBlock Text="example@example.com" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="16">
+            <TextBlock Text="Website: "/>
+            <TextBlock Text="https://example.com" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="17">
+            <TextBlock Text="Address: "/>
+            <TextBlock Text="6847 Cram Road" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="18">
+            <TextBlock Text="Williamsburg" />
+            <TextBlock Text=", " />
+            <TextBlock Text="MI" />
+            <TextBlock Text=" " />
+            <TextBlock Text="49690" />
         </StackPanel>
     </Grid>
 </UserControl>

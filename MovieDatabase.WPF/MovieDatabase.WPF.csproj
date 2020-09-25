@@ -26,6 +26,7 @@
     <None Remove="Images\quit.png" />
     <None Remove="Images\redo.png" />
     <None Remove="Images\save.png" />
+    <None Remove="Images\spongebob.jpg" />
     <None Remove="Images\undo.png" />
     <None Remove="Images\view.png" />
   </ItemGroup>
@@ -103,6 +104,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\save.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\spongebob.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\undo.png">
