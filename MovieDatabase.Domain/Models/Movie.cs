@@ -6,8 +6,19 @@ namespace MovieDatabase.Domain.Models
 {
     public class Movie : DomainObject
     {
+        public DateTime _releaseDate;
+
         public string Title { get; set; }
-        public DateTime ReleaseDate { get; set; }
+        // TODO - Change DateTime to just Date for the Movies
+        public DateTime ReleaseDate
+        {
+            get => _releaseDate;
+            set
+            {
+                _releaseDate = value.Date;
+                
+            }
+        }
         public int Runtime { get; set; }
         public string Description { get; set; }
         public string IMDBLink { get; set; }

@@ -208,42 +208,8 @@
                 <ListViewItem Content="Mango Shake"></ListViewItem>
             </ListView>-->
 
-            
-            <!--Second Half of the Screen-->
-            <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center">
-                <Label Content="Movie Title"  FontSize="24" Margin=" 0 50 0 0" FontWeight="Bold"/>
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Release Date: " />
-                    <TextBlock Text="02/15/2020" VerticalAlignment="Center" Margin="0 0 20 0"/>
-                    
-                    <Label Content="Run Time: " />
-                    <TextBlock Text="126 mins" VerticalAlignment="Center"/>
-                </StackPanel>
-                <Label Content="Description" FontSize="18" FontWeight="Bold" />
-                <TextBlock Text="This is a Description" />
-                <Label Content="IMDB Link" FontSize="18" FontWeight="Bold" />
-                <TextBlock Text="https://www.imdb.com" />
-                <Separator />
-                <Label Content="Producer" FontSize="18" FontWeight="Bold" />
-                <Label Content="Producer Name: "/>
-                <TextBlock Text="Antonio Cruz" />
-                <Label Content="Biography:" FontSize="18" FontWeight="Bold" />
-                <TextBlock Text="Some biography or something" />
-                <Separator />
-                <Label Content="Studio" FontSize="18" FontWeight="Bold" />
-                <Label Content="Studio Name:" />
-                <TextBlock Text="Made Up Studios" />
-                <Label Content="Phone:" />
-                <TextBlock Text="231-364-9852" />
-                <Label Content="Email:" />
-                <TextBlock Text="example@example.com" />
-                <Label Content="Website:" />
-                <TextBlock Text="https://www.example.com" />
-                <Label Content="Address:" />
-                <TextBlock Text="1453 Fairy Tale Lane" />
-                <TextBlock Text="Williamsburg, MI 49690" />
-            </StackPanel>
-           
+            <uc:MovieDetailUserControl Grid.Row="1" Grid.Column="1" Margin="100 50"/>
+
         </Grid>
     </Grid>
 </RibbonWindow>

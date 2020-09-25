@@ -31,31 +31,31 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <Image Source="/Images/about.png" />
+                        <Image Source="/Images/about.png" Grid.RowSpan="6"/>
 
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
-                            <Label Content="Title: "/>
-                            <TextBlock Text="{Binding Title}" VerticalAlignment="Center"/>
+                            <TextBlock Text="Title: "/>
+                            <TextBlock Text="{Binding Title}"/>
                         </StackPanel>
 
                         <StackPanel Grid.Column="2" Orientation="Horizontal">
-                            <Label Content="Release Date: "/>
-                            <TextBlock Text="{Binding ReleaseDate}" VerticalAlignment="Center"/>
+                            <TextBlock Text="Release Date: "/>
+                            <TextBlock Text="{Binding ReleaseDate}"/>
                         </StackPanel>
 
                         <StackPanel Grid.Column="3" Orientation="Horizontal">
-                            <Label Content="RunTime: "/>
-                            <TextBlock Text="{Binding Runtime}" VerticalAlignment="Center"/>
+                            <TextBlock Text="RunTime: "/>
+                            <TextBlock Text="{Binding Runtime}"/>
                         </StackPanel>
 
                         <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-                            <Label Content="Studio: "/>
-                            <TextBlock Text="{Binding Studio.Name}" VerticalAlignment="Center"/>
+                            <TextBlock Text="Studio: "/>
+                            <TextBlock Text="{Binding Studio.Name}"/>
                         </StackPanel>
 
                         <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal">
-                            <Label Content="Producer: "/>
-                            <TextBlock Text="{Binding Producer.Name}" VerticalAlignment="Center"/>
+                            <TextBlock Text="Producer: "/>
+                            <TextBlock Text="{Binding Producer.Name}"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
