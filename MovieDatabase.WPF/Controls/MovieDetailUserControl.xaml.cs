@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +22,17 @@ namespace MovieDatabase.WPF.Controls
         public MovieDetailUserControl()
         {
             InitializeComponent();
+        }
+
+        private void IMDB_Link(object sender, RequestNavigateEventArgs e)
+        {
+            var psi = new ProcessStartInfo
+            {
+                FileName = e.Uri.ToString(), //Shocked as hell I figured that out so fast lol
+                UseShellExecute = true
+            };
+            Process.Start(psi);
+            e.Handled = true;
         }
     }
 }

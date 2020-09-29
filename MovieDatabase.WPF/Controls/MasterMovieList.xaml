@@ -6,17 +6,27 @@
              xmlns:local="clr-namespace:MovieDatabase.WPF.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="800">
+
     <UserControl.Resources>
-        <ResourceDictionary Source="Resources/DataGridResource.xaml" />
+        <Style x:Key="Label" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="Content" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0 0 10 0" />
+        </Style>
     </UserControl.Resources>
 
     <Grid>
-        <ListView Name="LVMovies" HorizontalContentAlignment="Stretch">
+        <ListView HorizontalContentAlignment="Stretch" ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
@@ -31,31 +41,31 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <Image Source="/Images/about.png" Grid.RowSpan="6"/>
+                        <Image Source="/Images/about.png" Grid.RowSpan="6" HorizontalAlignment="Left" Margin="0 0 20 0"/>
 
-                        <StackPanel Grid.Column="1" Orientation="Horizontal">
-                            <TextBlock Text="Title: "/>
-                            <TextBlock Text="{Binding Title}"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock Text="Title: " Style="{StaticResource Label}"/>
+                            <TextBlock Text="{Binding Title}" Style="{StaticResource Content}"/>
                         </StackPanel>
 
-                        <StackPanel Grid.Column="2" Orientation="Horizontal">
-                            <TextBlock Text="Release Date: "/>
-                            <TextBlock Text="{Binding ReleaseDate}"/>
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock Text="Release Date: " Style="{StaticResource Label}"/>
+                            <TextBlock Text="{Binding ReleaseDate, StringFormat={}\{0:MM/dd/yyyy \}}" Style="{StaticResource Content}"/>
                         </StackPanel>
 
-                        <StackPanel Grid.Column="3" Orientation="Horizontal">
-                            <TextBlock Text="RunTime: "/>
-                            <TextBlock Text="{Binding Runtime}"/>
+                        <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock Text="RunTime: " Style="{StaticResource Label}"/>
+                            <TextBlock Text="{Binding Runtime}" Style="{StaticResource Content}"/>
                         </StackPanel>
 
-                        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-                            <TextBlock Text="Studio: "/>
-                            <TextBlock Text="{Binding Studio.Name}"/>
+                        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock Text="Studio: " Style="{StaticResource Label}"/>
+                            <TextBlock Text="{Binding Studio.Name}" Style="{StaticResource Content}"/>
                         </StackPanel>
 
-                        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal">
-                            <TextBlock Text="Producer: "/>
-                            <TextBlock Text="{Binding Producer.Name}"/>
+                        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock Text="Producer: " Style="{StaticResource Label}"/>
+                            <TextBlock Text="{Binding Producer.Name}" Style="{StaticResource Content}"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
