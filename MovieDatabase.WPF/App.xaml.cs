@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Ribbon;
 
 namespace MovieDatabase.WPF
 {
@@ -15,8 +16,6 @@ namespace MovieDatabase.WPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            Window window = new MainWindow();
-            window.Show();
             base.OnStartup(e);
         }
     }

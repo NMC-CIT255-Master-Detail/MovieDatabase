@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MovieDatabase.Domain.Models
 {
-    public class DomainObject
+    public class DomainObject : ObservableObject
     {
         public int Id { get; set; }
     }
