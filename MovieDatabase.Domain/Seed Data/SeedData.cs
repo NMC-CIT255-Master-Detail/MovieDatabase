@@ -38,7 +38,7 @@ namespace MovieDatabase.Domain.Seed_Data
                         State = "MI",
                         Zipcode = 49690
                     },
-                    ReleaseDate = new DateTime(2020, 12, 25, 12, 00, 0),
+                    ReleaseDate = new DateTime(1997, 12, 25, 12, 00, 0),
                     Runtime = 180
                 },
                 new Movie()
@@ -51,7 +51,7 @@ namespace MovieDatabase.Domain.Seed_Data
                     {
                         Id = 2,
                         Name = "Mark Zones",
-                        DOB = new DateTime(1990, 05, 01, 12, 00, 00),
+                        DOB = new DateTime(1999, 05, 01, 12, 00, 00),
                         Biography = "This is a biography"
                     },
                     Studio = new Studio()
@@ -67,8 +67,8 @@ namespace MovieDatabase.Domain.Seed_Data
                         State = "MI",
                         Zipcode = 49690
                     },
-                    ReleaseDate = new DateTime(2020, 12, 25, 12, 00, 0),
-                    Runtime = 180
+                    ReleaseDate = new DateTime(2002, 12, 25, 12, 00, 0),
+                    Runtime = 60
                 },
                 new Movie()
                 {
@@ -80,7 +80,7 @@ namespace MovieDatabase.Domain.Seed_Data
                     {
                         Id = 3,
                         Name = "IHatePickingNames SoMuch",
-                        DOB = new DateTime(1990, 05, 01, 12, 00, 00),
+                        DOB = new DateTime(1980, 05, 01, 12, 00, 00),
                         Biography = "This is a biography"
                     },
                     Studio = new Studio()
@@ -96,8 +96,8 @@ namespace MovieDatabase.Domain.Seed_Data
                         State = "MI",
                         Zipcode = 49690
                     },
-                    ReleaseDate = new DateTime(2020, 12, 25, 12, 00, 0),
-                    Runtime = 180
+                    ReleaseDate = new DateTime(1970, 12, 25, 12, 00, 0),
+                    Runtime = 240
                 },
                 new Movie()
                 {
@@ -126,7 +126,7 @@ namespace MovieDatabase.Domain.Seed_Data
                         Zipcode = 49690
                     },
                     ReleaseDate = new DateTime(2020, 12, 25, 12, 00, 0),
-                    Runtime = 180
+                    Runtime = 84
                 },
                 new Movie()
                 {
@@ -154,8 +154,8 @@ namespace MovieDatabase.Domain.Seed_Data
                         State = "MI",
                         Zipcode = 49690
                     },
-                    ReleaseDate = new DateTime(2020, 12, 25, 12, 00, 0),
-                    Runtime = 180
+                    ReleaseDate = new DateTime(2015, 12, 25, 12, 00, 0),
+                    Runtime = 120
                 },
                 new Movie()
                 {
@@ -184,7 +184,7 @@ namespace MovieDatabase.Domain.Seed_Data
                         Zipcode = 49690
                     },
                     ReleaseDate = new DateTime(2020, 12, 25, 12, 00, 0),
-                    Runtime = 180
+                    Runtime = 150
                 },
                 new Movie()
                 {
@@ -212,8 +212,8 @@ namespace MovieDatabase.Domain.Seed_Data
                         State = "MI",
                         Zipcode = 49690
                     },
-                    ReleaseDate = new DateTime(2020, 12, 25, 12, 00, 0),
-                    Runtime = 180
+                    ReleaseDate = new DateTime(1994, 12, 25, 12, 00, 0),
+                    Runtime = 15
                 },
                 new Movie()
                 {
@@ -241,8 +241,8 @@ namespace MovieDatabase.Domain.Seed_Data
                         State = "MI",
                         Zipcode = 49690
                     },
-                    ReleaseDate = new DateTime(2020, 12, 25, 12, 00, 0),
-                    Runtime = 180
+                    ReleaseDate = new DateTime(2010, 12, 25, 12, 00, 0),
+                    Runtime = 100
                 }
             };
         }

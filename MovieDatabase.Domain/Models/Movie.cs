@@ -7,10 +7,10 @@ namespace MovieDatabase.Domain.Models
     public class Movie : DomainObject
     {
         public DateTime _releaseDate;
-        //public int _runTime;
-        //public string _description;
-        //public string _imdbLink;
-        //public byte[] _image;
+        public int _runTime;
+        public string _description;
+        public string _imdbLink;
+        public byte[] _image;
 
         public string Title { get; set; }
         // TODO - Change DateTime to just Date for the Movies
@@ -20,14 +20,57 @@ namespace MovieDatabase.Domain.Models
             set
             {
                 _releaseDate = value;
-                
+                OnPropertyChanged(nameof(ReleaseDate));
             }
         }
-        public int Runtime { get; set; }
-        public string Description { get; set; }
-        public string IMDBLink { get; set; }
-        public byte[] Image { get; set; }
-        public virtual Studio Studio { get; set; }
-        public virtual Producer Producer { get; set; }
+
+        public int Runtime 
+        {
+            get => _runTime;
+            set 
+            {
+                _runTime = value;
+                OnPropertyChanged(nameof(Runtime));
+            }
+        }
+
+        public string Description 
+        {
+            get => _description;
+            set 
+            {
+                _description = value;
+                OnPropertyChanged(nameof(Description));
+            }
+        }
+
+        public string IMDBLink 
+        {
+            get => _imdbLink;
+            set 
+            {
+                _imdbLink = value;
+                OnPropertyChanged(nameof(IMDBLink));
+            }
+        }
+        public byte[] Image 
+        {
+            get => _image;
+            set 
+            {
+                _image = value;
+                OnPropertyChanged(nameof(Image));
+            }
+        }
+        public virtual Studio Studio 
+        {
+            get;
+            set;
+        }
+        public virtual Producer Producer 
+        { 
+            get;
+            set;
+        }
     }
 }

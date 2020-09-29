@@ -26,6 +26,7 @@
                     FontSize="22"
                     HorizontalAlignment="Left"
                     DockPanel.Dock="Top"
+                    Text="{Binding SearchString}"
                     />
 
                 <Label 
@@ -35,13 +36,14 @@
                     />
                 <ComboBox 
                     ItemsSource="{Binding Movies}"
+                    SelectedItem="{Binding SelectedProducer}"
                     Width="250"
                     HorizontalAlignment="Left"
                     DockPanel.Dock="Top"
                     >
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Producer.Name}" />
+                            <TextBlock Text="{Binding Producer.Name}"/>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
@@ -53,6 +55,7 @@
                     />
                 <ComboBox 
                     ItemsSource="{Binding Movies}"
+                    SelectedItem="{Binding SelectedStudio}"
                     Width="250"
                     HorizontalAlignment="Left"
                     DockPanel.Dock="Top"
@@ -72,9 +75,20 @@
                     FontSize="18"
                     />
                     <StackPanel Orientation="Horizontal">
-                        <RadioButton Content="Producer" Margin=" 0 0 10 0"/>
-                        <RadioButton Content="Studio" Margin="0 0 10 0"/>
-                        <RadioButton Content="Year"/>
+                        <RadioButton 
+                            Content="Producer"
+                            Margin=" 0 0 10 0"
+                            Command="{Binding ButtonSortByCommand}"
+                            CommandParameter="Producer"/>
+                        <RadioButton 
+                            Content="Studio"
+                            Margin="0 0 10 0"
+                            Command="{Binding ButtonSortByCommand}"
+                            CommandParameter="Studio"/>
+                        <RadioButton 
+                            Content="Year"
+                            Command="{Binding ButtonSortByCommand}"
+                            CommandParameter="Year"/>
                     </StackPanel>
                 </StackPanel>
 
@@ -90,6 +104,7 @@
                     HorizontalAlignment="Left"
                     DockPanel.Dock="Left"
                     Margin="0 0 10 0"
+                    Text="{Binding MinRuntimeText}"
                     />
                 <Label 
                     Content="And"
@@ -101,6 +116,7 @@
                     FontSize="22"
                     HorizontalAlignment="Left"
                     DockPanel.Dock="Left"
+                    Text="{Binding MaxRuntimeText}"
                     />
             </DockPanel>
 
@@ -116,22 +132,27 @@
                     <Button 
                         Content="Search"
                         HorizontalAlignment="Left"
+                        Command="{Binding ButtonSearchByMovieCommand}"
                        />
                     <Button 
                         Content="Search"
                         HorizontalAlignment="Left"
+                        Command="{Binding ButtonSearchByProducerCommand}"
                         />
                     <Button 
                         Content="Search"
                         HorizontalAlignment="Left"
+                        Command="{Binding ButtonSearchByStudioCommand}"
                         />
                     <Button 
                         Content="Filter"
                         HorizontalAlignment="Left"
+                        Command="{Binding ButtonFilterByRuntimeCommand}"
                       />
                     <Button 
-                        Content="Sort"
+                        Content="Reset"
                         HorizontalAlignment="Left"
+                        Command="{Binding ButtonResetFormCommand}"
                        />
                 </StackPanel>
             </DockPanel>

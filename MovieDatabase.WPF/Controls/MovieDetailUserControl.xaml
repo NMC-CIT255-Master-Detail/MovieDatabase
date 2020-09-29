@@ -55,7 +55,6 @@
         <StackPanel Orientation="Horizontal" Grid.Row="8" >
             <Label Content="Producer Name: "/>
             <TextBlock Text="{Binding SelectedMovie.Producer.Name}" />
-            <TextBlock Text=" - " />
             <Label Content="DOB: "/>
             <TextBlock Text="{Binding SelectedMovie.Producer.DOB, StringFormat={}\{0:MM/dd/yyyy \}}"/>
         </StackPanel>
@@ -76,7 +75,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="14" Margin="400 0 0 0">
             <Button x:Name="Edit" Content="Edit"/>
-            <Button x:Name="Delete" Content="Delete" />
+            <Button x:Name="Delete" Content="Delete" Background="Red"/>
         </StackPanel>
     </Grid>
 </UserControl>

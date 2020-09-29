@@ -33,7 +33,7 @@
                     <!-- End Copied Code -->
                     <RibbonApplicationMenuItem Header="About" ImageSource="/Images/about.png" />
                     <RibbonApplicationMenuItem Header="Help" ImageSource="/Images/help.png" />
-                    <RibbonApplicationMenuItem Header="Exit" ImageSource="/Images/quit.png" />
+                    <RibbonApplicationMenuItem Header="Exit" ImageSource="/Images/quit.png" Command="{Binding ButtonQuitCommand}" />
                     <RibbonApplicationMenu.AuxiliaryPaneContent>
                         <RibbonGallery CanUserFilter="False"
                                   ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -67,7 +67,7 @@
                 <RibbonGroup x:Name="Movies" Header="Add/View">
                     <RibbonMenuButton LargeImageSource="/Images/movie.png" Label="Movies" KeyTip="M">
                         <RibbonMenuItem ImageSource="/Images/add.png" Header="Add" KeyTip="A"/>
-                        <RibbonMenuItem ImageSource="/Images/view.png" Header="View (Refresh)" KeyTip="V"/>
+                        <RibbonMenuItem ImageSource="/Images/view.png" Header="View (Refresh)" KeyTip="V" Command="{Binding ButtonResetFormCommand}"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Producers -->

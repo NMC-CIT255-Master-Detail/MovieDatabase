@@ -10,7 +10,7 @@
     <Window.DataContext>
         <local1:MainViewModel/>
     </Window.DataContext>
-    <Grid>
+    <Grid Background="AliceBlue">
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -22,7 +22,9 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+
             <uc:RibbonMenu Grid.ColumnSpan="2"/>
+
             <Label 
                 Style="{StaticResource Header}"
                 Content="Movie Database" 
@@ -39,19 +41,19 @@
             <Separator 
                 Grid.Row="2"
                 HorizontalAlignment="Center" />
-            
-            <Label 
+            <DockPanel Grid.Row="2">
+                <Label 
                 Style="{StaticResource Header}"
                 Content="Master List"
-                Grid.Row="2"
                 HorizontalAlignment="Center"
+                DockPanel.Dock="Top"
                  />
 
-            <uc:MasterMovieList 
-                Grid.Row="2"
-                VerticalContentAlignment="bottom"
-                Height="400"
-                Margin="20 0 20 0"/>
+                <uc:MasterMovieList 
+                Margin="20 0 20 0"
+                    DockPanel.Dock="Bottom"/>
+            </DockPanel>
+            
 
             <uc:MovieDetailUserControl 
                 Grid.Row="1" 
