@@ -31,8 +31,8 @@
                         </DrawingImage>
                     </RibbonApplicationMenu.SmallImageSource>
                     <!-- End Copied Code -->
-                    <RibbonApplicationMenuItem Header="About" ImageSource="/Images/about.png" />
-                    <RibbonApplicationMenuItem Header="Help" ImageSource="/Images/help.png" />
+                    <RibbonApplicationMenuItem Header="About" ImageSource="/Images/about.png" Command="{Binding ButtonAboutCommand}" />
+                    <RibbonApplicationMenuItem Header="Help" ImageSource="/Images/help.png" Command="{Binding ButtonHelpCommand}"/>
                     <RibbonApplicationMenuItem Header="Exit" ImageSource="/Images/quit.png" Command="{Binding ButtonQuitCommand}" />
                     <RibbonApplicationMenu.AuxiliaryPaneContent>
                         <RibbonGallery CanUserFilter="False"
@@ -59,28 +59,28 @@
                 <!-- Home  group-->
                 <RibbonGroup x:Name="UserGroup" Header="Select an App">
                     <RibbonMenuButton LargeImageSource="/Images/personal.png" Label="Developer" KeyTip="D">
-                        <RibbonMenuItem ImageSource="/Images/personal.png" Header="Peter Steele" KeyTip="P"/>
-                        <RibbonMenuItem ImageSource="/Images/personal.png" Header="Cole Crain" KeyTip="C"/>
+                        <RibbonMenuItem ImageSource="/Images/personal.png" Header="Peter Steele" KeyTip="P" Command="{Binding ButtonPeterCommand}"/>
+                        <RibbonMenuItem ImageSource="/Images/personal.png" Header="Cole Crain" KeyTip="C" Command="{Binding ButtonColeCommand}"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Movies -->
                 <RibbonGroup x:Name="Movies" Header="Add/View">
                     <RibbonMenuButton LargeImageSource="/Images/movie.png" Label="Movies" KeyTip="M">
-                        <RibbonMenuItem ImageSource="/Images/add.png" Header="Add" KeyTip="A"/>
+                        <RibbonMenuItem ImageSource="/Images/add.png" Header="Add" KeyTip="A" Command="{Binding ButtonMovieCommand}"/>
                         <RibbonMenuItem ImageSource="/Images/view.png" Header="View (Refresh)" KeyTip="V" Command="{Binding ButtonResetFormCommand}"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Producers -->
                 <RibbonGroup x:Name="Producers" Header="Add/View">
                     <RibbonMenuButton LargeImageSource="/Images/person.png" Label="Producers" KeyTip="M">
-                        <RibbonMenuItem ImageSource="/Images/add.png" Header="Add" KeyTip="A"/>
+                        <RibbonMenuItem ImageSource="/Images/add.png" Header="Add" KeyTip="A" Command="{Binding ButtonProducerCommand}"/>
                         <RibbonMenuItem ImageSource="/Images/view.png" Header="View (Refresh)" KeyTip="V"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Studios -->
                 <RibbonGroup x:Name="Studios" Header="Add/View">
                     <RibbonMenuButton LargeImageSource="/Images/Folder-TV-Disney-icon.png" Label="Studios" KeyTip="M">
-                        <RibbonMenuItem ImageSource="/Images/add.png" Header="Add" KeyTip="A"/>
+                        <RibbonMenuItem ImageSource="/Images/add.png" Header="Add" KeyTip="A" Command="{Binding ButtonStudioCommand}"/>
                         <RibbonMenuItem ImageSource="/Images/view.png" Header="View (Refresh)" KeyTip="V"/>
                     </RibbonMenuButton>
                 </RibbonGroup>

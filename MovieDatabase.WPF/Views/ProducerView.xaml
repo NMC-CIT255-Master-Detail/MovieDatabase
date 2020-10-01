@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MovieDatabase.WPF.Views"
          xmlns:uc="clr-namespace:MovieDatabase.WPF.Controls"
         mc:Ignorable="d"
-        Title="ProducerView" Height="450" Width="800">
+        Title="ProducerView" Height="1080" Width="1920">
     <Grid>
         <uc:RibbonMenu/>
     </Grid>

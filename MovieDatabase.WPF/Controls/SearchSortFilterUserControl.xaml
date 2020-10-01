@@ -48,6 +48,8 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
 
+                
+
                 <Label 
                     Content="Search By Studio"
                     FontSize="18" 
