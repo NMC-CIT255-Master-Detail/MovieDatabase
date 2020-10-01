@@ -11,6 +11,7 @@ using MovieDatabase.Domain;
 using System.Linq;
 using MovieDatabase.WPF.Controls;
 using MovieDatabase.WPF.Views;
+using MovieDatabase.WPF.Views.ColeView;
 
 namespace MovieDatabase.WPF.ViewModels
 {
@@ -338,7 +339,7 @@ namespace MovieDatabase.WPF.ViewModels
 
         public void OpenColeApp()
         {
-            Cole cole = new Cole();
+            ColeWindow cole = new ColeWindow();
             cole.Show();
         }
 
