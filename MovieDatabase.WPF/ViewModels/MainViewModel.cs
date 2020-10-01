@@ -10,11 +10,15 @@ using System.Windows.Input;
 using MovieDatabase.Domain;
 using System.Linq;
 using MovieDatabase.WPF.Controls;
+using MovieDatabase.WPF.Views;
 
 namespace MovieDatabase.WPF.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+
+        #region Fields
+       
         private Movie _selectedMovie;
         private string _searchString;
         private ObservableCollection<Movie> _movies;
@@ -22,26 +26,30 @@ namespace MovieDatabase.WPF.ViewModels
         private Movie _selectedStudio;
         private string _minRuntimeText;
         private string _maxRuntimeText;
+        private string _errorMessage;
 
+        #endregion
+
+        #region ICommands
 
         public ICommand ButtonSearchByMovieCommand
-        { 
+        {
             get => new RelayCommand(SearchByMovie);
         }
-        public ICommand ButtonSearchByProducerCommand 
+        public ICommand ButtonSearchByProducerCommand
         {
             get => new RelayCommand(SearchByProducer);
         }
-        public ICommand ButtonSearchByStudioCommand 
+        public ICommand ButtonSearchByStudioCommand
         {
             get => new RelayCommand(SearchByStudio);
         }
-        public ICommand ButtonFilterByRuntimeCommand 
+        public ICommand ButtonFilterByRuntimeCommand
         {
             get => new RelayCommand(FilterByRuntime);
         }
-        public ICommand ButtonSortByCommand 
-        { 
+        public ICommand ButtonSortByCommand
+        {
             get => new RelayCommand(new Action<object>(SortBy));
         }
 
@@ -53,28 +61,67 @@ namespace MovieDatabase.WPF.ViewModels
         public ICommand ButtonEditMovieCommand { get; set; }
         public ICommand ButtonDeleteMovieCommand { get; set; }
 
-        public ICommand ButtonQuitCommand 
+        public ICommand ButtonQuitCommand
         {
             get => new RelayCommand(QuitApp);
         }
 
+        public ICommand ButtonAboutCommand
+        {
+            get => new RelayCommand(OpenAboutWindow);
+        }
+
+        public ICommand ButtonHelpCommand
+        {
+            get => new RelayCommand(OpenHelpWindow);
+        }
+
+        public ICommand ButtonProducerCommand
+        {
+            get => new RelayCommand(OpenProducerWindow);
+        }
+
+        public ICommand ButtonStudioCommand
+        {
+            get => new RelayCommand(OpenStudioWindow);
+        }
+
+        public ICommand ButtonMovieCommand
+        {
+            get => new RelayCommand(OpenMovieWindow);
+        }
+
+        public ICommand ButtonPeterCommand
+        {
+            get => new RelayCommand(OpenPeterApp);
+        }
+
+        public ICommand ButtonColeCommand
+        {
+            get => new RelayCommand(OpenColeApp);
+        }
+
+        #endregion
+
+        #region Properties
+
         public ObservableCollection<Movie> Movies
         {
             get => _movies;
-            set 
+            set
             {
                 _movies = value;
                 OnPropertyChanged(nameof(Movies));
             }
         }
-        
+
         public Movie SelectedMovie
         {
             get => _selectedMovie;
             set
             {
                 _selectedMovie = value;
-                if(_selectedMovie != null)
+                if (_selectedMovie != null)
                 {
                     OnPropertyChanged(nameof(SelectedMovie));
                 }
@@ -131,6 +178,19 @@ namespace MovieDatabase.WPF.ViewModels
             }
         }
 
+        public string ErrorMessage
+        {
+            get => _errorMessage;
+            set
+            {
+                _errorMessage = value;
+                OnPropertyChanged(nameof(ErrorMessage));
+            }
+        }
+
+        #endregion
+
+        #region Constructor
 
         public MainViewModel()
         {
@@ -138,18 +198,57 @@ namespace MovieDatabase.WPF.ViewModels
             if (Movies.Any()) SelectedMovie = Movies[0];
         }
 
+        #endregion
+
+        #region Methods
+
         public void SearchByMovie()
         {
-            Movies = new ObservableCollection<Movie>(_movies.Where(m => m.Title.ToLower().Contains(_searchString)));
+            if (_searchString != null)
+            {
+                Movies = new ObservableCollection<Movie>(_movies.Where(m => m.Title.ToLower().Contains(_searchString.ToLower())));
+            }
+            else
+            {
+                _errorMessage = "Sorry, you must type a movie name to search by";
+            }
+
         }
 
         public void SearchByProducer()
         {
-            Movies = new ObservableCollection<Movie>(_movies.Where(p => p.Producer.Name.ToLower().Contains(_selectedProducer.Producer.Name.ToLower().ToString())));
+            _errorMessage = "";
+
+            if (_selectedProducer != null)
+            {
+                try
+                {
+                    Movies = new ObservableCollection<Movie>(_movies.Where(p => p.Producer.Name.ToLower().Contains(_selectedProducer.Producer.Name.ToLower().ToString())));
+                }
+                catch (Exception ex)
+                {
+                    _errorMessage = ex.ToString();
+                    throw;
+                }
+            }
+            else
+            {
+                _errorMessage = "Sorry, you must select a Producer to search by";
+            }
+
+
         }
         public void SearchByStudio()
         {
-            Movies = new ObservableCollection<Movie>(_movies.Where(s => s.Studio.Name.ToLower().Contains(_selectedStudio.Studio.Name.ToLower().ToString())));
+            if (_selectedStudio != null)
+            {
+                Movies = new ObservableCollection<Movie>(_movies.Where(s => s.Studio.Name.ToLower().Contains(_selectedStudio.Studio.Name.ToLower().ToString())));
+            }
+            else
+            {
+                _errorMessage = "Sorry, you must select a Studio to search by";
+            }
+
         }
         public void FilterByRuntime()
         {
@@ -200,5 +299,50 @@ namespace MovieDatabase.WPF.ViewModels
         {
             System.Environment.Exit(1);
         }
+
+        public void OpenAboutWindow()
+        {
+            About about = new About();
+            about.ShowDialog();
+        }
+
+        public void OpenHelpWindow()
+        {
+            Help help = new Help();
+            help.ShowDialog();
+        }
+
+        public void OpenProducerWindow()
+        {
+            ProducerView prodView = new ProducerView();
+            prodView.ShowDialog();
+        }
+
+        public void OpenStudioWindow()
+        {
+            StudioView studioView = new StudioView();
+            studioView.ShowDialog();
+        }
+
+        public void OpenMovieWindow()
+        {
+            MovieView movieView = new MovieView();
+            movieView.ShowDialog();
+        }
+
+        public void OpenPeterApp()
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+        }
+
+        public void OpenColeApp()
+        {
+            Cole cole = new Cole();
+            cole.Show();
+        }
+
+        #endregion
+
     }
 }
