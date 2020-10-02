@@ -48,6 +48,7 @@ TBA
 # Project Links
 
 Discord: https://discord.gg/dDMmDEA
+
 Trello Sprint 1: https://trello.com/b/V8tOfAY6/power-squad-sprint-1
 
 Trello Sprint 2: https://trello.com/b/fB4pNtOR/power-squad-sprint-2 
