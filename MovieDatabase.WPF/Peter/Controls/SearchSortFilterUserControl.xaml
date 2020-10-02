@@ -1,0 +1,163 @@
+﻿<UserControl x:Class="MovieDatabase.WPF.Peter.Controls.SearchSortFilterUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MovieDatabase.WPF.Peter.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="800">
+            <DockPanel 
+                Grid.Row="1"
+                Width="550"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="20 50 0 0"
+                >
+
+                <Label 
+                    Content="Search By Movie Name"
+                    FontSize="18"
+                    DockPanel.Dock="Top"
+                    />
+                <TextBox 
+                    Width="500"
+                    FontSize="22"
+                    HorizontalAlignment="Left"
+                    DockPanel.Dock="Top"
+                    Text="{Binding SearchString}"
+                    />
+
+                <Label 
+                    Content="Search By Producer"
+                    FontSize="18" 
+                    DockPanel.Dock="Top"
+                    />
+                <ComboBox 
+                    ItemsSource="{Binding Movies}"
+                    SelectedItem="{Binding SelectedProducer}"
+                    Width="250"
+                    HorizontalAlignment="Left"
+                    DockPanel.Dock="Top"
+                    >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Producer.Name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                
+
+                <Label 
+                    Content="Search By Studio"
+                    FontSize="18" 
+                    DockPanel.Dock="Top"
+                    />
+                <ComboBox 
+                    ItemsSource="{Binding Movies}"
+                    SelectedItem="{Binding SelectedStudio}"
+                    Width="250"
+                    HorizontalAlignment="Left"
+                    DockPanel.Dock="Top"
+                    >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Studio.Name}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <StackPanel 
+                    Orientation="Vertical"
+                    DockPanel.Dock="Bottom">
+                    <Label 
+                    Content="Sort By"
+                    FontSize="18"
+                    />
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton 
+                            Content="Producer"
+                            Margin=" 0 0 10 0"
+                            Command="{Binding ButtonSortByCommand}"
+                            CommandParameter="Producer"/>
+                        <RadioButton 
+                            Content="Studio"
+                            Margin="0 0 10 0"
+                            Command="{Binding ButtonSortByCommand}"
+                            CommandParameter="Studio"/>
+                        <RadioButton 
+                            Content="Year"
+                            Command="{Binding ButtonSortByCommand}"
+                            CommandParameter="Year"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <Label
+                    Content="Filter By Length"
+                    FontSize="18"
+                    DockPanel.Dock="Top"
+                    />
+
+                <TextBox
+                    Width="50"
+                    FontSize="22"
+                    HorizontalAlignment="Left"
+                    DockPanel.Dock="Left"
+                    Margin="0 0 10 0"
+                    Text="{Binding MinRuntimeText}"
+                    />
+                <Label 
+                    Content="And"
+                    DockPanel.Dock="Left"
+                    Margin="0 0 10 0"
+                    />
+                <TextBox
+                    Width="50"
+                    FontSize="22"
+                    HorizontalAlignment="Left"
+                    DockPanel.Dock="Left"
+                    Text="{Binding MaxRuntimeText}"
+                    />
+            </DockPanel>
+
+            <DockPanel 
+                Grid.Row="1"
+                Width="400"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Height="400"
+                Margin="0 50 0 0">
+                <StackPanel 
+                    Orientation="Vertical">
+                    <Button 
+                        Content="Search"
+                        HorizontalAlignment="Left"
+                        Command="{Binding ButtonSearchByMovieCommand}"
+                       />
+                    <Button 
+                        Content="Search"
+                        HorizontalAlignment="Left"
+                        Command="{Binding ButtonSearchByProducerCommand}"
+                        />
+                    <Button 
+                        Content="Search"
+                        HorizontalAlignment="Left"
+                        Command="{Binding ButtonSearchByStudioCommand}"
+                        />
+                    <Button 
+                        Content="Filter"
+                        HorizontalAlignment="Left"
+                        Command="{Binding ButtonFilterByRuntimeCommand}"
+                      />
+                    <Button 
+                        Content="Reset"
+                        HorizontalAlignment="Left"
+                        Command="{Binding ButtonResetFormCommand}"
+                       />
+                </StackPanel>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
