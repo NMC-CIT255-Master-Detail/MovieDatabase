@@ -1,6 +1,7 @@
 # Movie Database
 
-![Build](https://img.shields.io/github/workflow/status/NMC-CIT255-Master-Detail/MovieDatabase/.NET%20Core)
+![Build](https://img.shields.io/github/workflow/status/NMC-CIT255-Master-Detail/MovieDatabase/.NET%20Core) ![Size](https://img.shields.io/github/repo-size/NMC-CIT255-Master-Detail/MovieDatabase) 
+![License](https://img.shields.io/github/license/NMC-CIT255-Master-Detail/MovieDatabase)
 
 ### Welcome 
 

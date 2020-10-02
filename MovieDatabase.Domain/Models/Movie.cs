@@ -13,7 +13,7 @@ namespace MovieDatabase.Domain.Models
         public byte[] _image;
 
         public string Title { get; set; }
-        // TODO - Change DateTime to just Date for the Movies
+
         public DateTime ReleaseDate
         {
             get => _releaseDate;
