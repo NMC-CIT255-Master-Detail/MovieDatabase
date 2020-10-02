@@ -49,6 +49,9 @@ TBA
 
 Discord: https://discord.gg/dDMmDEA
 Trello Sprint 1: https://trello.com/b/V8tOfAY6/power-squad-sprint-1
+
 Trello Sprint 2: https://trello.com/b/fB4pNtOR/power-squad-sprint-2 
+
 Trello Sprint 3: https://trello.com/b/f7s8NYPY/power-squad-sprint-3
+
 GitHub Repo: https://github.com/NMC-CIT255-Master-Detail/MovieDatabase
