@@ -81,3 +81,4 @@ TBA
 **GitHub Repo:** https://github.com/NMC-CIT255-Master-Detail/MovieDatabase
 
 **Application Website:** https://nmc-cit255-master-detail.github.io/MovieDatabase/
+
