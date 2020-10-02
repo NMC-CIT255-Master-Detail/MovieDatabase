@@ -2,8 +2,13 @@
 
 ![Build](https://img.shields.io/github/workflow/status/NMC-CIT255-Master-Detail/MovieDatabase/.NET%20Core)
 
+### Welcome 
+
 Welcome to our application for NMC's CIT255 Object Oriented Programming class
 This project has been broken out into many different sprints. There are 4 sprints in total and this is a group project.
+
+### App Requirements
+
 The goal and requirements for the application are to create a Master Detail application with basic CRUD operations.
 The user should be able to view a master list of the items, select items, and edit or delete those items.
 The user should also be able to add items as well. The user can also search for, filter, and sort items in the master list as well.
