@@ -3,7 +3,7 @@ using MovieDatabase.Domain.Seed_Data;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace MovieDatabase.WPF.ViewModels.ColeViewModels
+namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 {
     class ColeViewModel : BaseViewModel
     {
