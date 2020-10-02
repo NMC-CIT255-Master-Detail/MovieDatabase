@@ -26,7 +26,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="{Binding SelectedMovie.Title}" HorizontalAlignment="Center" Margin="0 0 0 10"/>
-        <Image Source="/Images/spongebob.jpg" Height="200" Grid.Row="1"/>
+        <Image Source="Resources/Images/spongebob.jpg" Height="200" Grid.Row="1"/>
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
             <Label Content="Release Date: "/>
             <TextBlock Text="{Binding SelectedMovie.ReleaseDate, StringFormat={}\{0:MM/dd/yyyy \}}" />

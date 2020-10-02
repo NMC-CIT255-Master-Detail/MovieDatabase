@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MovieDatabase.WPF.Peter"
         xmlns:uc="clr-namespace:MovieDatabase.WPF.Peter.Controls" xmlns:local1="clr-namespace:MovieDatabase.WPF.Peter.ViewModels"
               mc:Ignorable="d"
-        Title="Movie Database" Height="680" Width="920">
+        Title="Movie Database" Height="1080" Width="1920">
     <Window.DataContext>
         <local1:MainViewModel/>
     </Window.DataContext>

@@ -41,7 +41,7 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <Image Source="/Images/about.png" Grid.RowSpan="6" HorizontalAlignment="Left" Margin="0 0 20 0"/>
+                        <Image Source="Resources/Images/about.png" Grid.RowSpan="6" HorizontalAlignment="Left" Margin="0 0 20 0"/>
 
                         <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
                             <TextBlock Text="Title: " Style="{StaticResource Label}"/>
