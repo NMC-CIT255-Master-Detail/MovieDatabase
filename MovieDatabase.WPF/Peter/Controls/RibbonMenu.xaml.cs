@@ -8,16 +8,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MovieDatabase.WPF.Views.ColeView
+namespace MovieDatabase.WPF.Peter.Controls
 {
     /// <summary>
-    /// Interaction logic for ColeWindow.xaml
+    /// Interaction logic for RibbonMenu.xaml
     /// </summary>
-    public partial class ColeWindow : Window
+    public partial class RibbonMenu : UserControl
     {
-        public ColeWindow()
+        public RibbonMenu()
         {
             InitializeComponent();
         }

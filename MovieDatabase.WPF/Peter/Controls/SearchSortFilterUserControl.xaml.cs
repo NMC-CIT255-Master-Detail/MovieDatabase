@@ -8,16 +8,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MovieDatabase.WPF.Views
+namespace MovieDatabase.WPF.Peter.Controls
 {
     /// <summary>
-    /// Interaction logic for Cole.xaml
+    /// Interaction logic for SearchSortFilterUserControl.xaml
     /// </summary>
-    public partial class Cole : Window
+    public partial class SearchSortFilterUserControl : UserControl
     {
-        public Cole()
+        public SearchSortFilterUserControl()
         {
             InitializeComponent();
         }

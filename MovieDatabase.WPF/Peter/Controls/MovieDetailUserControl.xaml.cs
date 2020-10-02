@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MovieDatabase.WPF.Controls
+namespace MovieDatabase.WPF.Peter.Controls
 {
     /// <summary>
     /// Interaction logic for MovieDetailUserControl.xaml

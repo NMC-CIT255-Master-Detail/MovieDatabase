@@ -1,5 +1,4 @@
-﻿using MovieDatabase.Domain.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -9,17 +8,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MovieDatabase.WPF.Controls
+namespace MovieDatabase.WPF.Peter.Views
 {
     /// <summary>
-    /// Interaction logic for MasterMovieList.xaml
+    /// Interaction logic for MovieView.xaml
     /// </summary>
-    public partial class MasterMovieList : UserControl
+    public partial class MovieView : Window
     {
-        public MasterMovieList()
+        public MovieView()
         {
             InitializeComponent();
         }

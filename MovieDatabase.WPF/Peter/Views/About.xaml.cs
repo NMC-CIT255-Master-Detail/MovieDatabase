@@ -8,17 +8,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MovieDatabase.WPF.Controls
+namespace MovieDatabase.WPF.Peter.Views
 {
     /// <summary>
-    /// Interaction logic for RibbonMenu.xaml
+    /// Interaction logic for About.xaml
     /// </summary>
-    public partial class RibbonMenu : UserControl
+    public partial class About : Window
     {
-        public RibbonMenu()
+        public About()
         {
             InitializeComponent();
         }

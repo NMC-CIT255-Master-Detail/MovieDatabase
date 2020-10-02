@@ -3,9 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MovieDatabase.WPF.ViewModels
+namespace MovieDatabase.WPF
 {
     public class BaseViewModel : ObservableObject
     {
+
     }
 }

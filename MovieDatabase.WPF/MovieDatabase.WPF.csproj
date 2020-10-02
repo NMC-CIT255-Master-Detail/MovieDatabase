@@ -7,44 +7,44 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\1353183085_save.png" />
-    <None Remove="Images\about.png" />
-    <None Remove="Images\add.png" />
-    <None Remove="Images\copy.png" />
-    <None Remove="Images\cut.png" />
-    <None Remove="Images\Folder-TV-Disney-icon.png" />
-    <None Remove="Images\format_painter.png" />
-    <None Remove="Images\go-next.png" />
-    <None Remove="Images\go-previous.png" />
-    <None Remove="Images\help.png" />
-    <None Remove="Images\home.png" />
-    <None Remove="Images\movie.png" />
-    <None Remove="Images\options.png" />
-    <None Remove="Images\paste.png" />
-    <None Remove="Images\person.png" />
-    <None Remove="Images\personal.png" />
-    <None Remove="Images\quit.png" />
-    <None Remove="Images\redo.png" />
-    <None Remove="Images\save.png" />
-    <None Remove="Images\spongebob.jpg" />
-    <None Remove="Images\undo.png" />
-    <None Remove="Images\view.png" />
+    <None Remove="Peter\Controls\Resources\Images\1353183085_save.png" />
+    <None Remove="Peter\Controls\Resources\Images\about.png" />
+    <None Remove="Peter\Controls\Resources\Images\add.png" />
+    <None Remove="Peter\Controls\Resources\Images\copy.png" />
+    <None Remove="Peter\Controls\Resources\Images\cut.png" />
+    <None Remove="Peter\Controls\Resources\Images\Folder-TV-Disney-icon.png" />
+    <None Remove="Peter\Controls\Resources\Images\format_painter.png" />
+    <None Remove="Peter\Controls\Resources\Images\go-next.png" />
+    <None Remove="Peter\Controls\Resources\Images\go-previous.png" />
+    <None Remove="Peter\Controls\Resources\Images\help.png" />
+    <None Remove="Peter\Controls\Resources\Images\home.png" />
+    <None Remove="Peter\Controls\Resources\Images\movie.png" />
+    <None Remove="Peter\Controls\Resources\Images\options.png" />
+    <None Remove="Peter\Controls\Resources\Images\paste.png" />
+    <None Remove="Peter\Controls\Resources\Images\person.png" />
+    <None Remove="Peter\Controls\Resources\Images\personal.png" />
+    <None Remove="Peter\Controls\Resources\Images\quit.png" />
+    <None Remove="Peter\Controls\Resources\Images\redo.png" />
+    <None Remove="Peter\Controls\Resources\Images\save.png" />
+    <None Remove="Peter\Controls\Resources\Images\spongebob.jpg" />
+    <None Remove="Peter\Controls\Resources\Images\undo.png" />
+    <None Remove="Peter\Controls\Resources\Images\view.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\about.png">
+    <Resource Include="Peter\Controls\Resources\Images\about.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\Folder-TV-Disney-icon.png">
+    <Resource Include="Peter\Controls\Resources\Images\Folder-TV-Disney-icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\movie.png">
+    <Resource Include="Peter\Controls\Resources\Images\movie.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\home.png">
+    <Resource Include="Peter\Controls\Resources\Images\home.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -61,58 +61,58 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\1353183085_save.png">
+    <Resource Include="Peter\Controls\Resources\Images\1353183085_save.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\add.png">
+    <Resource Include="Peter\Controls\Resources\Images\add.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\copy.png">
+    <Resource Include="Peter\Controls\Resources\Images\copy.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\cut.png">
+    <Resource Include="Peter\Controls\Resources\Images\cut.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\format_painter.png">
+    <Resource Include="Peter\Controls\Resources\Images\format_painter.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\go-next.png">
+    <Resource Include="Peter\Controls\Resources\Images\go-next.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\go-previous.png">
+    <Resource Include="Peter\Controls\Resources\Images\go-previous.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\help.png">
+    <Resource Include="Peter\Controls\Resources\Images\help.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\options.png">
+    <Resource Include="Peter\Controls\Resources\Images\options.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\paste.png">
+    <Resource Include="Peter\Controls\Resources\Images\paste.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\person.png">
+    <Resource Include="Peter\Controls\Resources\Images\person.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\personal.png">
+    <Resource Include="Peter\Controls\Resources\Images\personal.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\quit.png">
+    <Resource Include="Peter\Controls\Resources\Images\quit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\redo.png">
+    <Resource Include="Peter\Controls\Resources\Images\redo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\save.png">
+    <Resource Include="Peter\Controls\Resources\Images\save.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\spongebob.jpg">
+    <Resource Include="Peter\Controls\Resources\Images\spongebob.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\undo.png">
+    <Resource Include="Peter\Controls\Resources\Images\undo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\view.png">
+    <Resource Include="Peter\Controls\Resources\Images\view.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

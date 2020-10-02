@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MovieDatabase.WPF.Views
+namespace MovieDatabase.WPF.Peter.Views
 {
     /// <summary>
     /// Interaction logic for ProducerView.xaml

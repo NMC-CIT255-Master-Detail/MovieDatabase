@@ -10,14 +10,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MovieDatabase.WPF.Views
+namespace MovieDatabase.WPF.Peter.Views
 {
     /// <summary>
-    /// Interaction logic for About.xaml
+    /// Interaction logic for Help.xaml
     /// </summary>
-    public partial class About : Window
+    public partial class Help : Window
     {
-        public About()
+        public Help()
         {
             InitializeComponent();
         }

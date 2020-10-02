@@ -9,11 +9,11 @@ using System.Text;
 using System.Windows.Input;
 using MovieDatabase.Domain;
 using System.Linq;
-using MovieDatabase.WPF.Controls;
-using MovieDatabase.WPF.Views;
-using MovieDatabase.WPF.Views.ColeView;
+using MovieDatabase.WPF.Peter.Controls;
+using MovieDatabase.WPF.Peter.Views;
+using MovieDatabase.WPF.Cole.ColeViews;
 
-namespace MovieDatabase.WPF.ViewModels
+namespace MovieDatabase.WPF.Peter.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {

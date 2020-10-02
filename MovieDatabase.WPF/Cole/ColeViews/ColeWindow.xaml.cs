@@ -10,14 +10,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MovieDatabase.WPF.Views
+namespace MovieDatabase.WPF.Cole.ColeViews
 {
     /// <summary>
-    /// Interaction logic for StudioView.xaml
+    /// Interaction logic for ColeWindow.xaml
     /// </summary>
-    public partial class StudioView : Window
+    public partial class ColeWindow : Window
     {
-        public StudioView()
+        public ColeWindow()
         {
             InitializeComponent();
         }
