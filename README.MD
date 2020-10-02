@@ -1,6 +1,6 @@
 # Movie Database
 
-https://img.shields.io/github/workflow/status/NMC-CIT255-Master-Detail/MovieDatabase/.NET%20Core
+![Build](https://img.shields.io/github/workflow/status/NMC-CIT255-Master-Detail/MovieDatabase/.NET%20Core)
 
 Welcome to our application for NMC's CIT255 Object Oriented Programming class
 This project has been broken out into many different sprints. There are 4 sprints in total and this is a group project.
