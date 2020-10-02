@@ -1,6 +1,6 @@
 # Movie Database
 
-![.NET Core](https://github.com/NMC-CIT255-Master-Detail/MovieDatabase/workflows/.NET%20Core/badge.svg) ![CodeQL](https://github.com/NMC-CIT255-Master-Detail/MovieDatabase/workflows/CodeQL/badge.svg?branch=master) ![License](https://img.shields.io/github/license/NMC-CIT255-Master-Detail/MovieDatabase) ![Last Commit](https://img.shields.io/github/last-commit/NMC-CIT255-Master-Detail/MovieDatabase) ![Size](https://img.shields.io/github/repo-size/NMC-CIT255-Master-Detail/MovieDatabase) 
+![.NET Core](https://github.com/NMC-CIT255-Master-Detail/MovieDatabase/workflows/.NET%20Core/badge.svg) ![CodeQL](https://github.com/NMC-CIT255-Master-Detail/MovieDatabase/workflows/CodeQL/badge.svg?branch=master) ![License](https://img.shields.io/github/license/NMC-CIT255-Master-Detail/MovieDatabase) ![Last Commit](https://img.shields.io/github/last-commit/NMC-CIT255-Master-Detail/MovieDatabase) [![Maintainability](https://api.codeclimate.com/v1/badges/7c01c564d2ea4e05d93e/maintainability)](https://codeclimate.com/github/petersteele111/CIT228-Final-Project/maintainability) ![Size](https://img.shields.io/github/repo-size/NMC-CIT255-Master-Detail/MovieDatabase) 
 
 ### Welcome 
 
