@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieDatabase.WPF.Peter"
-        xmlns:uc="clr-namespace:MovieDatabase.WPF.Peter.Controls" xmlns:local1="clr-namespace:MovieDatabase.WPF.Peter.ViewModels"
-              mc:Ignorable="d"
+        xmlns:uc="clr-namespace:MovieDatabase.WPF.Peter.Controls" 
+        xmlns:local1="clr-namespace:MovieDatabase.WPF.Peter.ViewModels"
+        mc:Ignorable="d"
         Title="Movie Database" Height="1080" Width="1920">
     <Window.DataContext>
         <local1:MainViewModel/>

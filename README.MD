@@ -1,6 +1,6 @@
-# Movie Database
+<div align="center>"# Movie Database</div>
 
-![.NET Core](https://github.com/NMC-CIT255-Master-Detail/MovieDatabase/workflows/.NET%20Core/badge.svg) ![CodeQL](https://github.com/NMC-CIT255-Master-Detail/MovieDatabase/workflows/CodeQL/badge.svg?branch=master) ![License](https://img.shields.io/github/license/NMC-CIT255-Master-Detail/MovieDatabase) ![Last Commit](https://img.shields.io/github/last-commit/NMC-CIT255-Master-Detail/MovieDatabase) [![Maintainability](https://api.codeclimate.com/v1/badges/7997784fb54e779cc59a/maintainability)](https://codeclimate.com/github/NMC-CIT255-Master-Detail/MovieDatabase/maintainability) ![Size](https://img.shields.io/github/repo-size/NMC-CIT255-Master-Detail/MovieDatabase) 
+<div align="center">![.NET Core](https://github.com/NMC-CIT255-Master-Detail/MovieDatabase/workflows/.NET%20Core/badge.svg) ![CodeQL](https://github.com/NMC-CIT255-Master-Detail/MovieDatabase/workflows/CodeQL/badge.svg?branch=master) ![License](https://img.shields.io/github/license/NMC-CIT255-Master-Detail/MovieDatabase) ![Last Commit](https://img.shields.io/github/last-commit/NMC-CIT255-Master-Detail/MovieDatabase) [![Maintainability](https://api.codeclimate.com/v1/badges/7997784fb54e779cc59a/maintainability)](https://codeclimate.com/github/NMC-CIT255-Master-Detail/MovieDatabase/maintainability) ![Size](https://img.shields.io/github/repo-size/NMC-CIT255-Master-Detail/MovieDatabase) </div>
 
 ### Welcome 
 
