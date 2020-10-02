@@ -11,6 +11,8 @@
     <Window.DataContext>
         <local1:MainViewModel/>
     </Window.DataContext>
+
+
     <Grid Background="AliceBlue" Margin="0 20 0 0">
 
         <Grid>
@@ -26,9 +28,9 @@
 
             <uc:RibbonMenu Grid.ColumnSpan="2"/>
 
-            <Label 
+            <TextBlock 
                 Style="{StaticResource Header}"
-                Content="Movie Database" 
+                Text="Movie Database" 
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Top" 
                 Margin="0 10 0 0" 
@@ -37,21 +39,21 @@
             
             <uc:SearchSortFilterUserControl 
                 Grid.Row="1"
-                Margin=" 0 50"/>
+                Margin="20 50 20 30"/>
 
             <Separator 
                 Grid.Row="2"
                 HorizontalAlignment="Center" />
             <DockPanel Grid.Row="2">
-                <Label 
-                Style="{StaticResource Header}"
-                Content="Master List"
+                <TextBlock 
+                    Style="{StaticResource Header}"
+                Text="Master List"
                 HorizontalAlignment="Center"
                 DockPanel.Dock="Top"
                  />
 
                 <uc:MasterMovieList 
-                Margin="20 0 20 0"
+                Margin="20 0 20 50"
                     DockPanel.Dock="Bottom"/>
             </DockPanel>
             
@@ -60,7 +62,7 @@
                 Grid.Row="1" 
                 Grid.RowSpan="2"
                 Grid.Column="1"
-                Margin="0 50"/>
+                Margin="20 50"/>
 
         </Grid>
     </Grid>
