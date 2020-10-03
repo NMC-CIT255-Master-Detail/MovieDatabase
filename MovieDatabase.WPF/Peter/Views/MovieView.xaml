@@ -17,8 +17,17 @@
         </ResourceDictionary>
     </Window.Resources>
 
-    <Grid>
-        <uc:RibbonMenu Margin="0 -23 0 0"/>
-        <uc:MovieAddEditUserControl />
+    <Grid Margin="0 20 0 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <uc:RibbonMenu Margin="0 -43 0 0" Grid.ColumnSpan="2"/>
+        <uc:MovieAddEditUserControl Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
     </Grid>
 </Window>
