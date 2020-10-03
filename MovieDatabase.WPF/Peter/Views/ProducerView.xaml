@@ -6,7 +6,27 @@
         xmlns:uc="clr-namespace:MovieDatabase.WPF.Peter.Controls"
         mc:Ignorable="d"
         Title="ProducerView" Height="1080" Width="1920">
-    <Grid>
-        <uc:RibbonMenu />
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+                    Source="pack://application:,,,/Peter/Resources/ResourceDictionaries/ProducerResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="0 20 0 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <uc:RibbonMenu Margin="0 -43 0 0" Grid.ColumnSpan="2" />
+        <uc:ProducerAddEditUserControl Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Grid.RowSpan="2" />
     </Grid>
 </Window>
