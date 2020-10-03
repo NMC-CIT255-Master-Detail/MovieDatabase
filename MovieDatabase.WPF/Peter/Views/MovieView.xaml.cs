@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using MovieDatabase.Domain.Models;
+using MovieDatabase.WPF.Peter.ViewModels;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace MovieDatabase.WPF.Peter.Views
 {
@@ -7,8 +10,11 @@ namespace MovieDatabase.WPF.Peter.Views
     /// </summary>
     public partial class MovieView : Window
     {
-        public MovieView()
+
+        public MovieView(ObservableCollection<Movie> movies)
         {
+            MovieViewModel movieViewModel = new MovieViewModel(movies);
+            DataContext = movieViewModel;
             InitializeComponent();
         }
     }

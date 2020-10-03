@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieDatabase.WPF.Peter.Views"
         xmlns:uc="clr-namespace:MovieDatabase.WPF.Peter.Controls"
+        xmlns:local1="clr-namespace:MovieDatabase.WPF.Peter.ViewModels"
         mc:Ignorable="d"
         Title="MovieView" Height="1080" Width="1920">
 

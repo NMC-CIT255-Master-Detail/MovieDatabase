@@ -7,6 +7,7 @@ using MovieDatabase.WPF.Peter.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace MovieDatabase.WPF.Peter.ViewModels
@@ -323,7 +324,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         public void OpenMovieWindow()
         {
-            MovieView movieView = new MovieView();
+            MovieView movieView = new MovieView(Movies);
             movieView.ShowDialog();
         }
 

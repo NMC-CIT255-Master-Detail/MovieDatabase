@@ -56,7 +56,7 @@
         <Button Style="{DynamicResource PurpleButton}" x:Name="Browse" Grid.Row="12" Grid.Column="2" Content="Browse" />
 
         <TextBlock Text="Producer" Grid.Row="7" Grid.Column="4"/>
-        <ComboBox x:Name="MovieProducer" Grid.Row="8" Grid.Column="4" Style="{DynamicResource ComboBox}" >
+        <ComboBox x:Name="MovieProducer" Grid.Row="8" Grid.Column="4" Style="{DynamicResource ComboBox}" ItemsSource="{Binding Movies}" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Producer.Name}" />
@@ -65,7 +65,7 @@
         </ComboBox>
 
         <TextBlock Text="Studio" Grid.Row="9" Grid.Column="4"/>
-        <ComboBox x:Name="MovieStudio" Grid.Row="10" Grid.Column="4" Style="{DynamicResource ComboBox}">
+        <ComboBox x:Name="MovieStudio" Grid.Row="10" Grid.Column="4" Style="{DynamicResource ComboBox}" ItemsSource="{Binding Movies}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Studio.Name}" />
