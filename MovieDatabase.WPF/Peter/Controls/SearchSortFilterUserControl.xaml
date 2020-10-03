@@ -130,7 +130,7 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 Height="400"
-                Margin="0 50 0 0">
+                Margin="0 60 0 0">
                 <StackPanel 
                     Orientation="Vertical">
                     <Button 

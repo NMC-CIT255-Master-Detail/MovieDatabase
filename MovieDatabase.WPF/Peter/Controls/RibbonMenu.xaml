@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MovieDatabase.WPF.Peter.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MovieDatabase.WPF.Peter.Resources"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="1920">
     <Grid>
@@ -31,9 +31,9 @@
                         </DrawingImage>
                     </RibbonApplicationMenu.SmallImageSource>
                     <!-- End Copied Code -->
-                    <RibbonApplicationMenuItem Header="About" ImageSource="Resources/Images/about.png" Command="{Binding ButtonAboutCommand}" />
-                    <RibbonApplicationMenuItem Header="Help" ImageSource="Resources/Images/help.png" Command="{Binding ButtonHelpCommand}"/>
-                    <RibbonApplicationMenuItem Header="Exit" ImageSource="Resources/Images/quit.png" Command="{Binding ButtonQuitCommand}" />
+                    <RibbonApplicationMenuItem Header="About" ImageSource="/Resources/Images/about.png" Command="{Binding ButtonAboutCommand}" />
+                    <RibbonApplicationMenuItem Header="Help" ImageSource="/Images/help.png" Command="{Binding ButtonHelpCommand}"/>
+                    <RibbonApplicationMenuItem Header="Exit" ImageSource="/Images/quit.png" Command="{Binding ButtonQuitCommand}" />
                     <RibbonApplicationMenu.AuxiliaryPaneContent>
                         <RibbonGallery CanUserFilter="False"
                                   ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -58,30 +58,30 @@
             <RibbonTab Header="Home" KeyTip="H" >
                 <!-- Home  group-->
                 <RibbonGroup x:Name="UserGroup" Header="Select an App">
-                    <RibbonMenuButton LargeImageSource="Resources/Images/personal.png" Label="Developer" KeyTip="D">
-                        <RibbonMenuItem ImageSource="Resources/Images/personal.png" Header="Peter Steele" KeyTip="P" Command="{Binding ButtonPeterCommand}"/>
-                        <RibbonMenuItem ImageSource="Resources/Images/personal.png" Header="Cole Crain" KeyTip="C" Command="{Binding ButtonColeCommand}"/>
+                    <RibbonMenuButton LargeImageSource="/Images/personal.png" Label="Developer" KeyTip="D">
+                        <RibbonMenuItem ImageSource="/Images/personal.png" Header="Peter Steele" KeyTip="P" Command="{Binding ButtonPeterCommand}"/>
+                        <RibbonMenuItem ImageSource="/Images/personal.png" Header="Cole Crain" KeyTip="C" Command="{Binding ButtonColeCommand}"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Movies -->
                 <RibbonGroup x:Name="Movies" Header="Add/View">
-                    <RibbonMenuButton LargeImageSource="Resources/Images/movie.png" Label="Movies" KeyTip="M">
-                        <RibbonMenuItem ImageSource="Resources/Images/add.png" Header="Add" KeyTip="A" Command="{Binding ButtonMovieCommand}"/>
-                        <RibbonMenuItem ImageSource="Resources/Images/view.png" Header="View (Refresh)" KeyTip="V" Command="{Binding ButtonResetFormCommand}"/>
+                    <RibbonMenuButton LargeImageSource="/Images/movie.png" Label="Movies" KeyTip="M">
+                        <RibbonMenuItem ImageSource="/Images/add.png" Header="Add" KeyTip="A" Command="{Binding ButtonMovieCommand}"/>
+                        <RibbonMenuItem ImageSource="/Images/view.png" Header="View (Refresh)" KeyTip="V" Command="{Binding ButtonResetFormCommand}"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Producers -->
                 <RibbonGroup x:Name="Producers" Header="Add/View">
-                    <RibbonMenuButton LargeImageSource="Resources/Images/person.png" Label="Producers" KeyTip="M">
-                        <RibbonMenuItem ImageSource="Resources/Images/add.png" Header="Add" KeyTip="A" Command="{Binding ButtonProducerCommand}"/>
-                        <RibbonMenuItem ImageSource="Resources/Images/view.png" Header="View (Refresh)" KeyTip="V"/>
+                    <RibbonMenuButton LargeImageSource="/Images/person.png" Label="Producers" KeyTip="M">
+                        <RibbonMenuItem ImageSource="/Images/add.png" Header="Add" KeyTip="A" Command="{Binding ButtonProducerCommand}"/>
+                        <RibbonMenuItem ImageSource="/Images/view.png" Header="View (Refresh)" KeyTip="V"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Studios -->
                 <RibbonGroup x:Name="Studios" Header="Add/View">
-                    <RibbonMenuButton LargeImageSource="Resources/Images/Folder-TV-Disney-icon.png" Label="Studios" KeyTip="M">
-                        <RibbonMenuItem ImageSource="Resources/Images/add.png" Header="Add" KeyTip="A" Command="{Binding ButtonStudioCommand}"/>
-                        <RibbonMenuItem ImageSource="Resources/Images/view.png" Header="View (Refresh)" KeyTip="V"/>
+                    <RibbonMenuButton LargeImageSource="/Images/Folder-TV-Disney-icon.png" Label="Studios" KeyTip="M">
+                        <RibbonMenuItem ImageSource="/Images/add.png" Header="Add" KeyTip="A" Command="{Binding ButtonStudioCommand}"/>
+                        <RibbonMenuItem ImageSource="/Images/view.png" Header="View (Refresh)" KeyTip="V"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
             </RibbonTab>

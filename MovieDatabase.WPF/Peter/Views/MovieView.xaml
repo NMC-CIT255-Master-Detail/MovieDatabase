@@ -12,7 +12,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Peter/Controls/Resources/MovieResources.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Peter/Resources/ResourceDictionaries/MovieResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>

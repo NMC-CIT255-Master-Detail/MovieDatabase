@@ -15,7 +15,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Peter/Controls/Resources/MainWindowResources.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Peter/Resources/ResourceDictionaries/MainWindowResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>

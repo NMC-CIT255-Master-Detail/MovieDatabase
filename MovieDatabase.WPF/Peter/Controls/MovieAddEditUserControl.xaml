@@ -46,7 +46,7 @@
         <TextBox x:Name="MovieDescription" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="5" Height="200" MaxHeight="200"/>
 
         <TextBlock Text="Release Date" Grid.Row="7" Grid.Column="1" Style="{DynamicResource TextBlock}"/>
-        <DatePicker x:Name="MovieReleaseDate" Grid.Row="8" Grid.Column="1" Style="{DynamicResource DatePicker}" />
+        <DatePicker x:Name="MovieReleaseDate" SelectedDateFormat="Short" CalendarStyle="{DynamicResource ResizedCalendarItem}" Grid.Row="8" Grid.Column="1" Style="{DynamicResource DatePicker}" />
 
         <TextBlock Text="Runtime" Grid.Row="9" Grid.Column="1" Style="{DynamicResource TextBlock}"/>
         <TextBox x:Name="MovieRuntime" Grid.Row="10" Grid.Column="1" />
