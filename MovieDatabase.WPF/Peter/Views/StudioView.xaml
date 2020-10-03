@@ -3,11 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MovieDatabase.WPF.Peter.Views"
-         xmlns:uc="clr-namespace:MovieDatabase.WPF.Peter.Controls"
+        xmlns:uc="clr-namespace:MovieDatabase.WPF.Peter.Controls"
         mc:Ignorable="d"
         Title="StudioView" Height="1080" Width="1920">
     <Grid>
-        <uc:RibbonMenu/>
+        <uc:RibbonMenu />
     </Grid>
 </Window>

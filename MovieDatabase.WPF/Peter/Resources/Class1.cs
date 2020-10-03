@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MovieDatabase.WPF.Peter.Resources
 {
-    class Class1
+    internal class Class1
     {
     }
 }

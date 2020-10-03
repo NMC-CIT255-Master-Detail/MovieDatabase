@@ -5,14 +5,12 @@ using System.Linq;
 
 namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 {
-    class ColeViewModel : BaseViewModel
+    internal class ColeViewModel : BaseViewModel
     {
-
         #region Fields
 
         private ObservableCollection<Movie> _movies;
         private Movie _selectedMovie;
-
 
         #endregion
 
@@ -34,10 +32,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             set
             {
                 _selectedMovie = value;
-                if (_selectedMovie != null)
-                {
-                    OnPropertyChanged(nameof(SelectedMovie));
-                }
+                if (_selectedMovie != null) OnPropertyChanged(nameof(SelectedMovie));
             }
         }
 
@@ -51,14 +46,9 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             if (Movies.Any()) SelectedMovie = Movies[0];
         }
 
-
-
-
         #endregion
 
         #region Methods
-
-
 
         #endregion
 
@@ -66,8 +56,5 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         #region ICommands
 
         #endregion
-
     }
 }
-
-

@@ -10,10 +10,9 @@ namespace MovieDatabase.WPF.Peter.Views
     /// </summary>
     public partial class MovieView : Window
     {
-
         public MovieView(ObservableCollection<Movie> movies)
         {
-            MovieViewModel movieViewModel = new MovieViewModel(movies);
+            var movieViewModel = new MovieViewModel(movies);
             DataContext = movieViewModel;
             InitializeComponent();
         }
