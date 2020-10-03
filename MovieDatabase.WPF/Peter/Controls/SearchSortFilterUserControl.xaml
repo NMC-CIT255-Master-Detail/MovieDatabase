@@ -37,13 +37,14 @@
                 <ComboBox 
                     ItemsSource="{Binding Movies}"
                     SelectedItem="{Binding SelectedProducer}"
+                    Style="{DynamicResource SearchComboBox}"
                     Width="250"
                     HorizontalAlignment="Left"
                     DockPanel.Dock="Top"
                     >
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Producer.Name}"/>
+                            <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Producer.Name}" />
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
@@ -58,13 +59,14 @@
                 <ComboBox 
                     ItemsSource="{Binding Movies}"
                     SelectedItem="{Binding SelectedStudio}"
+                    Style="{DynamicResource SearchComboBox}"
                     Width="250"
                     HorizontalAlignment="Left"
                     DockPanel.Dock="Top"
                     >
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Studio.Name}" />
+                            <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Studio.Name}" />
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
@@ -106,7 +108,7 @@
                     HorizontalAlignment="Left"
                     DockPanel.Dock="Left"
                     Margin="0 0 10 0"
-                    Text="{Binding MinRuntimeText}"
+                    Text="{Binding MinRuntimeText, FallbackValue=0}"
                     />
                 <Label 
                     Content="And"
@@ -118,7 +120,7 @@
                     FontSize="22"
                     HorizontalAlignment="Left"
                     DockPanel.Dock="Left"
-                    Text="{Binding MaxRuntimeText}"
+                    Text="{Binding MaxRuntimeText, FallbackValue=120}"
                     />
             </DockPanel>
 

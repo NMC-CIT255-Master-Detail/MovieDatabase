@@ -9,7 +9,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
     {
 
         #region Fields
-                
+
         private ObservableCollection<Movie> _movies;
         private Movie _selectedMovie;
 

@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
 using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MovieDatabase.EntityFramework.Services
 {
@@ -35,7 +33,7 @@ namespace MovieDatabase.EntityFramework.Services
                 context.Set<T>().Remove(entity);
             }
 
-            return true; 
+            return true;
         }
 
         public T Get(int id)

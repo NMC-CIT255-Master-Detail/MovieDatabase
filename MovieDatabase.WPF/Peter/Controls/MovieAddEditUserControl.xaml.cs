@@ -3,11 +3,11 @@
 namespace MovieDatabase.WPF.Peter.Controls
 {
     /// <summary>
-    /// Interaction logic for MasterMovieList.xaml
+    /// Interaction logic for MovieAddEditUserControl.xaml
     /// </summary>
-    public partial class MasterMovieList : UserControl
+    public partial class MovieAddEditUserControl : UserControl
     {
-        public MasterMovieList()
+        public MovieAddEditUserControl()
         {
             InitializeComponent();
         }
