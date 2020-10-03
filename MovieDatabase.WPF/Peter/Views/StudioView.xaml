@@ -3,11 +3,30 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MovieDatabase.WPF.Peter.Views"
-         xmlns:uc="clr-namespace:MovieDatabase.WPF.Peter.Controls"
+        xmlns:uc="clr-namespace:MovieDatabase.WPF.Peter.Controls"
         mc:Ignorable="d"
         Title="StudioView" Height="1080" Width="1920">
-    <Grid>
-        <uc:RibbonMenu/>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+                    Source="pack://application:,,,/Peter/Resources/ResourceDictionaries/StudioResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="0 20 0 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <uc:RibbonMenu Margin="0 -43 0 0" Grid.ColumnSpan="2" />
+        <uc:StudioAddEditUserControl Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Grid.RowSpan="2" />
     </Grid>
 </Window>

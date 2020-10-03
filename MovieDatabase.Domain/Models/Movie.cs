@@ -51,6 +51,7 @@ namespace MovieDatabase.Domain.Models
                 OnPropertyChanged(nameof(IMDBLink));
             }
         }
+
         public byte[] Image
         {
             get => _image;
@@ -60,15 +61,8 @@ namespace MovieDatabase.Domain.Models
                 OnPropertyChanged(nameof(Image));
             }
         }
-        public virtual Studio Studio
-        {
-            get;
-            set;
-        }
-        public virtual Producer Producer
-        {
-            get;
-            set;
-        }
+
+        public virtual Studio Studio { get; set; }
+        public virtual Producer Producer { get; set; }
     }
 }

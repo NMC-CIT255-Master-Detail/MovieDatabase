@@ -6,7 +6,6 @@ namespace MovieDatabase.Domain.Seed_Data
 {
     public class SeedData
     {
-
         public static List<Movie> GetAllMovies()
         {
             return new List<Movie>()
@@ -15,7 +14,8 @@ namespace MovieDatabase.Domain.Seed_Data
                 {
                     Id = 1,
                     Title = "Harry Potter",
-                    Description = "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
+                    Description =
+                        "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
                     IMDBLink = "https://www.imdb.com",
                     Producer = new Producer()
                     {
@@ -44,7 +44,8 @@ namespace MovieDatabase.Domain.Seed_Data
                 {
                     Id = 2,
                     Title = "Harry Potter and the Goblet of Fire",
-                    Description = "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
+                    Description =
+                        "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
                     IMDBLink = "https://www.imdb.com",
                     Producer = new Producer()
                     {
@@ -73,7 +74,8 @@ namespace MovieDatabase.Domain.Seed_Data
                 {
                     Id = 3,
                     Title = "Harry Potter and the Sorcers Stone",
-                    Description = "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
+                    Description =
+                        "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
                     IMDBLink = "https://www.imdb.com",
                     Producer = new Producer()
                     {
@@ -102,7 +104,8 @@ namespace MovieDatabase.Domain.Seed_Data
                 {
                     Id = 4,
                     Title = "Harry Potter and the Half Blood Prince",
-                    Description = "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
+                    Description =
+                        "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
                     IMDBLink = "https://www.imdb.com",
                     Producer = new Producer()
                     {
@@ -131,7 +134,8 @@ namespace MovieDatabase.Domain.Seed_Data
                 {
                     Id = 5,
                     Title = "Harry Potter and the Chamber of Secrets",
-                    Description = "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
+                    Description =
+                        "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
                     IMDBLink = "https://www.imdb.com",
                     Producer = new Producer()
                     {
@@ -160,7 +164,8 @@ namespace MovieDatabase.Domain.Seed_Data
                 {
                     Id = 6,
                     Title = "Harry Potter and the Prizoner of Azkaban",
-                    Description = "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
+                    Description =
+                        "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
                     IMDBLink = "https://www.imdb.com",
                     Producer = new Producer()
                     {
@@ -189,7 +194,8 @@ namespace MovieDatabase.Domain.Seed_Data
                 {
                     Id = 7,
                     Title = "Harry Potter and the Order of the Pheonix",
-                    Description = "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
+                    Description =
+                        "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
                     IMDBLink = "https://www.imdb.com",
                     Producer = new Producer()
                     {
@@ -218,7 +224,8 @@ namespace MovieDatabase.Domain.Seed_Data
                 {
                     Id = 8,
                     Title = "Harry Potter and the Deathly Hallows",
-                    Description = "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
+                    Description =
+                        "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
                     IMDBLink = "https://www.imdb.com",
                     Producer = new Producer()
                     {
@@ -245,6 +252,5 @@ namespace MovieDatabase.Domain.Seed_Data
                 }
             };
         }
-
     }
 }

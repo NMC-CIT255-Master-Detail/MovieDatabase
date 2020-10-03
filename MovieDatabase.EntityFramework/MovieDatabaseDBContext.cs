@@ -11,7 +11,6 @@ namespace MovieDatabase.EntityFramework
 
         public MovieDatabaseDBContext(DbContextOptions options) : base(options)
         {
-
         }
     }
 }

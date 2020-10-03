@@ -7,12 +7,22 @@ using MovieDatabase.WPF.Peter.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace MovieDatabase.WPF.Peter.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        #region Constructor
+
+        public MainViewModel()
+        {
+            Movies = new ObservableCollection<Movie>(SeedData.GetAllMovies());
+            if (Movies.Any()) SelectedMovie = Movies[0];
+        }
+
+        #endregion
 
         #region Fields
 
@@ -29,74 +39,34 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         #region ICommands
 
-        public ICommand ButtonSearchByMovieCommand
-        {
-            get => new RelayCommand(SearchByMovie);
-        }
-        public ICommand ButtonSearchByProducerCommand
-        {
-            get => new RelayCommand(SearchByProducer);
-        }
-        public ICommand ButtonSearchByStudioCommand
-        {
-            get => new RelayCommand(SearchByStudio);
-        }
-        public ICommand ButtonFilterByRuntimeCommand
-        {
-            get => new RelayCommand(FilterByRuntime);
-        }
-        public ICommand ButtonSortByCommand
-        {
-            get => new RelayCommand(new Action<object>(SortBy));
-        }
+        public ICommand ButtonSearchByMovieCommand => new RelayCommand(SearchByMovie);
+        public ICommand ButtonSearchByProducerCommand => new RelayCommand(SearchByProducer);
 
-        public ICommand ButtonResetFormCommand
-        {
-            get => new RelayCommand(ResetForm);
-        }
+        public ICommand ButtonSearchByStudioCommand => new RelayCommand(SearchByStudio);
+        public ICommand ButtonFilterByRuntimeCommand => new RelayCommand(FilterByRuntime);
+
+        public ICommand ButtonSortByCommand => new RelayCommand(new Action<object>(SortBy));
+
+        public ICommand ButtonResetFormCommand => new RelayCommand(ResetForm);
 
         public ICommand ButtonEditMovieCommand { get; set; }
         public ICommand ButtonDeleteMovieCommand { get; set; }
 
-        public ICommand ButtonQuitCommand
-        {
-            get => new RelayCommand(QuitApp);
-        }
+        public ICommand ButtonQuitCommand => new RelayCommand(QuitApp);
 
-        public ICommand ButtonAboutCommand
-        {
-            get => new RelayCommand(OpenAboutWindow);
-        }
+        public ICommand ButtonAboutCommand => new RelayCommand(OpenAboutWindow);
 
-        public ICommand ButtonHelpCommand
-        {
-            get => new RelayCommand(OpenHelpWindow);
-        }
+        public ICommand ButtonHelpCommand => new RelayCommand(OpenHelpWindow);
 
-        public ICommand ButtonProducerCommand
-        {
-            get => new RelayCommand(OpenProducerWindow);
-        }
+        public ICommand ButtonProducerCommand => new RelayCommand(OpenProducerWindow);
 
-        public ICommand ButtonStudioCommand
-        {
-            get => new RelayCommand(OpenStudioWindow);
-        }
+        public ICommand ButtonStudioCommand => new RelayCommand(OpenStudioWindow);
 
-        public ICommand ButtonMovieCommand
-        {
-            get => new RelayCommand(OpenMovieWindow);
-        }
+        public ICommand ButtonMovieCommand => new RelayCommand(OpenMovieWindow);
 
-        public ICommand ButtonPeterCommand
-        {
-            get => new RelayCommand(OpenPeterApp);
-        }
+        public ICommand ButtonPeterCommand => new RelayCommand(OpenPeterApp);
 
-        public ICommand ButtonColeCommand
-        {
-            get => new RelayCommand(OpenColeApp);
-        }
+        public ICommand ButtonColeCommand => new RelayCommand(OpenColeApp);
 
         #endregion
 
@@ -118,10 +88,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             set
             {
                 _selectedMovie = value;
-                if (_selectedMovie != null)
-                {
-                    OnPropertyChanged(nameof(SelectedMovie));
-                }
+                if (_selectedMovie != null) OnPropertyChanged(nameof(SelectedMovie));
             }
         }
 
@@ -187,77 +154,55 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         #endregion
 
-        #region Constructor
-
-        public MainViewModel()
-        {
-            Movies = new ObservableCollection<Movie>(SeedData.GetAllMovies());
-            if (Movies.Any()) SelectedMovie = Movies[0];
-        }
-
-        #endregion
-
         #region Methods
 
-        public void SearchByMovie()
+        private void SearchByMovie()
         {
             if (_searchString != null)
-            {
-                Movies = new ObservableCollection<Movie>(_movies.Where(m => m.Title.ToLower().Contains(_searchString.ToLower())));
-            }
+                Movies = new ObservableCollection<Movie>(_movies.Where(m =>
+                    m.Title.ToLower().Contains(_searchString.ToLower())));
             else
-            {
                 _errorMessage = "Sorry, you must type a movie name to search by";
-            }
-
         }
 
-        public void SearchByProducer()
+        private void SearchByProducer()
         {
             _errorMessage = "";
 
             if (_selectedProducer != null)
-            {
                 try
                 {
-                    Movies = new ObservableCollection<Movie>(_movies.Where(p => p.Producer.Name.ToLower().Contains(_selectedProducer.Producer.Name.ToLower().ToString())));
+                    Movies = new ObservableCollection<Movie>(_movies.Where(p =>
+                        p.Producer.Name.ToLower().Contains(_selectedProducer.Producer.Name.ToLower().ToString())));
                 }
                 catch (Exception ex)
                 {
                     _errorMessage = ex.ToString();
                     throw;
                 }
-            }
             else
-            {
                 _errorMessage = "Sorry, you must select a Producer to search by";
-            }
-
-
         }
-        public void SearchByStudio()
+
+        private void SearchByStudio()
         {
             if (_selectedStudio != null)
-            {
-                Movies = new ObservableCollection<Movie>(_movies.Where(s => s.Studio.Name.ToLower().Contains(_selectedStudio.Studio.Name.ToLower().ToString())));
-            }
+                Movies = new ObservableCollection<Movie>(_movies.Where(s =>
+                    s.Studio.Name.ToLower().Contains(_selectedStudio.Studio.Name.ToLower().ToString())));
             else
-            {
                 _errorMessage = "Sorry, you must select a Studio to search by";
-            }
-
         }
-        public void FilterByRuntime()
-        {
 
-            if (int.TryParse(MinRuntimeText, out int minRuntime) && int.TryParse(MaxRuntimeText, out int maxRuntime))
-            {
-                Movies = new ObservableCollection<Movie>(_movies.Where(r => r.Runtime >= minRuntime && r.Runtime <= maxRuntime));
-            }
-        }
-        public void SortBy(object param)
+        private void FilterByRuntime()
         {
-            string sortBy = param.ToString();
+            if (int.TryParse(MinRuntimeText, out var minRuntime) && int.TryParse(MaxRuntimeText, out var maxRuntime))
+                Movies = new ObservableCollection<Movie>(_movies.Where(r =>
+                    r.Runtime >= minRuntime && r.Runtime <= maxRuntime));
+        }
+
+        private void SortBy(object param)
+        {
+            var sortBy = param.ToString();
             switch (sortBy)
             {
                 case "Producer":
@@ -274,7 +219,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        public void ResetForm()
+        private void ResetForm()
         {
             SearchString = "";
             MinRuntimeText = "";
@@ -285,61 +230,59 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         public void EditMovie(object param)
         {
-
         }
+
         public void DeleteMovie(object param)
         {
-
         }
 
-        private void QuitApp()
+        private static void QuitApp()
         {
-            System.Environment.Exit(1);
+            Environment.Exit(1);
         }
 
-        public void OpenAboutWindow()
+        private static void OpenAboutWindow()
         {
-            About about = new About();
+            var about = new About();
             about.ShowDialog();
         }
 
-        public void OpenHelpWindow()
+        private static void OpenHelpWindow()
         {
-            Help help = new Help();
+            var help = new Help();
             help.ShowDialog();
         }
 
-        public void OpenProducerWindow()
+        private static void OpenProducerWindow()
         {
-            ProducerView prodView = new ProducerView();
+            var prodView = new ProducerView();
             prodView.ShowDialog();
         }
 
-        public void OpenStudioWindow()
+        private static void OpenStudioWindow()
         {
-            StudioView studioView = new StudioView();
+            var studioView = new StudioView();
             studioView.ShowDialog();
         }
 
-        public void OpenMovieWindow()
+        private void OpenMovieWindow()
         {
-            MovieView movieView = new MovieView();
+            var movieView = new MovieView(Movies);
             movieView.ShowDialog();
         }
 
-        public void OpenPeterApp()
+        private static void OpenPeterApp()
         {
-            MainWindow main = new MainWindow();
+            var main = new MainWindow();
             main.Show();
         }
 
-        public void OpenColeApp()
+        private static void OpenColeApp()
         {
-            ColeWindow cole = new ColeWindow();
+            var cole = new ColeWindow();
             cole.Show();
         }
 
         #endregion
-
     }
 }
