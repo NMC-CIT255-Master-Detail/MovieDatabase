@@ -10,6 +10,11 @@ namespace MovieDatabase.WPF.Peter.ViewModels
     {
         private ObservableCollection<Movie> _movies;
 
+        public MovieViewModel(ObservableCollection<Movie> movies)
+        {
+            _movies = movies;
+        }
+
         public ObservableCollection<Movie> Movies
         {
             get => _movies;
@@ -18,11 +23,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 _movies = value;
                 OnPropertyChanged(nameof(Movies));
             }
-        }
-
-        public MovieViewModel(ObservableCollection<Movie> movies)
-        {
-            _movies = movies;
         }
     }
 }

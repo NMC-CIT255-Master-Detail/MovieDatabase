@@ -14,6 +14,16 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        #region Constructor
+
+        public MainViewModel()
+        {
+            Movies = new ObservableCollection<Movie>(SeedData.GetAllMovies());
+            if (Movies.Any()) SelectedMovie = Movies[0];
+        }
+
+        #endregion
+
         #region Fields
 
         private Movie _selectedMovie;
@@ -140,16 +150,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 _errorMessage = value;
                 OnPropertyChanged(nameof(ErrorMessage));
             }
-        }
-
-        #endregion
-
-        #region Constructor
-
-        public MainViewModel()
-        {
-            Movies = new ObservableCollection<Movie>(SeedData.GetAllMovies());
-            if (Movies.Any()) SelectedMovie = Movies[0];
         }
 
         #endregion

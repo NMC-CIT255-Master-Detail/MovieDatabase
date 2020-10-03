@@ -29,13 +29,9 @@ namespace MovieDatabase.Domain
         public void Execute(object parameter)
         {
             if (parameter != null)
-            {
                 _actionP1(parameter);
-            }
             else
-            {
                 _action();
-            }
         }
     }
 }

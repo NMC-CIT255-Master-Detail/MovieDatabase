@@ -7,6 +7,16 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 {
     internal class ColeViewModel : BaseViewModel
     {
+        #region Constructor
+
+        public ColeViewModel()
+        {
+            Movies = new ObservableCollection<Movie>(SeedData.GetAllMovies());
+            if (Movies.Any()) SelectedMovie = Movies[0];
+        }
+
+        #endregion
+
         #region Fields
 
         private ObservableCollection<Movie> _movies;
@@ -34,16 +44,6 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
                 _selectedMovie = value;
                 if (_selectedMovie != null) OnPropertyChanged(nameof(SelectedMovie));
             }
-        }
-
-        #endregion
-
-        #region Constructor
-
-        public ColeViewModel()
-        {
-            Movies = new ObservableCollection<Movie>(SeedData.GetAllMovies());
-            if (Movies.Any()) SelectedMovie = Movies[0];
         }
 
         #endregion
