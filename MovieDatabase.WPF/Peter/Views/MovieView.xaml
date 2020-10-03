@@ -7,7 +7,17 @@
         xmlns:uc="clr-namespace:MovieDatabase.WPF.Peter.Controls"
         mc:Ignorable="d"
         Title="MovieView" Height="1080" Width="1920">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Peter/Controls/Resources/MovieResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
-        <uc:RibbonMenu/>
+        <uc:RibbonMenu Margin="0 -23 0 0"/>
+        <uc:MovieAddEditUserControl />
     </Grid>
 </Window>

@@ -1,7 +1,6 @@
 ﻿using MovieDatabase.Domain.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MovieDatabase.Domain.Seed_Data
 {

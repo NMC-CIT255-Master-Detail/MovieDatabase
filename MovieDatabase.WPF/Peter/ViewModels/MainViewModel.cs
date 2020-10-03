@@ -1,17 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore.Internal;
+using MovieDatabase.Domain;
 using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Seed_Data;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Dynamic;
-using System.Text;
-using System.Windows.Input;
-using MovieDatabase.Domain;
-using System.Linq;
-using MovieDatabase.WPF.Peter.Controls;
-using MovieDatabase.WPF.Peter.Views;
 using MovieDatabase.WPF.Cole.ColeViews;
+using MovieDatabase.WPF.Peter.Views;
+using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows.Input;
 
 namespace MovieDatabase.WPF.Peter.ViewModels
 {
@@ -19,7 +15,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
     {
 
         #region Fields
-       
+
         private Movie _selectedMovie;
         private string _searchString;
         private ObservableCollection<Movie> _movies;
