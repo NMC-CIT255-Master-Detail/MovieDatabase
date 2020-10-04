@@ -9,24 +9,45 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieDatabase.EntityFramewo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieDatabase.WPF", "MovieDatabase.WPF\MovieDatabase.WPF.csproj", "{51EF9E46-087B-434D-B394-4FB14DC20557}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6E8A0D45-8AF7-4EFE-BEA1-561B94400F0F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		README.MD = README.MD
+		.codeclimate.yml = .codeclimate.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{EE860606-5983-4D01-810C-B330D3EE1BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EE860606-5983-4D01-810C-B330D3EE1BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE860606-5983-4D01-810C-B330D3EE1BE5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EE860606-5983-4D01-810C-B330D3EE1BE5}.Debug|x86.Build.0 = Debug|Any CPU
 		{EE860606-5983-4D01-810C-B330D3EE1BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE860606-5983-4D01-810C-B330D3EE1BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE860606-5983-4D01-810C-B330D3EE1BE5}.Release|x86.ActiveCfg = Release|Any CPU
+		{EE860606-5983-4D01-810C-B330D3EE1BE5}.Release|x86.Build.0 = Release|Any CPU
 		{9A33A868-42C8-43CE-8DF2-472B3DB5CE03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9A33A868-42C8-43CE-8DF2-472B3DB5CE03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A33A868-42C8-43CE-8DF2-472B3DB5CE03}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9A33A868-42C8-43CE-8DF2-472B3DB5CE03}.Debug|x86.Build.0 = Debug|Any CPU
 		{9A33A868-42C8-43CE-8DF2-472B3DB5CE03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A33A868-42C8-43CE-8DF2-472B3DB5CE03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A33A868-42C8-43CE-8DF2-472B3DB5CE03}.Release|x86.ActiveCfg = Release|Any CPU
+		{9A33A868-42C8-43CE-8DF2-472B3DB5CE03}.Release|x86.Build.0 = Release|Any CPU
 		{51EF9E46-087B-434D-B394-4FB14DC20557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{51EF9E46-087B-434D-B394-4FB14DC20557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51EF9E46-087B-434D-B394-4FB14DC20557}.Debug|x86.ActiveCfg = Debug|x86
+		{51EF9E46-087B-434D-B394-4FB14DC20557}.Debug|x86.Build.0 = Debug|x86
 		{51EF9E46-087B-434D-B394-4FB14DC20557}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51EF9E46-087B-434D-B394-4FB14DC20557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51EF9E46-087B-434D-B394-4FB14DC20557}.Release|x86.ActiveCfg = Release|x86
+		{51EF9E46-087B-434D-B394-4FB14DC20557}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

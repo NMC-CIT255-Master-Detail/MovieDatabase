@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace MovieDatabase.Domain
@@ -31,13 +29,9 @@ namespace MovieDatabase.Domain
         public void Execute(object parameter)
         {
             if (parameter != null)
-            {
                 _actionP1(parameter);
-            }
             else
-            {
                 _action();
-            }
         }
     }
 }

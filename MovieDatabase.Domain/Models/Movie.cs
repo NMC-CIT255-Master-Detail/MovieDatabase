@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MovieDatabase.Domain.Models
 {
@@ -13,7 +11,7 @@ namespace MovieDatabase.Domain.Models
         public byte[] _image;
 
         public string Title { get; set; }
-        // TODO - Change DateTime to just Date for the Movies
+
         public DateTime ReleaseDate
         {
             get => _releaseDate;
@@ -24,53 +22,47 @@ namespace MovieDatabase.Domain.Models
             }
         }
 
-        public int Runtime 
+        public int Runtime
         {
             get => _runTime;
-            set 
+            set
             {
                 _runTime = value;
                 OnPropertyChanged(nameof(Runtime));
             }
         }
 
-        public string Description 
+        public string Description
         {
             get => _description;
-            set 
+            set
             {
                 _description = value;
                 OnPropertyChanged(nameof(Description));
             }
         }
 
-        public string IMDBLink 
+        public string IMDBLink
         {
             get => _imdbLink;
-            set 
+            set
             {
                 _imdbLink = value;
                 OnPropertyChanged(nameof(IMDBLink));
             }
         }
-        public byte[] Image 
+
+        public byte[] Image
         {
             get => _image;
-            set 
+            set
             {
                 _image = value;
                 OnPropertyChanged(nameof(Image));
             }
         }
-        public virtual Studio Studio 
-        {
-            get;
-            set;
-        }
-        public virtual Producer Producer 
-        { 
-            get;
-            set;
-        }
+
+        public virtual Studio Studio { get; set; }
+        public virtual Producer Producer { get; set; }
     }
 }
