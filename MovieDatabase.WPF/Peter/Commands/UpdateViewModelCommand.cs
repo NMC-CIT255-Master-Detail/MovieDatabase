@@ -7,7 +7,8 @@ namespace MovieDatabase.WPF.Peter.Commands
 {
     public class UpdateViewModelCommand : ICommand
     {
-
+        public event EventHandler CanExecuteChanged;
+        
         private INavigator _navigator;
 
         public UpdateViewModelCommand(INavigator navigator)
@@ -22,30 +23,32 @@ namespace MovieDatabase.WPF.Peter.Commands
 
         public void Execute(object parameter)
         {
-            if (!(parameter is INavigator.ViewType viewType)) return;
-            switch (viewType)
+            if (parameter is ViewType viewType)
             {
-                case INavigator.ViewType.Main:
-                    _navigator.CurrentViewModel = new MainViewModel();
-                    break;
-                case INavigator.ViewType.AddMovie:
-                    _navigator.CurrentViewModel = new MovieViewModel();
-                    break;
-                case INavigator.ViewType.AddProducer:
-                    break;
-                case INavigator.ViewType.AddStudio:
-                    break;
-                case INavigator.ViewType.EditMovie:
-                    break;
-                case INavigator.ViewType.EditProducer:
-                    break;
-                case INavigator.ViewType.EditStudio:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                switch (viewType)
+                {
+                    case ViewType.Main:
+                        _navigator.CurrentViewModel = new MainViewModel();
+                        break;
+                    case ViewType.AddMovie:
+                        _navigator.CurrentViewModel = new MovieViewModel();
+                        break;
+                    case ViewType.AddProducer:
+                        break;
+                    case ViewType.AddStudio:
+                        break;
+                    case ViewType.EditMovie:
+                        break;
+                    case ViewType.EditProducer:
+                        break;
+                    case ViewType.EditStudio:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
         }
 
-        public event EventHandler CanExecuteChanged;
+        
     }
 }

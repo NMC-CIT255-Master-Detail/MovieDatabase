@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Documents;
 using System.Windows.Input;
+using MovieDatabase.WPF.Peter.State.Navigator;
 
 namespace MovieDatabase.WPF.Peter.ViewModels
 {
@@ -72,6 +73,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         #region Properties
 
+        public INavigator Navigator { get; set; } = new Navigator();
+        
         public ObservableCollection<Movie> Movies
         {
             get => _movies;
@@ -151,6 +154,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 OnPropertyChanged(nameof(ErrorMessage));
             }
         }
+        
+       
 
         #endregion
 

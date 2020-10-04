@@ -15,6 +15,11 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             _movies = movies;
         }
 
+        public MovieViewModel()
+        {
+            
+        }
+
         public ObservableCollection<Movie> Movies
         {
             get => _movies;

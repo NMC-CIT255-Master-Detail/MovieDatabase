@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using MovieDatabase.WPF.Peter;
+using MovieDatabase.WPF.Peter.ViewModels;
 
 namespace MovieDatabase.WPF
 {
@@ -11,6 +12,7 @@ namespace MovieDatabase.WPF
         protected override void OnStartup(StartupEventArgs e)
         {
             Window main = new MainWindow();
+            main.DataContext = new MainViewModel();
             main.Show();
             base.OnStartup(e);
         }

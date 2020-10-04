@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:nav="clr-namespace:MovieDatabase.WPF.Peter.State.Navigator"
              mc:Ignorable="d"
              d:DesignHeight="200" d:DesignWidth="1920">
     <Grid>
@@ -72,9 +73,9 @@
                 <RibbonGroup x:Name="Movies" Header="Add/View">
                     <RibbonMenuButton LargeImageSource="/Peter/Resources/Images/movie.png" Label="Movies" KeyTip="M">
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/add.png" Header="Add" KeyTip="A"
-                                        Command="{Binding ButtonMovieCommand}" />
+                                        Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Main}" />
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View (Refresh)"
-                                        KeyTip="V" Command="{Binding ButtonResetFormCommand}" />
+                                        KeyTip="V"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Producers -->
@@ -84,7 +85,7 @@
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/add.png" Header="Add" KeyTip="A"
                                         Command="{Binding ButtonProducerCommand}" />
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View (Refresh)"
-                                        KeyTip="V" />
+                                        KeyTip="V" Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddMovie}" />
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Studios -->
