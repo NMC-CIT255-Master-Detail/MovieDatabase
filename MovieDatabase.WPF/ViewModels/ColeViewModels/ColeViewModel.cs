@@ -342,5 +342,7 @@ namespace MovieDatabase.WPF.ViewModels.ColeViewModels
 
         #endregion
 
+
+
     }
 }
