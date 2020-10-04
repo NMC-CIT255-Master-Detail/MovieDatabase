@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using MovieDatabase.WPF.Peter;
 
 namespace MovieDatabase.WPF
 {
@@ -9,6 +10,8 @@ namespace MovieDatabase.WPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            Window main = new MainWindow();
+            main.Show();
             base.OnStartup(e);
         }
     }
