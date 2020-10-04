@@ -3,14 +3,331 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MovieDatabase.WPF.Views.ColeView"
-        xmlns:local1="clr-namespace:MovieDatabase.WPF.ViewModels.ColeViewModel"
+        xmlns:local1="clr-namespace:MovieDatabase.WPF.ViewModels.ColeViewModels"
         mc:Ignorable="d"
-        Title="ColeWindow" Height="450" Width="800">
+        Title="ColeWindow" Height="600" Width="900" Background="LightBlue">
     <Window.DataContext>
-        <local1:ColeViewModel />
+        <local1:ColeViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="HeaderStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="28" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style x:Key="DetailLabelStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+        </Style>
+        <Style x:Key="DetailTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Width" Value="120" />
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+        <Style x:Key="MasterLabelTextStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style x:Key="MasterTextBlockTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style x:Key="ButtonStyleLarge" TargetType="Button">
+            <Setter Property="Background" Value="Silver" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="20" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Cyan" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ButtonStyleSmall" TargetType="Button">
+            <Setter Property="Background" Value="AliceBlue" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="12" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+        <StackPanel
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            Grid.Row="0" Width="188">
+            <Label
+                Style="{StaticResource HeaderStyle}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Content="Movie DataBase"  />
+        </StackPanel>
+        <Grid
+            Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="191*" />
+                <ColumnDefinition Width="259*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel
+                Grid.Column="0"
+                Orientation="Vertical"
+                Margin="20,20,0,20">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel
+                        Grid.Row="0"
+                        Margin="0,0,0,0"
+                        Orientation="Horizontal">
+                        <Label Content="Search Title:" Style="{StaticResource MasterLabelTextStyle}" Width="94" />
+                        <TextBox
+                            Name="TextBox_SearchTitle"
+                            Width="178"
+                            Text="{Binding SearchText}" />
+                        <Button
+                            x:Name="Button_Search"
+                            Width="60"
+                            Height="24"
+                            Margin="3"
+                            VerticalAlignment="Center"
+                            FontSize="10"
+                            Content="Search"
+                            Style="{StaticResource ButtonStyleSmall}"
+                            Command="{Binding Path=SearchMoviesListCommand}"/>
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Row="1"
+                        Margin="0,0,0,0"
+                        Orientation="Horizontal">
+                        <Label Content="Min-RunTime:" Style="{StaticResource MasterLabelTextStyle}" />
+                        <TextBox
+                            Name="TextBox_MinAge"
+                            Width="54"
+                            Text="{Binding MinRuntimeText}" />
+                        <Label Content="Max-RunTime:" Style="{StaticResource MasterLabelTextStyle}" />
+                        <TextBox
+                            Name="TextBox_Max"
+                            Width="43"
+                            Text="{Binding MaxRuntimeText}" />
+                        <Button
+                            x:Name="Button_AgeFilter"
+                            Width="40"
+                            Height="24"
+                            Margin="3"
+                            VerticalAlignment="Center"
+                            FontSize="10"
+                            Content="Filter"
+                            Style="{StaticResource ButtonStyleSmall}"
+                            Command="{Binding Path=RuntimeFilterMoviesListCommand}" />
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Row="2"
+                        Margin="0,0,0,0"
+                        Orientation="Horizontal">
+                        <Label Content="Sort by:" Style="{StaticResource MasterLabelTextStyle}" Width="62" />
+                        <RadioButton
+                            Name="RadioButton_LastNameSort"
+                            Margin="2,5,0,0"
+                            Content="Studio"
+                            Style="{StaticResource RadioButtonStyle}"
+                            Command="{Binding Path=SortMoviesListCommand}"
+                            CommandParameter="Studio"
+                            IsChecked="True" Width="78" />
+                        <RadioButton
+                            Name="RadioButton_RuntimeSort"
+                            Margin="1,5,0,0"
+                            Content="Producer"
+                            Style="{StaticResource RadioButtonStyle}"
+                            Command="{Binding Path=SortMoviesListCommand}"
+                            CommandParameter="Max" Width="91" />
+                        <Button
+                            x:Name="Button_ResetList"
+                            Height="24"
+                            Margin="5,0,0,0"
+                            VerticalAlignment="Center"
+                            FontSize="10"
+                            Content="Reset List"
+                            Style="{StaticResource ButtonStyleSmall}"
+                            Command="{Binding Path=ResetMoviesListCommand}" Width="86" />
+                    </StackPanel>
+                </Grid>
+
+                <Grid
+                    Height="350">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*" />
+                        <ColumnDefinition Width="10*" />
+                    </Grid.ColumnDefinitions>
+                    <ListBox
+                        x:Name="_master"
+                        Grid.Column="0"
+                        Margin="10,0,10,0"
+                        BorderThickness="0"
+                        Background="AliceBlue"
+                        ItemsSource="{Binding Movies}"
+                        SelectedItem="{Binding SelectedMovie, Mode=TwoWay}"
+                        IsSynchronizedWithCurrentItem="true"
+                        ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="2" Height="330"
+                        VerticalAlignment="Center">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel
+                                    Orientation="Horizontal">
+                                    <Border Margin="5" BorderBrush="Black" BorderThickness="1">
+                                        <Image
+                                            Source="{Binding ImageFilePath}"
+                                            Stretch="UniformToFill"
+                                            Width="40"
+                                            Height="40" />
+                                    </Border>
+                                    <StackPanel
+                                        Orientation="Vertical">
+                                        <StackPanel
+                                            Orientation="Horizontal">
+                                            <!--TODO Label to text-block for text wrap -->
+                                            <TextBlock
+                                                Text="{Binding Title}"
+                                                Width="120"
+                                                Style="{StaticResource MasterTextBlockTextStyle}" />
+                                            <TextBlock
+                                                Text="{Binding ReleaseDate, StringFormat={}\{yyyy\}}"
+                                                Padding="0,5" Width="100"
+                                                Style="{StaticResource MasterTextBlockTextStyle}" />
+
+                                        </StackPanel>
+                                        <StackPanel
+                                            Orientation="Horizontal">
+                                            <TextBlock
+                                                Text="{Binding Runtime}"
+                                                Padding="200,0,0,0"
+                                                Style="{StaticResource MasterTextBlockTextStyle}" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </StackPanel>
+            <StackPanel
+                Grid.Column="1"
+                Orientation="Vertical">
+                <Grid Height="413" Width="494">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Grid.Column="0"
+                        Source="{Binding ImageFilePath}" Margin="0,92,0,53" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Margin="10,10,10,10"
+                        Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Title: " Style="{StaticResource DetailLabelStyle}" />
+                            <TextBox Text="{Binding Title}" Style="{StaticResource DetailTextBoxStyle}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Producer: " Style="{StaticResource DetailLabelStyle}" />
+                            <TextBox Text="{Binding Producer.Name}" Style="{StaticResource DetailTextBoxStyle}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Year: " Style="{StaticResource DetailLabelStyle}" />
+                            <TextBox Text="{Binding Year,StringFormat={}\{yyyy\}}"
+                                     Style="{StaticResource DetailTextBoxStyle}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Run-Time: " Style="{StaticResource DetailLabelStyle}" />
+                            <TextBox Text="{Binding Runtime}" Style="{StaticResource DetailTextBoxStyle}" />
+                        </StackPanel>
+
+
+                        <StackPanel Orientation="Vertical">
+                            <Label Content="Description: " Style="{StaticResource DetailLabelStyle}" />
+                            <TextBox
+                                HorizontalAlignment="Left"
+                                Width="269"
+                                Height="205"
+                                TextWrapping="Wrap"
+                                AcceptsReturn="True"
+                                VerticalContentAlignment="Top"
+                                VerticalScrollBarVisibility="Visible"
+                                Text="{Binding Description}"
+                                Style="{StaticResource DetailTextBoxStyle}" />
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+                <StackPanel
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+                    <Button
+                        x:Name="Button_Save"
+                        Content="Save"
+                        Style="{StaticResource ButtonStyleLarge}"
+                        Command="{Binding Path=SaveMovieCommand}" />
+                    <Button
+                        x:Name="Button_Cancel"
+                        Content="Cancel"
+                        Style="{StaticResource ButtonStyleLarge}"
+                        Command="{Binding Path=CancelMovieCommand}" />
+                </StackPanel>
+                <StackPanel
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+                    <!--todo dinding to data-->
+                    <Button
+                        x:Name="Button_Add"
+                        Content="Add"
+                        Style="{StaticResource ButtonStyleLarge}"
+                        Command="{Binding Path=AddMovieCommand}" />
+                    <Button
+                        x:Name="Button_Delete"
+                        Content="Delete"
+                        Style="{StaticResource ButtonStyleLarge}"
+                        Command="{Binding Path=DataContext.DeleteMovieCommand, ElementName=ListWindow}" />
+                    <Button
+                        x:Name="Button_Edit"
+                        Content="Edit"
+                        Style="{StaticResource ButtonStyleLarge}"
+                        Command="{Binding Path=DataContext.EditMovieCommand, ElementName=ListWindow}" />
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+        <!--Todo Quit Button is to be replaced with Ribbon Menu-->
+        <Button 
+                        x:Name="Button_Quit" 
+                        Width="Auto"
+                        Height="Auto"
+                            Style="{StaticResource ButtonStyleLarge }"     
+                        FontSize="10"
+                        Content="Quit"
+                        Command="{Binding QuitApplicationCommand}" Margin="800,10,36,0" VerticalAlignment="Stretch"/>
+
     </Grid>
 </Window>
