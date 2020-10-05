@@ -8,7 +8,7 @@ namespace MovieDatabase.WPF.Peter.State.Navigator
 {
     public enum ViewType
     {
-        Main,
+        Home,
         AddMovie,
         AddProducer,
         AddStudio,

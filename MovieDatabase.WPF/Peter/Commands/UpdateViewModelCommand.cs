@@ -27,8 +27,8 @@ namespace MovieDatabase.WPF.Peter.Commands
             {
                 switch (viewType)
                 {
-                    case ViewType.Main:
-                        _navigator.CurrentViewModel = new MainViewModel();
+                    case ViewType.Home:
+                        _navigator.CurrentViewModel = new HomeViewModel();
                         break;
                     case ViewType.AddMovie:
                         _navigator.CurrentViewModel = new MovieViewModel();

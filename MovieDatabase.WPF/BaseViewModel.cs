@@ -6,5 +6,6 @@ namespace MovieDatabase.WPF
 {
     public class BaseViewModel : ObservableObject
     {
+
     }
 }

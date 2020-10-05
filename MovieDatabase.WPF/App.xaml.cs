@@ -12,10 +12,8 @@ namespace MovieDatabase.WPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            Window main = new MainWindow
-            {
-                DataContext = new MainViewModel()
-            };
+            Window main = new MainWindow();
+            main.DataContext = new MainViewModel();
             main.Show();
             base.OnStartup(e);
         }
