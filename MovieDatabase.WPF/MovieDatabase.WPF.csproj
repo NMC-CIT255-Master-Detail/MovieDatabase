@@ -60,6 +60,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MovieDatabase.Domain\MovieDatabase.Domain.csproj" />
+    <ProjectReference Include="..\MovieDatabase.EntityFramework\MovieDatabase.EntityFramework.csproj" />
   </ItemGroup>
 
   <ItemGroup>

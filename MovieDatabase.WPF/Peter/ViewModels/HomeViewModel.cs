@@ -1,6 +1,7 @@
 ﻿using MovieDatabase.Domain;
 using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Seed_Data;
+using MovieDatabase.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
