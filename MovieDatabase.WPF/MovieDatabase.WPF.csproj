@@ -1,20 +1,122 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
+    <None Remove="Peter\Resources\Images\1353183085_save.png" />
+    <None Remove="Peter\Resources\Images\about.png" />
+    <None Remove="Peter\Resources\Images\add.png" />
+    <None Remove="Peter\Resources\Images\copy.png" />
+    <None Remove="Peter\Resources\Images\cut.png" />
+    <None Remove="Peter\Resources\Images\Folder-TV-Disney-icon.png" />
+    <None Remove="Peter\Resources\Images\format_painter.png" />
+    <None Remove="Peter\Resources\Images\go-next.png" />
+    <None Remove="Peter\Resources\Images\go-previous.png" />
+    <None Remove="Peter\Resources\Images\help.png" />
+    <None Remove="Peter\Resources\Images\home.png" />
+    <None Remove="Peter\Resources\Images\movie.png" />
+    <None Remove="Peter\Resources\Images\options.png" />
+    <None Remove="Peter\Resources\Images\paste.png" />
+    <None Remove="Peter\Resources\Images\person.png" />
+    <None Remove="Peter\Resources\Images\personal.png" />
+    <None Remove="Peter\Resources\Images\quit.png" />
+    <None Remove="Peter\Resources\Images\redo.png" />
+    <None Remove="Peter\Resources\Images\save.png" />
+    <None Remove="Peter\Resources\Images\spongebob.jpg" />
+    <None Remove="Peter\Resources\Images\undo.png" />
+    <None Remove="Peter\Resources\Images\view.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1">
+    <Resource Include="Peter\Resources\Images\about.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\Folder-TV-Disney-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\movie.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Peter\Resources\Images\home.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieDatabase.Domain\MovieDatabase.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Peter\Resources\Images\1353183085_save.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\copy.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\cut.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\format_painter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\go-next.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\go-previous.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\help.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\options.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\paste.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\person.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\personal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\quit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\redo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\save.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\spongebob.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\undo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\view.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

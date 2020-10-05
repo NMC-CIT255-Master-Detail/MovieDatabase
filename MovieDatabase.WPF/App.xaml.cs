@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using MovieDatabase.WPF.Peter;
+using MovieDatabase.WPF.Peter.ViewModels;
+using MovieDatabase.WPF.Peter.State.Navigator;
 
 namespace MovieDatabase.WPF
 {
@@ -15,8 +12,9 @@ namespace MovieDatabase.WPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            Window window = new MainWindow();
-            window.Show();
+            Window main = new MainWindow();
+            main.DataContext = new MainViewModel();
+            main.Show();
             base.OnStartup(e);
         }
     }

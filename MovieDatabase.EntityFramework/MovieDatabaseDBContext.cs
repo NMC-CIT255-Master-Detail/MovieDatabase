@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MovieDatabase.Domain.Models;
 
 namespace MovieDatabase.EntityFramework
@@ -14,7 +11,6 @@ namespace MovieDatabase.EntityFramework
 
         public MovieDatabaseDBContext(DbContextOptions options) : base(options)
         {
-
         }
     }
 }
