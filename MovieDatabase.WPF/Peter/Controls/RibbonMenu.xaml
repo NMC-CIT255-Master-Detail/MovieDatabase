@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:nav="clr-namespace:MovieDatabase.WPF.Peter.State.Navigator"
              mc:Ignorable="d"
              d:DesignHeight="200" d:DesignWidth="1920">
+    
     <Grid>
         <Ribbon x:Name="MainRibbon" SelectedIndex="0" Grid.ColumnSpan="2">
             <!-- Application Menu -->
@@ -31,11 +33,11 @@
                     </RibbonApplicationMenu.SmallImageSource>
                     <!-- End Copied Code -->
                     <RibbonApplicationMenuItem Header="About" ImageSource="/Peter/Resources/Images/about.png"
-                                               Command="{Binding ButtonAboutCommand}" />
+                                               Command="{Binding AboutButtonCommand}" />
                     <RibbonApplicationMenuItem Header="Help" ImageSource="/Peter/Resources/Images/help.png"
-                                               Command="{Binding ButtonHelpCommand}" />
+                                               Command="{Binding HelpButtonCommand}" />
                     <RibbonApplicationMenuItem Header="Exit" ImageSource="/Peter/Resources/Images/quit.png"
-                                               Command="{Binding ButtonQuitCommand}" />
+                                               Command="{Binding QuitCommand}" />
                     <RibbonApplicationMenu.AuxiliaryPaneContent>
                         <RibbonGallery CanUserFilter="False"
                                        ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -51,7 +53,7 @@
                     </RibbonApplicationMenu.AuxiliaryPaneContent>
                     <RibbonApplicationMenu.FooterPaneContent>
                         <DockPanel LastChildFill="False">
-                            <Label Content="Application produced by Peter Steele for CIT255" />
+                            <TextBlock Style="{Binding TextBlock}" Text="Application produced by Peter Steele for CIT255" />
                         </DockPanel>
                     </RibbonApplicationMenu.FooterPaneContent>
                 </RibbonApplicationMenu>
@@ -62,19 +64,24 @@
                 <RibbonGroup x:Name="UserGroup" Header="Select an App">
                     <RibbonMenuButton LargeImageSource="/Peter/Resources/Images/personal.png" Label="Developer"
                                       KeyTip="D">
-                        <RibbonMenuItem ImageSource="/Peter/Resources/Images/personal.png" Header="Peter Steele"
-                                        KeyTip="P" Command="{Binding ButtonPeterCommand}" />
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/personal.png" Header="Cole Crain"
-                                        KeyTip="C" Command="{Binding ButtonColeCommand}" />
+                                        KeyTip="C" Command="{Binding ColeCommand}" />
+                    </RibbonMenuButton>
+                </RibbonGroup>
+                <!-- Home -->
+                <RibbonGroup x:Name="Home" Header="View">
+                    <RibbonMenuButton LargeImageSource="/Peter/Resources/Images/home.png" Label="Home" KeyTip="H">
+                        <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View" KeyTip="A"
+                                        Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}" />
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Movies -->
                 <RibbonGroup x:Name="Movies" Header="Add/View">
                     <RibbonMenuButton LargeImageSource="/Peter/Resources/Images/movie.png" Label="Movies" KeyTip="M">
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/add.png" Header="Add" KeyTip="A"
-                                        Command="{Binding ButtonMovieCommand}" />
+                                        Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddMovie}" />
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View (Refresh)"
-                                        KeyTip="V" Command="{Binding ButtonResetFormCommand}" />
+                                        KeyTip="V" Command="{Binding ButtonResetFormCommand}"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Producers -->
@@ -82,9 +89,9 @@
                     <RibbonMenuButton LargeImageSource="/Peter/Resources/Images/person.png" Label="Producers"
                                       KeyTip="M">
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/add.png" Header="Add" KeyTip="A"
-                                        Command="{Binding ButtonProducerCommand}" />
+                                        Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddProducer}" />
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View (Refresh)"
-                                        KeyTip="V" />
+                                        KeyTip="V"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Studios -->
@@ -92,7 +99,7 @@
                     <RibbonMenuButton LargeImageSource="/Peter/Resources/Images/Folder-TV-Disney-icon.png"
                                       Label="Studios" KeyTip="M">
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/add.png" Header="Add" KeyTip="A"
-                                        Command="{Binding ButtonStudioCommand}" />
+                                        Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddStudio}" />
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View (Refresh)"
                                         KeyTip="V" />
                     </RibbonMenuButton>

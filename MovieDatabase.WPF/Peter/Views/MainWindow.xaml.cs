@@ -5,9 +5,11 @@
     /// </summary>
     public partial class MainWindow
     {
-        public MainWindow()
+        public MainWindow(object dataContext)
         {
             InitializeComponent();
+
+            DataContext = dataContext;
         }
     }
 }
