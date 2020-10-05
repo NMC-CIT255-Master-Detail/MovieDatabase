@@ -27,7 +27,6 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <uc:RibbonMenu Margin="0 -43 0 0" Grid.ColumnSpan="2" />
         <uc:MovieAddEditUserControl Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Grid.RowSpan="2" />
     </Grid>
 </UserControl>

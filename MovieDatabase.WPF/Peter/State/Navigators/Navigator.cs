@@ -20,6 +20,13 @@ namespace MovieDatabase.WPF.Peter.State.Navigator
                 OnPropertyChanged(nameof(CurrentViewModel));
             }
         }
+
+        #region ICommands
         public ICommand UpdateViewModelCommand => new UpdateViewModelCommand(this);
+        public ICommand QuitCommand => new QuitCommand();
+        public ICommand AboutButtonCommand => new AboutButtonCommand();
+        public ICommand HelpButtonCommand => new HelpButtonCommand();
+        #endregion
+
     }
 }

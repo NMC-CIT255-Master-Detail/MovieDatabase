@@ -34,14 +34,19 @@ namespace MovieDatabase.WPF.Peter.Commands
                         _navigator.CurrentViewModel = new MovieViewModel();
                         break;
                     case ViewType.AddProducer:
+                        _navigator.CurrentViewModel = new ProducerViewModel();
                         break;
                     case ViewType.AddStudio:
+                        _navigator.CurrentViewModel = new StudioViewModel();
                         break;
                     case ViewType.EditMovie:
+                        _navigator.CurrentViewModel = new MovieViewModel();
                         break;
                     case ViewType.EditProducer:
+                        _navigator.CurrentViewModel = new ProducerViewModel();
                         break;
                     case ViewType.EditStudio:
+                        _navigator.CurrentViewModel = new StudioViewModel();
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

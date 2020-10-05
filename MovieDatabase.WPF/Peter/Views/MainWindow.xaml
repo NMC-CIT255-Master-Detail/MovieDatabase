@@ -68,7 +68,7 @@
             <!--     BorderThickness="2" -->
             <!--     Padding="10" /> -->
             <!-- -->
-            <ContentControl Grid.Row="1" Grid.Column="0" Content="{Binding Navigator.CurrentViewModel}"/>
+            <ContentControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Content="{Binding Navigator.CurrentViewModel}"/>
 
         </Grid>
     </Grid>

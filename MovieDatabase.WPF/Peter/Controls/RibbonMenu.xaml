@@ -6,6 +6,7 @@
              xmlns:nav="clr-namespace:MovieDatabase.WPF.Peter.State.Navigator"
              mc:Ignorable="d"
              d:DesignHeight="200" d:DesignWidth="1920">
+    
     <Grid>
         <Ribbon x:Name="MainRibbon" SelectedIndex="0" Grid.ColumnSpan="2">
             <!-- Application Menu -->
@@ -32,11 +33,11 @@
                     </RibbonApplicationMenu.SmallImageSource>
                     <!-- End Copied Code -->
                     <RibbonApplicationMenuItem Header="About" ImageSource="/Peter/Resources/Images/about.png"
-                                               Command="{Binding ButtonAboutCommand}" />
+                                               Command="{Binding AboutButtonCommand}" />
                     <RibbonApplicationMenuItem Header="Help" ImageSource="/Peter/Resources/Images/help.png"
-                                               Command="{Binding ButtonHelpCommand}" />
+                                               Command="{Binding HelpButtonCommand}" />
                     <RibbonApplicationMenuItem Header="Exit" ImageSource="/Peter/Resources/Images/quit.png"
-                                               Command="{Binding ButtonQuitCommand}" />
+                                               Command="{Binding QuitCommand}" />
                     <RibbonApplicationMenu.AuxiliaryPaneContent>
                         <RibbonGallery CanUserFilter="False"
                                        ScrollViewer.VerticalScrollBarVisibility="Auto">
@@ -83,7 +84,7 @@
                     <RibbonMenuButton LargeImageSource="/Peter/Resources/Images/person.png" Label="Producers"
                                       KeyTip="M">
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/add.png" Header="Add" KeyTip="A"
-                                        Command="{Binding ButtonProducerCommand}" />
+                                        Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddProducer}" />
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View (Refresh)"
                                         KeyTip="V" Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddMovie}" />
                     </RibbonMenuButton>
