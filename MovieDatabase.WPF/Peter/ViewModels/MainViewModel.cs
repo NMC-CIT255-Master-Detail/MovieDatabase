@@ -62,8 +62,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         public ICommand ButtonProducerCommand => new RelayCommand(OpenProducerWindow);
 
         public ICommand ButtonStudioCommand => new RelayCommand(OpenStudioWindow);
-
-        public ICommand ButtonMovieCommand => new RelayCommand(OpenMovieWindow);
+        //TODO - Uncomment
+        //public ICommand ButtonMovieCommand => new RelayCommand(OpenMovieWindow);
 
         public ICommand ButtonPeterCommand => new RelayCommand(OpenPeterApp);
 
@@ -269,12 +269,12 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             var studioView = new StudioView();
             studioView.ShowDialog();
         }
-
-        private void OpenMovieWindow()
-        {
-            var movieView = new MovieView(Movies);
-            movieView.ShowDialog();
-        }
+        // TODO - Uncomment
+        //private void OpenMovieWindow()
+        //{
+        //    var movieView = new MovieView(Movies);
+        //    movieView.ShowDialog();
+        //}
 
         private static void OpenPeterApp()
         {
