@@ -16,10 +16,11 @@ namespace MovieDatabase.WPF.Peter.ViewModels
     public class MainViewModel : BaseViewModel
     {
 
-        public INavigator Navigator { get; set; } = new Navigator();
+        public INavigator Navigator { get; set; }
 
-        public MainViewModel()
+        public MainViewModel(INavigator navigator)
         {
+            Navigator = navigator;
             Navigator.UpdateViewModelCommand.Execute(ViewType.Home);
         }
     }

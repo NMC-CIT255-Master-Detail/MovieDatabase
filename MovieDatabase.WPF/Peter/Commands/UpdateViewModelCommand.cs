@@ -2,6 +2,8 @@
 using System.Windows.Input;
 using MovieDatabase.WPF.Peter.State.Navigator;
 using MovieDatabase.WPF.Peter.ViewModels;
+using MovieDatabase.WPF.Peter.ViewModels.ViewModelFactories;
+using Renci.SshNet;
 
 namespace MovieDatabase.WPF.Peter.Commands
 {
@@ -9,11 +11,13 @@ namespace MovieDatabase.WPF.Peter.Commands
     {
         public event EventHandler CanExecuteChanged;
         
-        private INavigator _navigator;
+        private readonly INavigator _navigator;
+        private readonly IMovieDatabaseViewModelAbstractFactory _viewModelFactory;
 
-        public UpdateViewModelCommand(INavigator navigator)
+        public UpdateViewModelCommand(INavigator navigator, IMovieDatabaseViewModelAbstractFactory viewModelFactory)
         {
             _navigator = navigator;
+            _viewModelFactory = viewModelFactory;
         }
 
         public bool CanExecute(object parameter)
@@ -25,32 +29,7 @@ namespace MovieDatabase.WPF.Peter.Commands
         {
             if (parameter is ViewType viewType)
             {
-                switch (viewType)
-                {
-                    case ViewType.Home:
-                        _navigator.CurrentViewModel = new HomeViewModel();
-                        break;
-                    case ViewType.AddMovie:
-                        _navigator.CurrentViewModel = new MovieViewModel();
-                        break;
-                    case ViewType.AddProducer:
-                        _navigator.CurrentViewModel = new ProducerViewModel();
-                        break;
-                    case ViewType.AddStudio:
-                        _navigator.CurrentViewModel = new StudioViewModel();
-                        break;
-                    case ViewType.EditMovie:
-                        _navigator.CurrentViewModel = new MovieViewModel();
-                        break;
-                    case ViewType.EditProducer:
-                        _navigator.CurrentViewModel = new ProducerViewModel();
-                        break;
-                    case ViewType.EditStudio:
-                        _navigator.CurrentViewModel = new StudioViewModel();
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType);
             }
         }
 

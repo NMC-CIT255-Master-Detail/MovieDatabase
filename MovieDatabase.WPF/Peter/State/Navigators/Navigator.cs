@@ -4,6 +4,7 @@ using System.Windows.Input;
 using MovieDatabase.Domain;
 using MovieDatabase.WPF.Peter.Commands;
 using MovieDatabase.WPF.Peter.ViewModels;
+using MovieDatabase.WPF.Peter.ViewModels.ViewModelFactories;
 
 namespace MovieDatabase.WPF.Peter.State.Navigator
 {
@@ -21,8 +22,13 @@ namespace MovieDatabase.WPF.Peter.State.Navigator
             }
         }
 
+        public Navigator(IMovieDatabaseViewModelAbstractFactory viewModelFactory)
+        {
+            UpdateViewModelCommand = new UpdateViewModelCommand(this, viewModelFactory);
+    }
+
         #region ICommands
-        public ICommand UpdateViewModelCommand => new UpdateViewModelCommand(this);
+        public ICommand UpdateViewModelCommand { get; set; }
         public ICommand QuitCommand => new QuitCommand();
         public ICommand AboutButtonCommand => new AboutButtonCommand();
         public ICommand HelpButtonCommand => new HelpButtonCommand();
