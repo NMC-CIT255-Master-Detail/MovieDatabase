@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using MovieDatabase.WPF.Peter;
 using MovieDatabase.WPF.Peter.ViewModels;
+using MovieDatabase.WPF.Peter.State.Navigator;
 
 namespace MovieDatabase.WPF
 {

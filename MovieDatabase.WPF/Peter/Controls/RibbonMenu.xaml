@@ -53,7 +53,7 @@
                     </RibbonApplicationMenu.AuxiliaryPaneContent>
                     <RibbonApplicationMenu.FooterPaneContent>
                         <DockPanel LastChildFill="False">
-                            <Label Content="Application produced by Peter Steele for CIT255" />
+                            <TextBlock Style="{Binding TextBlock}" Text="Application produced by Peter Steele for CIT255" />
                         </DockPanel>
                     </RibbonApplicationMenu.FooterPaneContent>
                 </RibbonApplicationMenu>
@@ -68,13 +68,20 @@
                                         KeyTip="C" Command="{Binding ColeCommand}" />
                     </RibbonMenuButton>
                 </RibbonGroup>
+                <!-- Home -->
+                <RibbonGroup x:Name="Home" Header="View">
+                    <RibbonMenuButton LargeImageSource="/Peter/Resources/Images/home.png" Label="Home" KeyTip="H">
+                        <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View" KeyTip="A"
+                                        Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Main}" />
+                    </RibbonMenuButton>
+                </RibbonGroup>
                 <!-- Movies -->
                 <RibbonGroup x:Name="Movies" Header="Add/View">
                     <RibbonMenuButton LargeImageSource="/Peter/Resources/Images/movie.png" Label="Movies" KeyTip="M">
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/add.png" Header="Add" KeyTip="A"
-                                        Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Main}" />
+                                        Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddMovie}" />
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View (Refresh)"
-                                        KeyTip="V"/>
+                                        KeyTip="V" Command="{Binding ButtonResetFormCommand}"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Producers -->
@@ -84,7 +91,7 @@
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/add.png" Header="Add" KeyTip="A"
                                         Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddProducer}" />
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View (Refresh)"
-                                        KeyTip="V" Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddProducer}" />
+                                        KeyTip="V"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Studios -->

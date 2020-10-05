@@ -53,10 +53,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         public ICommand ButtonEditMovieCommand { get; set; }
         public ICommand ButtonDeleteMovieCommand { get; set; }
 
-        public ICommand ButtonPeterCommand => new RelayCommand(OpenPeterApp);
-
-        public ICommand ButtonColeCommand => new RelayCommand(OpenColeApp);
-
         #endregion
 
         #region Properties
@@ -227,42 +223,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         public void DeleteMovie(object param)
         {
-        }
-
-        private static void QuitApp()
-        {
-            Environment.Exit(1);
-        }
-
-        private static void OpenAboutWindow()
-        {
-            var about = new About();
-            about.ShowDialog();
-        }
-
-        private static void OpenHelpWindow()
-        {
-            var help = new Help();
-            help.ShowDialog();
-        }
-
-        // TODO - Uncomment
-        //private void OpenMovieWindow()
-        //{
-        //    var movieView = new MovieView(Movies);
-        //    movieView.ShowDialog();
-        //}
-
-        private static void OpenPeterApp()
-        {
-            var main = new MainWindow();
-            main.Show();
-        }
-
-        private static void OpenColeApp()
-        {
-            var cole = new ColeWindow();
-            cole.Show();
         }
 
         #endregion

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:viewmodels="clr-namespace:MovieDatabase.WPF.Peter.ViewModels"
              xmlns:views="clr-namespace:MovieDatabase.WPF.Peter.Views" 
-             xmlns:local="clr-namespace:MovieDatabase.WPF.Peter">
+             xmlns:local="clr-namespace:MovieDatabase.WPF">
 
     <Application.Resources>
         <ResourceDictionary>
@@ -11,7 +11,7 @@
 
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate DataType="{x:Type viewmodels:MainViewModel}">
-                <views:MovieView/>
+                <views:HomeView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:MovieViewModel}">
                 <views:MovieView/>
