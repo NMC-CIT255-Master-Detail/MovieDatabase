@@ -64,10 +64,8 @@
                 <RibbonGroup x:Name="UserGroup" Header="Select an App">
                     <RibbonMenuButton LargeImageSource="/Peter/Resources/Images/personal.png" Label="Developer"
                                       KeyTip="D">
-                        <RibbonMenuItem ImageSource="/Peter/Resources/Images/personal.png" Header="Peter Steele"
-                                        KeyTip="P" Command="{Binding ButtonPeterCommand}" />
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/personal.png" Header="Cole Crain"
-                                        KeyTip="C" Command="{Binding ButtonColeCommand}" />
+                                        KeyTip="C" Command="{Binding ColeCommand}" />
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Movies -->
@@ -86,7 +84,7 @@
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/add.png" Header="Add" KeyTip="A"
                                         Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddProducer}" />
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View (Refresh)"
-                                        KeyTip="V" Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddMovie}" />
+                                        KeyTip="V" Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddProducer}" />
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Studios -->
@@ -94,7 +92,7 @@
                     <RibbonMenuButton LargeImageSource="/Peter/Resources/Images/Folder-TV-Disney-icon.png"
                                       Label="Studios" KeyTip="M">
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/add.png" Header="Add" KeyTip="A"
-                                        Command="{Binding ButtonStudioCommand}" />
+                                        Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddStudio}" />
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View (Refresh)"
                                         KeyTip="V" />
                     </RibbonMenuButton>

@@ -53,11 +53,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         public ICommand ButtonEditMovieCommand { get; set; }
         public ICommand ButtonDeleteMovieCommand { get; set; }
 
-
-        public ICommand ButtonStudioCommand => new RelayCommand(OpenStudioWindow);
-        //TODO - Uncomment
-        //public ICommand ButtonMovieCommand => new RelayCommand(OpenMovieWindow);
-
         public ICommand ButtonPeterCommand => new RelayCommand(OpenPeterApp);
 
         public ICommand ButtonColeCommand => new RelayCommand(OpenColeApp);
@@ -251,11 +246,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             help.ShowDialog();
         }
 
-        private static void OpenStudioWindow()
-        {
-            var studioView = new StudioView();
-            studioView.ShowDialog();
-        }
         // TODO - Uncomment
         //private void OpenMovieWindow()
         //{

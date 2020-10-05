@@ -1,4 +1,4 @@
-﻿using MovieDatabase.WPF.Peter.Views;
+﻿using MovieDatabase.WPF.Cole.ColeViews;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace MovieDatabase.WPF.Peter.Commands
 {
-    public class ProducerButtonCommand : ICommand
+    public class ColeCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
@@ -17,7 +17,8 @@ namespace MovieDatabase.WPF.Peter.Commands
 
         public void Execute(object parameter)
         {
-
+            ColeWindow cole = new ColeWindow();
+            cole.Show();
         }
     }
 }

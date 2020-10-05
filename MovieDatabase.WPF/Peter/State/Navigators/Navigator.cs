@@ -26,6 +26,7 @@ namespace MovieDatabase.WPF.Peter.State.Navigator
         public ICommand QuitCommand => new QuitCommand();
         public ICommand AboutButtonCommand => new AboutButtonCommand();
         public ICommand HelpButtonCommand => new HelpButtonCommand();
+        public ICommand ColeCommand => new ColeCommand();
         #endregion
 
     }
