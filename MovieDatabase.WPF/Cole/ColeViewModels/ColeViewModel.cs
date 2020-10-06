@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 {
-    internal class ColeViewModel : BaseViewModel
+    public class ColeViewModel : BaseViewModel
     {
         #region Constructor
 
@@ -51,7 +51,6 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         #region Methods
 
         #endregion
-
 
         #region ICommands
 
