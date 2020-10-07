@@ -2,6 +2,7 @@
 using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Seed_Data;
 using MovieDatabase.Domain.Services;
+using MovieDatabase.EntityFramework.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -49,6 +50,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         #region Properties
 
 
+        public IDataService<Movie> MovieSet {get;set;}
 
         public ObservableCollection<Movie> Movies
         {
@@ -130,6 +132,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
+        public IEnumerable<Movie> MovieList { get; set; }
+
 
 
         #endregion
@@ -138,8 +142,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         public HomeViewModel()
         {
-
-            
             Movies = new ObservableCollection<Movie>(SeedData.GetAllMovies());
             if (Movies.Any()) SelectedMovie = Movies[0];
         }

@@ -32,6 +32,7 @@ namespace MovieDatabase.WPF
         private IServiceProvider CreateServiceProvider()
         {
             IServiceCollection services = new ServiceCollection();
+
             services.AddSingleton<MovieDatabaseDbContextFactory>();
             services.AddSingleton<IDataService<Movie>, GenericDataService<Movie>>();
             services.AddSingleton<IDataService<Producer>, GenericDataService<Producer>>();

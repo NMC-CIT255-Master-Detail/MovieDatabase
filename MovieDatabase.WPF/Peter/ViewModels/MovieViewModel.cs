@@ -8,26 +8,26 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 {
     public class MovieViewModel : BaseViewModel
     {
-        private ObservableCollection<Movie> _movies;
+        //private ObservableCollection<Movie> _movies;
 
-        public MovieViewModel(ObservableCollection<Movie> movies)
-        {
-            _movies = movies;
-        }
+        //public MovieViewModel(ObservableCollection<Movie> movies)
+        //{
+        //    _movies = movies;
+        //}
 
         public MovieViewModel()
         {
             
         }
 
-        public ObservableCollection<Movie> Movies
-        {
-            get => _movies;
-            set
-            {
-                _movies = value;
-                OnPropertyChanged(nameof(Movies));
-            }
-        }
+        //public ObservableCollection<Movie> Movies
+        //{
+        //    get => _movies;
+        //    set
+        //    {
+        //        _movies = value;
+        //        OnPropertyChanged(nameof(Movies));
+        //    }
+        //}
     }
 }

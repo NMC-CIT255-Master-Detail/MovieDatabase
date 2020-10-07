@@ -1,4 +1,5 @@
-﻿using MovieDatabase.WPF.Peter.State.Navigator;
+﻿using MovieDatabase.Domain.Services;
+using MovieDatabase.WPF.Peter.State.Navigator;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -31,7 +32,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels.ViewModelFactories
                 case ViewType.AddStudio:
                     return new StudioViewModel();
                 case ViewType.EditMovie:
-                    return new MovieViewModel();
+                    return _movieViewModelFactory.CreateViewModel();
                 case ViewType.EditProducer:
                     return new ProducerViewModel();
                 case ViewType.EditStudio:
