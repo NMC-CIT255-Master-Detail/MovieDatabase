@@ -5,17 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local1="clr-namespace:MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel"
         mc:Ignorable="d"
-        Title="ColeWindow"
-        Height="600" Width="800"
-        Background="LightGray"
-        WindowStartupLocation="CenterScreen">
+        Title="ColeWindow" Height="740" Width="900" Background="LightBlue">
     <Window.DataContext>
-        <local1:ColeViewModel />
+        <local1:ColeViewModel/>
     </Window.DataContext>
+    <!--Styles-->
     <Window.Resources>
         <Style x:Key="HeaderStyle" TargetType="Label">
             <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontSize" Value="28" />
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
         <Style x:Key="DetailLabelStyle" TargetType="Label">
@@ -25,8 +23,8 @@
         </Style>
         <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
             <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontSize" Value="12" />
-            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
         </Style>
         <Style x:Key="DetailTextBoxStyle" TargetType="TextBox">
             <Setter Property="Width" Value="120" />
@@ -40,10 +38,14 @@
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontSize" Value="12" />
         </Style>
-        <Style x:Key="ButtonStyleLarge" TargetType="Button">
-            <Setter Property="Background" Value="LightBlue" />
+        <Style x:Key="MasterTextBlockTextStyle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="Black" />
-            <Setter Property="Width" Value="100" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style x:Key="ButtonStyleLarge" TargetType="Button">
+            <Setter Property="Background" Value="Silver" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Width" Value="70" />
             <Setter Property="Height" Value="40" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -68,6 +70,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
+
             <RowDefinition Height="40" />
             <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
@@ -77,228 +80,164 @@
             Grid.Row="0" Width="188">
             <Label
                 Style="{StaticResource HeaderStyle}"
-                HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Content="Movie DataBase" />
-            <!--<Button 
-                        x:Name="Button_Quit" 
-                        Width="50"
-                        Height="20"
-                        Margin="440,10,0,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"           
-                        FontSize="10"
-                        Content="Quit"
-                        Style="{StaticResource ButtonStyleLarge}"
-                        Command="{Binding Path=QuitApplicationCommand}"/>-->
+                HorizontalAlignment="Center"
+                Content="Movie DataBase"  />
         </StackPanel>
         <Grid
             Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40*" />
-                <ColumnDefinition Width="60*" />
-                <!--<ColumnDefinition Width="41*"/>-->
+                <ColumnDefinition Width="191*" />
+                <ColumnDefinition Width="259*" />
             </Grid.ColumnDefinitions>
             <StackPanel
                 Grid.Column="0"
                 Orientation="Vertical"
                 Margin="20,20,0,20">
-
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <StackPanel
-                        Grid.Row="0"
-                        Margin="20,0,0,0"
-                        Orientation="Horizontal">
-                        <Label Content="Search Title:" Style="{StaticResource MasterLabelTextStyle}" Width="73" />
-                        <TextBox
-                            Name="TextBox_SearchTitle"
-                            Width="142"
-                            Text="{Binding SearchText}" />
-                        <Button
-                            x:Name="Button_Search"
-                            Width="60"
-                            Height="20"
-                            Margin="3"
-                            VerticalAlignment="Center"
-                            FontSize="10"
-                            Content="Search"
-                            Style="{StaticResource ButtonStyleSmall}"
-                            Command="{Binding Path=SearchMoviesListCommand}" />
-                    </StackPanel>
-                    <StackPanel
-                        Grid.Row="1"
-                        Margin="20,0,0,0"
-                        Orientation="Horizontal">
-                        <Label Content="Min RunTime:" Style="{StaticResource MasterLabelTextStyle}" />
-                        <TextBox
-                            Name="TextBox_MinAge"
-                            Width="54"
-                            Text="{Binding MinAgeText}" />
-                        <Label Content="Max RunTime:" Style="{StaticResource MasterLabelTextStyle}" />
-                        <TextBox
-                            Name="TextBox_Max"
-                            Width="56"
-                            Text="{Binding MaxAgeText}" />
-                        <Button
-                            x:Name="Button_AgeFilter"
-                            Width="40"
-                            Height="20"
-                            Margin="3"
-                            VerticalAlignment="Center"
-                            FontSize="10"
-                            Content="Filter"
-                            Style="{StaticResource ButtonStyleSmall}"
-                            Command="{Binding Path=AgeFilterMoviesListCommand}" />
-                    </StackPanel>
-                    <StackPanel
-                        Grid.Row="2"
-                        Margin="2,0,12,0"
-                        Orientation="Horizontal">
-                        <Label Content="Sort by:" Style="{StaticResource MasterLabelTextStyle}" Width="62" />
-                        <RadioButton
-                            Name="RadioButton_LastNameSort"
-                            Margin="2,5,0,0"
-                            Content="Studio"
-                            Style="{StaticResource RadioButtonStyle}"
-                            Command="{Binding Path=SortMoviesListCommand}"
-                            CommandParameter="Studio"
-                            IsChecked="True" Width="70" />
-                        <RadioButton
-                            Name="RadioButton_AgeSort"
-                            Margin="1,5,0,0"
-                            Content="Producer"
-                            Style="{StaticResource RadioButtonStyle}"
-                            Command="{Binding Path=SortMoviesListCommand}"
-                            CommandParameter="Max" Width="80" />
-                        <Button
-                            x:Name="Button_ResetList"
-                            Height="20"
-                            Margin="5,0,0,0"
-                            VerticalAlignment="Center"
-                            FontSize="10"
-                            Content="Reset List"
-                            Style="{StaticResource ButtonStyleSmall}"
-                            Command="{Binding Path=ResetMoviesListCommand}" Width="56" />
-                    </StackPanel>
-                </Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="360" Height="324">
+                        <DockPanel Grid.Row="1" Width="252" VerticalAlignment="Top" Margin="10 0 0 0" Height="298" >
 
-                <Grid
-                    Height="350">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="93*" />
-                        <ColumnDefinition Width="47*" />
-                    </Grid.ColumnDefinitions>
-                    <ListBox
-                        x:Name="_master"
-                        Grid.Column="0"
-                        Margin="10,10,10,0"
-                        BorderThickness="0"
-                        Background="AliceBlue"
-                        ItemsSource="{Binding Movies}"
-                        SelectedItem="{Binding SelectedMovie, Mode=TwoWay}"
-                        IsSynchronizedWithCurrentItem="true"
-                        ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="2" Height="330"
-                        VerticalAlignment="Top">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel
-                                    Orientation="Horizontal">
-                                    <Border Margin="5" BorderBrush="Black" BorderThickness="1">
-                                        <Image
-                                            Source="{Binding ImageFilePath}"
-                                            Stretch="UniformToFill"
-                                            Width="40"
-                                            Height="40" />
-                                    </Border>
-                                    <StackPanel
-                                        Orientation="Vertical">
-                                        <StackPanel
-                                            Orientation="Horizontal">
-                                            <!--TODO Label to text-block for text wrap  -->
-                                            <Label
-                                                Content="{Binding Title}"
-                                                Width="120"
-                                                Style="{StaticResource MasterLabelTextStyle}" />
-                                            <Label
-                                                Content="{Binding ReleaseDate, StringFormat={}\{yyyy\}}"
-                                                Padding="0,5"
-                                                Style="{StaticResource MasterLabelTextStyle}" />
-                                            <Label
-                                                Content=" yrs"
-                                                Padding="0,5"
-                                                Style="{StaticResource MasterLabelTextStyle}" />
-                                        </StackPanel>
-                                        <StackPanel
-                                            Orientation="Horizontal">
-                                            <Label
-                                                Content="{Binding Gender}"
-                                                Padding="120,0,0,0"
-                                                Style="{StaticResource MasterLabelTextStyle}" />
-                                        </StackPanel>
-                                    </StackPanel>
+                            <Label Content="Search by Title" FontSize="18" DockPanel.Dock="Top" />
+                            <TextBox Width="200" FontSize="22" HorizontalAlignment="Left" DockPanel.Dock="Top" Text="{Binding SearchString}"/>
+                            <Label Content="Search by Producer" FontSize="18" DockPanel.Dock="Top" />
+                            <ComboBox ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedProducer}" Width="250" HorizontalAlignment="Left" DockPanel.Dock="Top" >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Producer.Name}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+
+                            </ComboBox>
+                            <Label Content="Search by Studio" FontSize="18" DockPanel.Dock="Top"/>
+                            <ComboBox ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedStudio}" Width="250" HorizontalAlignment="Left" DockPanel.Dock="Top">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Studio.Name}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+
+                            <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom">
+                                <Label Content="Sort by:" FontSize="18" Width="200"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton Content="Producer" Margin=" 0 0 10 0" Command="{Binding ButtonSortByCommand}" CommandParameter="Producer"/>
+                                    <RadioButton Content="Studio" Margin="0 0 10 0" Command="{Binding ButtonSortByCommand}" CommandParameter="Studio"/>
+                                    <RadioButton Content="Year" Command="{Binding ButtonSortByCommand}" CommandParameter="Year"/>
                                 </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </Grid>
-            </StackPanel>
-            <StackPanel
-                Grid.Column="1"
-                Orientation="Vertical" Grid.ColumnSpan="2">
-                <Grid Height="383">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="3*" />
-                    </Grid.ColumnDefinitions>
-                    <Image
-                        Grid.Column="0"
-                        Source="{Binding ImageFilePath}" Margin="0,92,0,53" />
-                    <StackPanel
-                        Grid.Column="1"
-                        Margin="10,10,10,10"
-                        Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Title: " Style="{StaticResource DetailLabelStyle}" />
-                            <TextBox Text="{Binding Title}" Style="{StaticResource DetailTextBoxStyle}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Producer: " Style="{StaticResource DetailLabelStyle}" />
-                            <TextBox Text="{Binding Producer.Name}" Style="{StaticResource DetailTextBoxStyle}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Year: " Style="{StaticResource DetailLabelStyle}" />
-                            <TextBox Text="{Binding Year,StringFormat={}\{yyyy \} }"
-                                     Style="{StaticResource DetailTextBoxStyle}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Run-Time: " Style="{StaticResource DetailLabelStyle}" />
-                            <TextBox Text="{Binding Runtime}" Style="{StaticResource DetailTextBoxStyle}" />
-                        </StackPanel>
+                            </StackPanel>
 
+                            <Label Content="Filter by Run-Time" FontSize="16" DockPanel.Dock="Top"/>
+                            <TextBox Width="50" FontSize="22" HorizontalAlignment="Left" DockPanel.Dock="Left" Margin="0 0 10 0" Text="{Binding MinRuntimeText}"/>
+                            <Label Content="and" DockPanel.Dock="Left" Margin="0 0 10 0"/>
+                            <TextBox Width="50" FontSize="22" HorizontalAlignment="Left" DockPanel.Dock="Left" Text="{Binding MaxRuntimeText}"/>
+                        </DockPanel>
 
-                        <StackPanel Orientation="Vertical">
-                            <Label Content="Description: " Style="{StaticResource DetailLabelStyle}" />
-                            <TextBox
-                                HorizontalAlignment="Left"
-                                Width="269"
-                                Height="205"
-                                TextWrapping="Wrap"
-                                AcceptsReturn="True"
-                                VerticalContentAlignment="Top"
-                                VerticalScrollBarVisibility="Visible"
-                                Text="{Binding Description}"
-                                Style="{StaticResource DetailTextBoxStyle}" />
-                        </StackPanel>
+                        <DockPanel Grid.Row="1" Width="94" VerticalAlignment="Top" Height="318" Margin="0 0 0 0">
+                            <StackPanel 
+                    Orientation="Vertical" Height="300">
+                                <Button Style="{StaticResource ButtonStyleLarge}" Content="Search" HorizontalAlignment="Left" Command="{Binding ButtonSearchByMovieCommand}" />
+                                <Button Style="{StaticResource ButtonStyleLarge}" Content="Search" HorizontalAlignment="Left" Command="{Binding ButtonSearchByProducerCommand}"/>
+                                <Button Style="{StaticResource ButtonStyleLarge}" Content="Search" HorizontalAlignment="Left" Command="{Binding ButtonSearchByStudioCommand}" />
+                                <Button Style="{StaticResource ButtonStyleLarge}" Content="Filter" HorizontalAlignment="Left" Command="{Binding ButtonFilterByRuntimeCommand}"/>
+                                <Button Style="{StaticResource ButtonStyleLarge}" Content="Reset" HorizontalAlignment="Left" Command="{Binding ButtonResetFormCommand}" />
+                            </StackPanel>
+                        </DockPanel>
                     </StackPanel>
                 </Grid>
+
+                <ListView HorizontalContentAlignment="Stretch" 
+                          ItemsSource="{Binding Movies}" 
+                          SelectedItem="{Binding SelectedMovie}" Height="319">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="348" Height="105">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Image Source="/ColeImages/about.png" Grid.RowSpan="4" Margin="10,0,10,17"/>
+
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="37,0,36,17" Grid.RowSpan="2">
+                                    <TextBlock Text="Title: " Style="{StaticResource MasterTextBlockTextStyle}"/>
+                                    <TextBlock Text="{Binding Title}" Style="{StaticResource MasterTextBlockTextStyle}"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2" Margin="13,0,14,13">
+                                    <TextBlock Text="Release Date: " Style="{StaticResource MasterTextBlockTextStyle}"/>
+                                    <TextBlock Text="{Binding ReleaseDate, StringFormat={}\{0:MM/dd/yyyy \}}" Style="{StaticResource MasterTextBlockTextStyle}"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="3" Orientation="Horizontal" Margin="5,0,6,17" Grid.RowSpan="2">
+                                    <TextBlock Text="RunTime: " Style="{StaticResource MasterTextBlockTextStyle}"/>
+                                    <TextBlock Text="{Binding Runtime}" Style="{StaticResource MasterTextBlockTextStyle}"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="21,0,20,0">
+                                    <TextBlock Text="Studio: " Style="{StaticResource MasterTextBlockTextStyle}"/>
+                                    <TextBlock Text="{Binding Studio.Name}" Style="{StaticResource MasterTextBlockTextStyle}"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="25,0,25,0">
+                                    <TextBlock Text="Producer: " Style="{StaticResource MasterTextBlockTextStyle}"/>
+                                    <TextBlock Text="{Binding Producer.Name}" Style="{StaticResource MasterTextBlockTextStyle}"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0,0,32,0">
+                <Grid Height="543" Width="440">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="{Binding SelectedMovie.Title}" HorizontalAlignment="Center" Margin="0 0 0 10"/>
+                    <Image Source="/ColeImages/Folder-TV-Disney-icon.png" Height="200" Grid.Row="1"/>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
+                        <Label Content="Release Date: "/>
+                        <TextBlock Text="{Binding SelectedMovie.ReleaseDate, StringFormat={}\{0:MM/dd/yyyy \}}" />
+                        <Label Content="Run Time: " />
+                        <TextBlock Text="{Binding SelectedMovie.Runtime}" />
+                        <TextBlock Text="mins" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Grid.Row="3" Margin="0 10 0 10">
+                        <Label Content="Description:"/>
+                    </StackPanel>
+                    <ScrollViewer Grid.Row="4" VerticalScrollBarVisibility="auto" Margin="0,0,10,0">
+                        <TextBox IsReadOnly="True" TextWrapping="Wrap" Text="{Binding SelectedMovie.Description}" Height="219" Width="394" />
+                    </ScrollViewer>
+                </Grid>
+                <!--Todo Buttons or Ribbon for add, save and edit-->
+
                 <StackPanel
                     Orientation="Horizontal"
-                    HorizontalAlignment="Right">
+                    HorizontalAlignment="Right" Height="57">
                     <Button
                         x:Name="Button_Save"
                         Content="Save"
@@ -311,28 +250,27 @@
                         Command="{Binding Path=CancelMovieCommand}" />
                 </StackPanel>
                 <StackPanel
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Center">
-                    <!--todo dinding to data-->
+                    Orientation="Horizontal" Height="48">
+                    <!--todo binding to data-->
                     <Button
                         x:Name="Button_Add"
                         Content="Add"
                         Style="{StaticResource ButtonStyleLarge}"
-                        Command="{Binding Path=AddMovieCommand}" />
+                        Command="{Binding AddMovieCommand}" />
                     <Button
                         x:Name="Button_Delete"
                         Content="Delete"
                         Style="{StaticResource ButtonStyleLarge}"
-                        Command="{Binding Path=DataContext.DeleteMovieCommand, ElementName=ListWindow}" />
+                        Command="{Binding DataContext.DeleteMovieCommand, ElementName=ListWindow}" />
                     <Button
                         x:Name="Button_Edit"
                         Content="Edit"
                         Style="{StaticResource ButtonStyleLarge}"
-                        Command="{Binding Path=DataContext.EditMovieCommand, ElementName=ListWindow}" />
+                        Command="{Binding DataContext.EditMovieCommand, ElementName=ListWindow}" />
                 </StackPanel>
             </StackPanel>
-
         </Grid>
-
     </Grid>
 </Window>
+    
+    

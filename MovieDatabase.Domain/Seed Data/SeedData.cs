@@ -223,32 +223,31 @@ namespace MovieDatabase.Domain.Seed_Data
                 new Movie()
                 {
                     Id = 8,
-                    Title = "Harry Potter and the Deathly Hallows",
+                    Title = "Spider-Man: Far from Home",
                     Description =
-                        "Harry Potter is a great movie from the early to late 2000's that follows a wizard named Harry and his journey through school at Hogwarts and beyond.",
+                        "Spider-Man: Far From Home is a 2019 American superhero film based on the Marvel Comics character Spider-Man, co-produced by Columbia Pictures and Marvel Studios, and distributed by Sony Pictures Releasing. It is the sequel to Spider-Man: Homecoming (2017) and the 23rd film in the Marvel Cinematic Universe (MCU).",
                     IMDBLink = "https://www.imdb.com",
                     Producer = new Producer()
                     {
                         Id = 1,
-                        Name = "Peter Steele",
-                        DOB = new DateTime(1990, 05, 01, 12, 00, 00),
+                        Name = "Kevin Feige",
+                        DOB = new DateTime(1973, 05, 01, 12, 00, 00),
                         Biography = "This is a biography"
                     },
                     Studio = new Studio()
                     {
                         Id = 1,
-                        Name = "Fairy Tale Media",
+                        Name = "Sony Pictures",
                         Phone = 55555,
-                        Email = "petersteele111@example.com",
+                        Email = "colecrain1234@example.com",
                         Description = "Studio Description",
-                        Website = "https://www.pbsteele.com",
-                        Address = "6847 cram road",
-                        City = "Williamsburg",
-                        State = "MI",
-                        Zipcode = 49690
+                        Address = "10202 Washington Blvd ",
+                        City = "Culver City",
+                        State = "CA",
+                        Zipcode = 90232
                     },
-                    ReleaseDate = new DateTime(2010, 12, 25, 12, 00, 0),
-                    Runtime = 100
+                    ReleaseDate = new DateTime(2019, 2, 25, 12, 00, 0),
+                    Runtime = 129
                 }
             };
         }
