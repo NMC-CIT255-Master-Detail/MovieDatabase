@@ -20,7 +20,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         public MainViewModel(INavigator navigator)
         {
             Navigator = navigator;
-            Navigator.UpdateViewModelCommand.Execute(ViewType.Home);\
+            Navigator.UpdateViewModelCommand.Execute(ViewType.Home);
 
         }
     }
