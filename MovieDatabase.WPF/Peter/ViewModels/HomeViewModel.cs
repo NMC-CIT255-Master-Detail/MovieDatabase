@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MovieDatabase.WPF.Peter.ViewModels
@@ -32,6 +33,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         IDataService<Producer> _producerSet;
         IDataService<Studio> _studioSet;
         IDataService<Movie> _movieSet;
+        string _message;
 
         public event EventHandler CanExecuteChanged;
 
@@ -50,7 +52,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         public ICommand ButtonResetFormCommand => new RelayCommand(ResetForm);
 
         public ICommand ButtonEditMovieCommand { get; set; }
-        public ICommand ButtonDeleteMovieCommand { get; set; }
+        public ICommand DeleteMovieCommand => new RelayCommand(DeleteMovie);
 
         #endregion
 
@@ -254,18 +256,21 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         {
         }
 
-        public void DeleteMovie(object param)
+        private void DeleteMovie()
         {
-        }
-
-        public bool CanExecute(object parameter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Execute(object parameter)
-        {
-            throw new NotImplementedException();
+            if (SelectedMovie != null)
+            {
+                if (_movieSet.Delete(SelectedMovie.Id))
+                {
+                    Movies = new ObservableCollection<Movie>(_movieSet.GetAll());
+                    SelectedMovie = Movies[0];
+                    _message = "Movie Successfully Deleted";
+                    MessageBox.Show(_message);
+                }
+                
+                
+            }
+            
         }
 
         #endregion

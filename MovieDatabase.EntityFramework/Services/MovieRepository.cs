@@ -35,6 +35,8 @@ namespace MovieDatabase.EntityFramework.Services
             {
                 var entity = context.Set<Movie>().FirstOrDefault((e) => e.Id == id);
                 context.Set<Movie>().Remove(entity);
+                context.SaveChanges();
+
             }
 
             return true;

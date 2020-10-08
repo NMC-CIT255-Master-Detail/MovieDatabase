@@ -49,7 +49,7 @@
         <TextBlock Text="Release Date" Grid.Row="7" Grid.Column="1" Style="{DynamicResource TextBlock}" />
         <DatePicker x:Name="MovieReleaseDate" SelectedDateFormat="Short"
                     CalendarStyle="{DynamicResource ResizedCalendarItem}" Grid.Row="8" Grid.Column="1"
-                    Style="{DynamicResource DatePicker}" Text="{Binding ReleaseDate}"/>
+                    Style="{DynamicResource DatePicker}" SelectedDate="{Binding ReleaseDate}"/>
 
         <TextBlock Text="Runtime" Grid.Row="9" Grid.Column="1" Style="{DynamicResource TextBlock}" />
         <TextBox x:Name="MovieRuntime" Grid.Row="10" Grid.Column="1" Text="{Binding RunTime}"/>
@@ -61,11 +61,12 @@
         <TextBlock Text="Producer" Grid.Row="7" Grid.Column="4" Style="{DynamicResource TextBlock}" />
         <ComboBox x:Name="MovieProducer" Grid.Row="8" Grid.Column="4" Style="{DynamicResource ComboBox}"
                   ItemsSource="{Binding Producers}"
-                  SelectedValue="{Binding ProducerId, Mode=TwoWay}"
-                  SelectedValuePath="Tag">
+                  DisplayMemberPath="{Binding Name}"
+                  SelectedItem="{Binding Producer}"
+                  SelectedValuePath="{Binding ProducerId}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}" Tag="{Binding Id}" />
+                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}" Tag="{Binding Id}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
@@ -73,11 +74,11 @@
         <TextBlock Text="Studio" Grid.Row="9" Grid.Column="4" Style="{DynamicResource TextBlock}" />
         <ComboBox x:Name="MovieStudio" Grid.Row="10" Grid.Column="4" Style="{DynamicResource ComboBox}"
                   ItemsSource="{Binding Studios}"
-                  SelectedValue="{Binding StudioId, Mode=TwoWay}"
-                  SelectedValuePath="Tag">
+                  DisplayMemberPath="{Binding Name}"
+                  SelectedValuePath="{Binding StudioId}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}" Tag="{Binding Id}" />
+                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}" Tag="{Binding Id}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>

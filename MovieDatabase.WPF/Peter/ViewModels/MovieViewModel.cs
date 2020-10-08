@@ -21,12 +21,13 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         DateTime? _releaseDate;
         int? _runtime;
         string _imdbLink;
-        int? _studioId;
-        int? _producerId;
+        string _studioId;
+        string _producerId;
         ObservableCollection<Movie> _movies;
         ObservableCollection<Studio> _studios;
         ObservableCollection<Producer> _producers;
         string _message;
+        Producer _selectedProducer;
 
         public string Title {
             get => _title;
@@ -69,7 +70,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 OnPropertyChanged(nameof(IMDBLink));
             }
         }
-        public int? StudioId {
+        public string StudioId {
             get => _studioId;
             set
             {
@@ -77,7 +78,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 OnPropertyChanged(nameof(Studio));
             }
         }
-        public int? ProducerId {
+        public string ProducerId {
             get => _producerId;
             set
             {
@@ -116,6 +117,16 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
+        Producer SelectedProducer
+        {
+            get => _selectedProducer;
+            set
+            {
+                _selectedProducer = value;
+                OnPropertyChanged(nameof(SelectedProducer));
+            }
+        }
+
 
         public ICommand SaveMovieCommand => new RelayCommand(SaveMovieToDB);
 
@@ -133,7 +144,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         void SaveMovieToDB()
         {
-            if (Title != "" && Description != "" && ReleaseDate != null && RunTime != null && IMDBLink != "" && ProducerId != null && StudioId != null)
+            if (Title != "" && Description != "" && ReleaseDate != null && RunTime != null && IMDBLink != "" && ProducerId != "" && StudioId != "")
             {
                 Movie newMovieToAdd = new Movie();
                 newMovieToAdd.Title = _title;
@@ -141,8 +152,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 newMovieToAdd.ReleaseDate = (DateTime)_releaseDate;
                 newMovieToAdd.Runtime = (int)_runtime;
                 newMovieToAdd.IMDBLink = _imdbLink;
-                newMovieToAdd.Producer.Id = (int)_producerId;
-                newMovieToAdd.Studio.Id = (int)_studioId;
+                newMovieToAdd.Producer.Id = _selectedProducer.Id;
+                newMovieToAdd.Studio.Id = int.Parse(_studioId);
                 SaveMovieToDB(newMovieToAdd);
             } else
             {
