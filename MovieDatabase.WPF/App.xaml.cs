@@ -45,6 +45,7 @@ namespace MovieDatabase.WPF
             services.AddSingleton<IMovieDatabaseViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
             services.AddSingleton<IMovieDatabaseViewModelFactory<MovieViewModel>, MovieViewModelFactory>();
             services.AddSingleton<IMovieDatabaseViewModelFactory<ProducerViewModel>, ProducerViewModelFactory>();
+            services.AddSingleton<IMovieDatabaseViewModelFactory<StudioViewModel>, StudioViewModelFactory>();
 
             services.AddScoped<INavigator, Navigator>();
             services.AddScoped<MainViewModel>();

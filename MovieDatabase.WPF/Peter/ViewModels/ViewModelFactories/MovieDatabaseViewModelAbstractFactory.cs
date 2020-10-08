@@ -11,12 +11,14 @@ namespace MovieDatabase.WPF.Peter.ViewModels.ViewModelFactories
         private readonly IMovieDatabaseViewModelFactory<HomeViewModel> _homeViewModelFactory;
         private readonly IMovieDatabaseViewModelFactory<ProducerViewModel> _producerViewModelFactory;
         private readonly IMovieDatabaseViewModelFactory<MovieViewModel> _movieViewModelFactory;
+        private readonly IMovieDatabaseViewModelFactory<StudioViewModel> _studioViewModelFactory;
 
-        public MovieDatabaseViewModelAbstractFactory(IMovieDatabaseViewModelFactory<HomeViewModel> homeViewModelFactory, IMovieDatabaseViewModelFactory<ProducerViewModel> producerViewModelFactory, IMovieDatabaseViewModelFactory<MovieViewModel> movieViewModelFactory)
+        public MovieDatabaseViewModelAbstractFactory(IMovieDatabaseViewModelFactory<HomeViewModel> homeViewModelFactory, IMovieDatabaseViewModelFactory<ProducerViewModel> producerViewModelFactory, IMovieDatabaseViewModelFactory<MovieViewModel> movieViewModelFactory, IMovieDatabaseViewModelFactory<StudioViewModel> studioViewModelFactory)
         {
             _homeViewModelFactory = homeViewModelFactory;
             _producerViewModelFactory = producerViewModelFactory;
             _movieViewModelFactory = movieViewModelFactory;
+            _studioViewModelFactory = studioViewModelFactory;
         }
 
         public BaseViewModel CreateViewModel(ViewType viewType)
@@ -30,13 +32,13 @@ namespace MovieDatabase.WPF.Peter.ViewModels.ViewModelFactories
                 case ViewType.AddProducer:
                     return _producerViewModelFactory.CreateViewModel();
                 case ViewType.AddStudio:
-                    return new StudioViewModel();
+                    return _studioViewModelFactory.CreateViewModel();
                 case ViewType.EditMovie:
                     return _movieViewModelFactory.CreateViewModel();
                 case ViewType.EditProducer:
-                    return new ProducerViewModel();
+                    return _producerViewModelFactory.CreateViewModel();
                 case ViewType.EditStudio:
-                    return new StudioViewModel();
+                    return _studioViewModelFactory.CreateViewModel();
                 default:
                     throw new ArgumentException("The View Type does not have a View Model", "viewType");
             }

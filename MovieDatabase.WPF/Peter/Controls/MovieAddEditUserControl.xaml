@@ -44,42 +44,46 @@
 
         <TextBlock Text="Description" Grid.Row="3" Grid.Column="1" Style="{DynamicResource TextBlock}" />
         <TextBox x:Name="MovieDescription" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True"
-                 VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="5" Height="200" MaxHeight="200" />
+                 VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="5" Height="200" MaxHeight="200" Text="{Binding Description}" />
 
         <TextBlock Text="Release Date" Grid.Row="7" Grid.Column="1" Style="{DynamicResource TextBlock}" />
         <DatePicker x:Name="MovieReleaseDate" SelectedDateFormat="Short"
                     CalendarStyle="{DynamicResource ResizedCalendarItem}" Grid.Row="8" Grid.Column="1"
-                    Style="{DynamicResource DatePicker}" />
+                    Style="{DynamicResource DatePicker}" Text="{Binding ReleaseDate}"/>
 
         <TextBlock Text="Runtime" Grid.Row="9" Grid.Column="1" Style="{DynamicResource TextBlock}" />
-        <TextBox x:Name="MovieRuntime" Grid.Row="10" Grid.Column="1" />
+        <TextBox x:Name="MovieRuntime" Grid.Row="10" Grid.Column="1" Text="{Binding RunTime}"/>
 
-        <TextBlock Text="Image" Grid.Row="11" Grid.Column="1" Style="{DynamicResource TextBlock}" />
-        <TextBox Text="{Binding ImagePath}" Grid.Row="12" Grid.Column="1" />
-        <Button Style="{DynamicResource BrowseButton}" x:Name="Browse" Grid.Row="12" Grid.Column="2" Content="Browse" />
+        <!--<TextBlock Text="Image" Grid.Row="11" Grid.Column="4" Style="{DynamicResource TextBlock}" />
+        <TextBox Text="{Binding ImagePath}" Grid.Row="12" Grid.Column="4" Text="{Binding }"/>
+        <Button Style="{DynamicResource BrowseButton}" x:Name="Browse" Grid.Row="12" Grid.Column="2" Content="Browse" />-->
 
         <TextBlock Text="Producer" Grid.Row="7" Grid.Column="4" Style="{DynamicResource TextBlock}" />
         <ComboBox x:Name="MovieProducer" Grid.Row="8" Grid.Column="4" Style="{DynamicResource ComboBox}"
-                  ItemsSource="{Binding Movies}">
+                  ItemsSource="{Binding Producers}"
+                  SelectedValue="{Binding ProducerId, Mode=TwoWay}"
+                  SelectedValuePath="Tag">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Producer.Name}" />
+                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}" Tag="{Binding Id}" />
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
 
         <TextBlock Text="Studio" Grid.Row="9" Grid.Column="4" Style="{DynamicResource TextBlock}" />
         <ComboBox x:Name="MovieStudio" Grid.Row="10" Grid.Column="4" Style="{DynamicResource ComboBox}"
-                  ItemsSource="{Binding Movies}">
+                  ItemsSource="{Binding Studios}"
+                  SelectedValue="{Binding StudioId, Mode=TwoWay}"
+                  SelectedValuePath="Tag">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Studio.Name}" />
+                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}" Tag="{Binding Id}" />
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <TextBlock Text="IMDB Link" Grid.Row="11" Grid.Column="4" Style="{DynamicResource TextBlock}" />
-        <TextBox x:Name="MovieIMDBLink" Grid.Row="12" Grid.Column="4" Grid.ColumnSpan="2" />
+        <TextBlock Text="IMDB Link" Grid.Row="11" Grid.Column="1" Style="{DynamicResource TextBlock}" />
+        <TextBox x:Name="MovieIMDBLink" Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding IMDBLink}"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="14" Grid.Column="1">
             <Button Style="{DynamicResource GreenButton}" Content="Save" HorizontalAlignment="Left" Command="{Binding SaveMovieCommand}"/>

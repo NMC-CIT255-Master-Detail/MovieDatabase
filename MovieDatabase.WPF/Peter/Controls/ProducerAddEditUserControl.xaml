@@ -28,15 +28,15 @@
         <TextBlock Text="Producer" Style="{DynamicResource Header1}" HorizontalAlignment="Center" Grid.ColumnSpan="5" />
 
         <TextBlock Style="{DynamicResource TextBlock}" Text="Name" Grid.Row="1" Grid.Column="1" />
-        <TextBox Text="{Binding Producer.Name}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" />
+        <TextBox Text="{Binding Name}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
 
         <TextBlock Style="{DynamicResource TextBlock}" Text="Date Of Birth" Grid.Row="3" Grid.Column="1" />
         <DatePicker Style="{DynamicResource DatePicker}" CalendarStyle="{DynamicResource ResizedCalendarItem}"
-                    Grid.Row="4" Grid.Column="1" />
+                    Grid.Row="4" Grid.Column="1" SelectedDate="{Binding DOB, Mode=TwoWay}"/>
 
         <TextBlock Style="{DynamicResource TextBlock}" Text="Biography" Grid.Row="5" Grid.Column="1" />
-        <TextBox Text="{Binding Producer.Name}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Height="200"
-                 MaxHeight="200" />
+        <TextBox Text="{Binding Biography}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Height="200"
+                 MaxHeight="200"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="14" Grid.Column="1">
             <Button Style="{DynamicResource GreenButton}" Content="Save" HorizontalAlignment="Left" Command="{Binding SaveButtonCommand}"/>
