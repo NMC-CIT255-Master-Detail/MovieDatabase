@@ -16,16 +16,20 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         #region Fields
 
-        private Movie _selectedMovie;
-        private string _searchString;
         private ObservableCollection<Movie> _movies;
+
+        private Movie _selectedMovie;
         private Movie _selectedProducer;
         private Movie _selectedStudio;
+
+        private string _searchString;
         private string _minRuntimeText;
         private string _maxRuntimeText;
         private string _errorMessage;
 
         public event EventHandler CanExecuteChanged;
+
+
 
         #endregion
 
@@ -47,8 +51,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         #endregion
 
         #region Properties
-
-
 
         public ObservableCollection<Movie> Movies
         {
@@ -222,10 +224,14 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         public void EditMovie(object param)
         {
+            
+
         }
 
         public void DeleteMovie(object param)
         {
+
+
         }
 
         public bool CanExecute(object parameter)

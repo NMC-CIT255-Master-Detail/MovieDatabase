@@ -23,10 +23,12 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         #region Fields
 
         private ObservableCollection<Movie> _movies;
+
         private Movie _selectedMovie;
-        private string _searchString;        
         private Movie _selectedProducer;
         private Movie _selectedStudio;
+
+        private string _searchString;
         private string _minRuntimeText;
         private string _maxRuntimeText;
         private string _errorMessage;
@@ -117,6 +119,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
 
 
+
         #endregion
 
         #region Methods
@@ -175,6 +178,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
                 Movies = new ObservableCollection<Movie>(_movies.Where(r => r.Runtime >= minRuntime && r.Runtime <= maxRuntime));
             }
         }
+
         public void SortBy(object param)
         {
             string sortBy = param.ToString();
@@ -203,6 +207,26 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             Movies = _movies;
         }
 
+        public void DeleteMovie(object param)
+        {
+
+            //_movies.Remove(_selectedMovie);
+
+            //SelectedMovie = _movies[0];              
+
+        }
+
+        public void AddMovie(object param)
+        {
+
+
+        }
+
+        public void EditMovie(object param)
+        {
+
+
+        }
 
 
 
@@ -210,18 +234,19 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
         #region ICommands
 
+        //Search Buttons
         public ICommand ButtonSearchByMovieCommand => new RelayCommand(SearchByMovie);
         public ICommand ButtonSearchByProducerCommand => new RelayCommand(SearchByProducer);
-
         public ICommand ButtonSearchByStudioCommand => new RelayCommand(SearchByStudio);
         public ICommand ButtonFilterByRuntimeCommand => new RelayCommand(FilterByRuntime);
-
         public ICommand ButtonSortByCommand => new RelayCommand(new Action<object>(SortBy));
-
         public ICommand ButtonResetFormCommand => new RelayCommand(ResetForm);
 
+        // Edit, Delete, and Add buttons
         public ICommand ButtonEditMovieCommand { get; set; }
         public ICommand ButtonDeleteMovieCommand { get; set; }
+
+
 
         #endregion
     }
