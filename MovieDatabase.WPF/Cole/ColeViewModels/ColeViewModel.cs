@@ -45,8 +45,6 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
         #region Properties
 
-
-
         public ObservableCollection<Movie> Movies
         {
             get => _movies;
@@ -256,7 +254,6 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
 
         #endregion
-
 
     }
 }
