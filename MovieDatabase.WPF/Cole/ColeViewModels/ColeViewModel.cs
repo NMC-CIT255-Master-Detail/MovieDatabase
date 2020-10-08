@@ -1,8 +1,10 @@
-﻿using MovieDatabase.Domain.Models;
+﻿using MovieDatabase.Domain;
+using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Seed_Data;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 {
@@ -22,10 +24,12 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
         private ObservableCollection<Movie> _movies;
         private Movie _selectedMovie;
-        private object _searchString;
+        private string _searchString;        
+        private Movie _selectedProducer;
+        private Movie _selectedStudio;
+        private string _minRuntimeText;
+        private string _maxRuntimeText;
         private string _errorMessage;
-        private object _selectedProducer;
-        private object _selectedStudio;
 
         #endregion
 
@@ -127,7 +131,6 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             {
                 _errorMessage = "Sorry, you must type a movie name to search by";
             }
-
         }
 
         public void SearchByProducer()
@@ -150,9 +153,8 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             {
                 _errorMessage = "Sorry, you must select a Producer to search by";
             }
-
-
         }
+
         public void SearchByStudio()
         {
             if (_selectedStudio != null)
@@ -163,8 +165,8 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             {
                 _errorMessage = "Sorry, you must select a Studio to search by";
             }
-
         }
+
         public void FilterByRuntime()
         {
 
@@ -202,9 +204,24 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         }
 
 
+
+
         #endregion
 
         #region ICommands
+
+        public ICommand ButtonSearchByMovieCommand => new RelayCommand(SearchByMovie);
+        public ICommand ButtonSearchByProducerCommand => new RelayCommand(SearchByProducer);
+
+        public ICommand ButtonSearchByStudioCommand => new RelayCommand(SearchByStudio);
+        public ICommand ButtonFilterByRuntimeCommand => new RelayCommand(FilterByRuntime);
+
+        public ICommand ButtonSortByCommand => new RelayCommand(new Action<object>(SortBy));
+
+        public ICommand ButtonResetFormCommand => new RelayCommand(ResetForm);
+
+        public ICommand ButtonEditMovieCommand { get; set; }
+        public ICommand ButtonDeleteMovieCommand { get; set; }
 
         #endregion
     }

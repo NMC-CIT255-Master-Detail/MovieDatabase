@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local1="clr-namespace:MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel"
         mc:Ignorable="d"
-        Title="ColeWindow" Height="700" Width="900" Background="LightBlue">
+        Title="ColeWindow" Height="730" Width="900" Background="LightBlue">
     <Window.DataContext>
         <local1:ColeViewModel/>
     </Window.DataContext>
@@ -128,9 +128,9 @@
                             </StackPanel>
 
                             <Label Content="Filter by Run-Time" FontSize="16" DockPanel.Dock="Top"/>
-                            <TextBox Width="50" FontSize="22" HorizontalAlignment="Left" DockPanel.Dock="Left" Margin="0 0 10 0" Text="{Binding MinRuntimeText}"/>
-                            <Label Content="and" DockPanel.Dock="Left" Margin="0 0 10 0"/>
-                            <TextBox Width="50" FontSize="22" HorizontalAlignment="Left" DockPanel.Dock="Left" Text="{Binding MaxRuntimeText}"/>
+                            <TextBox Width="75" FontSize="22" DockPanel.Dock="Left" Margin="0 0 10 0" Text="{Binding MinRuntimeText}"/>
+                            <Label Content="And" DockPanel.Dock="Left" Margin="0 0 10 0" Width="50" FontSize="16"/>
+                            <TextBox Width="70" FontSize="22" DockPanel.Dock="Left" Text="{Binding MaxRuntimeText}"/>
                         </DockPanel>
 
                         <DockPanel Grid.Row="1" Width="94" VerticalAlignment="Top" Height="318" Margin="0 0 0 0">
@@ -148,7 +148,7 @@
 
                 <ListView HorizontalContentAlignment="Stretch" 
                           ItemsSource="{Binding Movies}" 
-                          SelectedItem="{Binding SelectedMovie}" Height="278">
+                          SelectedItem="{Binding SelectedMovie}" Height="303">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Width="348" Height="105">
