@@ -2,7 +2,7 @@
 
 namespace MovieDatabase.Domain
 {
-    public abstract class ObservableObject : INotifyPropertyChanged
+    public abstract class ObservableCollection : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

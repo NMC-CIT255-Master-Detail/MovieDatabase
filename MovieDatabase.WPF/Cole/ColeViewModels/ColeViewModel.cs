@@ -1,5 +1,6 @@
 ﻿using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Seed_Data;
+using MovieDatabase.EntityFramework.Services;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -8,7 +9,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
     public class ColeViewModel : BaseViewModel
     {
         #region Constructor
-
+        private MovieRepository _movieRepo;
         public ColeViewModel()
         {
             Movies = new ObservableCollection<Movie>(SeedData.GetAllMovies());

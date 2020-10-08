@@ -1,27 +1,29 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using Microsoft.EntityFrameworkCore;
 using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.ObjectModel;
+using System.Text;
 
 namespace MovieDatabase.EntityFramework.Services
 {
-    public class GenericDataService<T> : IDataService<T> where T : DomainObject
+    public class MovieRepository : IDataService<Movie>
     {
+
         private readonly MovieDatabaseDbContextFactory _contextFactory;
 
-        public GenericDataService(MovieDatabaseDbContextFactory contextFactory)
+        public MovieRepository(MovieDatabaseDbContextFactory contextFactory)
         {
             _contextFactory = contextFactory;
         }
 
-        public T Create(T entity)
+
+        public Movie Create(Movie entity)
         {
             using (var context = _contextFactory.CreateDbContext())
             {
-                var result = context.Set<T>().Add(entity);
+                var result = context.Set<Movie>().Add(entity);
                 context.SaveChanges();
                 return result.Entity;
             }
@@ -31,38 +33,39 @@ namespace MovieDatabase.EntityFramework.Services
         {
             using (var context = _contextFactory.CreateDbContext())
             {
-                var entity = context.Set<T>().FirstOrDefault((e) => e.Id == id);
-                context.Set<T>().Remove(entity);
+                var entity = context.Set<Movie>().FirstOrDefault((e) => e.Id == id);
+                context.Set<Movie>().Remove(entity);
                 context.SaveChanges();
+
             }
 
             return true;
         }
 
-        public T Get(int id)
+        public Movie Get(int id)
         {
             using (var context = _contextFactory.CreateDbContext())
             {
-                var entity = context.Set<T>().FirstOrDefault((e) => e.Id == id);
+                var entity = context.Set<Movie>().FirstOrDefault((e) => e.Id == id);
                 return entity;
             }
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<Movie> GetAll()
         {
             using (var context = _contextFactory.CreateDbContext())
             {
-                IEnumerable<T> entities = context.Set<T>().ToList();
+                IEnumerable<Movie> entities = context.Movies.Include(m => m.Producer).Include(m => m.Studio).ToList();
                 return entities;
             }
         }
 
-        public T Update(int id, T entity)
+        public Movie Update(int id, Movie entity)
         {
             using (var context = _contextFactory.CreateDbContext())
             {
                 entity.Id = id;
-                context.Set<T>().Update(entity);
+                context.Set<Movie>().Update(entity);
                 context.SaveChanges();
                 return entity;
             }

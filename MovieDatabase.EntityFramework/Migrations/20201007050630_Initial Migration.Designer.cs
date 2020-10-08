@@ -9,19 +9,19 @@ using MovieDatabase.EntityFramework;
 namespace MovieDatabase.EntityFramework.Migrations
 {
     [DbContext(typeof(MovieDatabaseDBContext))]
-    [Migration("20200905040828_initial")]
-    partial class initial
+    [Migration("20201007050630_Initial Migration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.7")
+                .HasAnnotation("ProductVersion", "3.1.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("MovieDatabase.Domain.Models.Movie", b =>
                 {
-                    b.Property<int>("MovieID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -34,7 +34,7 @@ namespace MovieDatabase.EntityFramework.Migrations
                     b.Property<byte[]>("Image")
                         .HasColumnType("varbinary(4000)");
 
-                    b.Property<int?>("ProducerID")
+                    b.Property<int?>("ProducerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ReleaseDate")
@@ -43,24 +43,24 @@ namespace MovieDatabase.EntityFramework.Migrations
                     b.Property<int>("Runtime")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StudioID")
+                    b.Property<int?>("StudioId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
-                    b.HasKey("MovieID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ProducerID");
+                    b.HasIndex("ProducerId");
 
-                    b.HasIndex("StudioID");
+                    b.HasIndex("StudioId");
 
                     b.ToTable("Movies");
                 });
 
             modelBuilder.Entity("MovieDatabase.Domain.Models.Producer", b =>
                 {
-                    b.Property<int>("ProducerID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -73,14 +73,14 @@ namespace MovieDatabase.EntityFramework.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.HasKey("ProducerID");
+                    b.HasKey("Id");
 
                     b.ToTable("Producers");
                 });
 
             modelBuilder.Entity("MovieDatabase.Domain.Models.Studio", b =>
                 {
-                    b.Property<int>("StudioID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -111,7 +111,7 @@ namespace MovieDatabase.EntityFramework.Migrations
                     b.Property<int>("Zipcode")
                         .HasColumnType("int");
 
-                    b.HasKey("StudioID");
+                    b.HasKey("Id");
 
                     b.ToTable("Studios");
                 });
@@ -120,11 +120,11 @@ namespace MovieDatabase.EntityFramework.Migrations
                 {
                     b.HasOne("MovieDatabase.Domain.Models.Producer", "Producer")
                         .WithMany()
-                        .HasForeignKey("ProducerID");
+                        .HasForeignKey("ProducerId");
 
                     b.HasOne("MovieDatabase.Domain.Models.Studio", "Studio")
                         .WithMany()
-                        .HasForeignKey("StudioID");
+                        .HasForeignKey("StudioId");
                 });
 #pragma warning restore 612, 618
         }

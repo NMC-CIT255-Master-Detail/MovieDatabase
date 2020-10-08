@@ -13,6 +13,7 @@
     <None Remove="Peter\Resources\Images\add.png" />
     <None Remove="Peter\Resources\Images\copy.png" />
     <None Remove="Peter\Resources\Images\cut.png" />
+    <None Remove="Peter\Resources\Images\default.jpg" />
     <None Remove="Peter\Resources\Images\Folder-TV-Disney-icon.png" />
     <None Remove="Peter\Resources\Images\format_painter.png" />
     <None Remove="Peter\Resources\Images\go-next.png" />
@@ -34,6 +35,9 @@
 
   <ItemGroup>
     <Resource Include="Peter\Resources\Images\about.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Peter\Resources\Images\default.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Peter\Resources\Images\Folder-TV-Disney-icon.png">

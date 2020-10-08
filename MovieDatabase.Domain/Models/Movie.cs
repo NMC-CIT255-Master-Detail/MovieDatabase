@@ -8,7 +8,6 @@ namespace MovieDatabase.Domain.Models
         public int _runTime;
         public string _description;
         public string _imdbLink;
-        public byte[] _image;
 
         public string Title { get; set; }
 
@@ -49,16 +48,6 @@ namespace MovieDatabase.Domain.Models
             {
                 _imdbLink = value;
                 OnPropertyChanged(nameof(IMDBLink));
-            }
-        }
-
-        public byte[] Image
-        {
-            get => _image;
-            set
-            {
-                _image = value;
-                OnPropertyChanged(nameof(Image));
             }
         }
 

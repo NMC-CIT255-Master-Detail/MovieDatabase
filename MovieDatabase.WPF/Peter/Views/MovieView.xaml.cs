@@ -1,5 +1,6 @@
 ﻿using MovieDatabase.Domain.Models;
 using MovieDatabase.WPF.Peter.ViewModels;
+using MovieDatabase.WPF.Peter.ViewModels.ViewModelFactories;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,8 +14,6 @@ namespace MovieDatabase.WPF.Peter.Views
     {
         public MovieView()
         {
-            //var movieViewModel = new MovieViewModel(movies);
-            //DataContext = movieViewModel;
             InitializeComponent();
         }
     }

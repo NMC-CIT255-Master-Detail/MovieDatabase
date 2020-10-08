@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MovieDatabase.EntityFramework;
 
 namespace MovieDatabase.EntityFramework.Migrations
 {
     [DbContext(typeof(MovieDatabaseDBContext))]
-    partial class MovieDatabaseDBContextModelSnapshot : ModelSnapshot
+    [Migration("20201007051626_Updated Studio Model")]
+    partial class UpdatedStudioModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,6 +30,9 @@ namespace MovieDatabase.EntityFramework.Migrations
 
                     b.Property<string>("IMDBLink")
                         .HasColumnType("text");
+
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(4000)");
 
                     b.Property<int?>("ProducerId")
                         .HasColumnType("int");

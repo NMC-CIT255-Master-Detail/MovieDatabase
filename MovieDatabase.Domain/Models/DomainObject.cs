@@ -1,6 +1,6 @@
 ﻿namespace MovieDatabase.Domain.Models
 {
-    public class DomainObject : ObservableObject
+    public class DomainObject : ObservableCollection
     {
         public int Id { get; set; }
     }
