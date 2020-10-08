@@ -5,6 +5,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
+using MovieDatabase.EntityFramework.Services;
+
 
 namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 {
@@ -12,10 +14,13 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
     {
         #region Constructor
 
+        private MovieRepository _movieRepo;
+
         public ColeViewModel()
         {
             Movies = new ObservableCollection<Movie>(SeedData.GetAllMovies());
             if (Movies.Any()) SelectedMovie = Movies[0];
+
         }
 
         #endregion
@@ -33,9 +38,14 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         private string _maxRuntimeText;
         private string _errorMessage;
 
+       
+
+
         #endregion
 
         #region Properties
+
+
 
         public ObservableCollection<Movie> Movies
         {
@@ -154,7 +164,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             }
             else
             {
-                _errorMessage = "Sorry, you must select a Producer to search by";
+                _errorMessage = "Sorry, select a Producer to search by";
             }
         }
 
@@ -166,7 +176,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             }
             else
             {
-                _errorMessage = "Sorry, you must select a Studio to search by";
+                _errorMessage = "Sorry, select a Studio to search by";
             }
         }
 
@@ -209,10 +219,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
         public void DeleteMovie(object param)
         {
-
-            //_movies.Remove(_selectedMovie);
-
-            //SelectedMovie = _movies[0];              
+                         
 
         }
 
@@ -249,5 +256,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
 
         #endregion
+
+
     }
 }

@@ -229,22 +229,8 @@
                     <ScrollViewer Grid.Row="4" VerticalScrollBarVisibility="auto" Margin="0,0,10,0">
                         <TextBox IsReadOnly="True" TextWrapping="Wrap" Text="{Binding SelectedMovie.Description}" Height="219" Width="394" />
                     </ScrollViewer>
-                </Grid>
-                <!--Todo Buttons for add, save and edit-->
-                <!--<StackPanel
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right" Height="57">
-                    <Button
-                        x:Name="Button_Save"
-                        Content="Save"
-                        Style="{StaticResource ButtonStyleLarge}"
-                        Command="{Binding Path=SaveMovieCommand}" />
-                    <Button
-                        x:Name="Button_Cancel"
-                        Content="Cancel"
-                        Style="{StaticResource ButtonStyleLarge}"
-                        Command="{Binding Path=CancelMovieCommand}" />
-                </StackPanel>-->
+                </Grid>                
+                <!--Todo Buttons for add, delete and edit-->
                 <StackPanel
                     Orientation="Horizontal" Height="57">
                     <!--todo binding to data and adding Windows -->
