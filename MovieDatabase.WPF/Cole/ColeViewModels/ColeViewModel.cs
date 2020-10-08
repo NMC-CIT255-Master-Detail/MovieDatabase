@@ -5,6 +5,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
+using MovieDatabase.EntityFramework.Services;
+
 
 namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 {
@@ -12,10 +14,13 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
     {
         #region Constructor
 
+        private MovieRepository _movieRepo;
+
         public ColeViewModel()
         {
             Movies = new ObservableCollection<Movie>(SeedData.GetAllMovies());
             if (Movies.Any()) SelectedMovie = Movies[0];
+
         }
 
         #endregion
@@ -23,17 +28,24 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         #region Fields
 
         private ObservableCollection<Movie> _movies;
+
         private Movie _selectedMovie;
-        private string _searchString;
         private Movie _selectedProducer;
         private Movie _selectedStudio;
+
+        private string _searchString;
         private string _minRuntimeText;
         private string _maxRuntimeText;
         private string _errorMessage;
 
+
+
+
         #endregion
 
         #region Properties
+
+
 
         public ObservableCollection<Movie> Movies
         {
@@ -51,10 +63,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             set
             {
                 _selectedMovie = value;
-                if (_selectedMovie != null)
-                {
-                    OnPropertyChanged(nameof(SelectedMovie));
-                }
+                if (_selectedMovie != null) OnPropertyChanged(nameof(SelectedMovie));
             }
         }
 
@@ -117,6 +126,10 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
                 OnPropertyChanged(nameof(ErrorMessage));
             }
         }
+
+
+
+
         #endregion
 
         #region Methods
@@ -129,7 +142,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             }
             else
             {
-                _errorMessage = "Sorry,enter a title of the movie to search";
+                _errorMessage = "Sorry, you must type a movie name to search by";
             }
         }
 
@@ -151,7 +164,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             }
             else
             {
-                _errorMessage = "Sorry, you must select a Producer to search by";
+                _errorMessage = "Sorry, select a Producer to search by";
             }
         }
 
@@ -163,7 +176,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             }
             else
             {
-                _errorMessage = "Sorry, you must select a Studio to search by";
+                _errorMessage = "Sorry, select a Studio to search by";
             }
         }
 
@@ -204,6 +217,11 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             Movies = _movies;
         }
 
+        public void DeleteMovie(object param)
+        {
+
+        }
+
 
         #endregion
 
@@ -223,26 +241,40 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         }
         public ICommand ButtonFilterByRuntimeCommand
         {
-            get => new RelayCommand(FilterByRuntime);
+
+
         }
-        public ICommand ButtonSortByCommand
+
+        public void AddMovie(object param)
         {
-            get => new RelayCommand(new Action<object>(SortBy));
+
+
         }
 
-        public ICommand ButtonResetFormCommand
+        public void EditMovie(object param)
         {
-            get => new RelayCommand(ResetForm);
+
+
         }
 
 
+
+        #endregion
+
+        #region ICommands
+
+        //Search Buttons
+        public ICommand ButtonSearchByMovieCommand => new RelayCommand(SearchByMovie);
+        public ICommand ButtonSearchByProducerCommand => new RelayCommand(SearchByProducer);
+        public ICommand ButtonSearchByStudioCommand => new RelayCommand(SearchByStudio);
+        public ICommand ButtonFilterByRuntimeCommand => new RelayCommand(FilterByRuntime);
+        public ICommand ButtonSortByCommand => new RelayCommand(new Action<object>(SortBy));
+        public ICommand ButtonResetFormCommand => new RelayCommand(ResetForm);
+
+        // Edit, Delete, and Add buttons
         public ICommand ButtonEditMovieCommand { get; set; }
         public ICommand ButtonDeleteMovieCommand { get; set; }
 
-        //public ICommand ButtonQuitCommand
-        //{
-        //    get => new RelayCommand(QuitApp);
-        //}
 
 
         #endregion
