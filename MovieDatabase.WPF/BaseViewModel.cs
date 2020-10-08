@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace MovieDatabase.WPF
 {
-    public class BaseViewModel : ObservableObject
+    public class BaseViewModel : ObservableCollection
     {
 
     }

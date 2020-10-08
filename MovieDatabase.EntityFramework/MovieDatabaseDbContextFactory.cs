@@ -9,13 +9,8 @@ namespace MovieDatabase.EntityFramework
         public MovieDatabaseDBContext CreateDbContext(string[] args = null)
         {
             var options = new DbContextOptionsBuilder<MovieDatabaseDBContext>();
-            
-            var password = ConfigurationManager.AppSettings.Get("DBConnectionPassword");
-            var server = ConfigurationManager.AppSettings.Get("Server");
-            var dbName = ConfigurationManager.AppSettings.Get("DBName");
-            var dbUser = ConfigurationManager.AppSettings.Get("DBUser");
 
-            options.UseMySQL($"server={server};database={dbName};user={dbUser};password={password}");
+            options.UseMySQL("server=sharedcloud1.squidix.net;database=pbswebde_movies;user=pbswebde_movie_user;password=1!2@3#4$5%6^7&8*9(");
 
             return new MovieDatabaseDBContext(options.Options);
         }

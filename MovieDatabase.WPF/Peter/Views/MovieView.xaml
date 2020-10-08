@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:uc="clr-namespace:MovieDatabase.WPF.Peter.Controls"
-        xmlns:local="clr-namespace:MovieDatabase.WPF.Peter.Views"
         mc:Ignorable="d"
         Height="1080" Width="1920">
 
@@ -27,6 +26,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        
         <uc:MovieAddEditUserControl Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Grid.RowSpan="2" />
     </Grid>
 </UserControl>

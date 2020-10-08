@@ -39,7 +39,7 @@
                  MaxHeight="200" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="14" Grid.Column="1">
-            <Button Style="{DynamicResource GreenButton}" Content="Save" HorizontalAlignment="Left" />
+            <Button Style="{DynamicResource GreenButton}" Content="Save" HorizontalAlignment="Left" Command="{Binding SaveButtonCommand}"/>
             <Button Style="{DynamicResource PurpleButton}" Content="Reset" HorizontalAlignment="Left" />
         </StackPanel>
 

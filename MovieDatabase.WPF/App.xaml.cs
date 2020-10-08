@@ -10,6 +10,7 @@ using System;
 using Microsoft.Extensions.DependencyInjection;
 using MovieDatabase.EntityFramework;
 using MovieDatabase.WPF.Peter.ViewModels.ViewModelFactories;
+using MovieDatabase.WPF.Peter.Views;
 
 namespace MovieDatabase.WPF
 {
@@ -22,7 +23,9 @@ namespace MovieDatabase.WPF
         {
 
             IServiceProvider serviceProvider = CreateServiceProvider();
-
+            IDataService<Movie> movieRepository = serviceProvider.GetService<IDataService<Movie>>();
+            IDataService<Studio> studioRepository = serviceProvider.GetService<IDataService<Studio>>();
+            IDataService<Producer> producerRepository = serviceProvider.GetService<IDataService<Producer>>();
 
             Window main = serviceProvider.GetRequiredService<MainWindow>();
             main.Show();
@@ -34,7 +37,7 @@ namespace MovieDatabase.WPF
             IServiceCollection services = new ServiceCollection();
 
             services.AddSingleton<MovieDatabaseDbContextFactory>();
-            services.AddSingleton<IDataService<Movie>, GenericDataService<Movie>>();
+            services.AddSingleton<IDataService<Movie>, MovieRepository>();
             services.AddSingleton<IDataService<Producer>, GenericDataService<Producer>>();
             services.AddSingleton<IDataService<Studio>, GenericDataService<Studio>>();
 

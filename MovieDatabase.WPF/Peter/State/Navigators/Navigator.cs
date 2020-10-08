@@ -8,7 +8,7 @@ using MovieDatabase.WPF.Peter.ViewModels.ViewModelFactories;
 
 namespace MovieDatabase.WPF.Peter.State.Navigator
 {
-    public class Navigator : ObservableObject, INavigator
+    public class Navigator : ObservableCollection, INavigator
     {
         private BaseViewModel _currentViewModel;
 

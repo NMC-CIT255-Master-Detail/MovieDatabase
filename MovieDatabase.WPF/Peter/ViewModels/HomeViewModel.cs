@@ -12,19 +12,26 @@ using System.Windows.Input;
 
 namespace MovieDatabase.WPF.Peter.ViewModels
 {
-    public class HomeViewModel : BaseViewModel, ICommand
+    public class HomeViewModel : BaseViewModel
     {
+
+
 
         #region Fields
 
         private Movie _selectedMovie;
         private string _searchString;
         private ObservableCollection<Movie> _movies;
-        private Movie _selectedProducer;
-        private Movie _selectedStudio;
+        private ObservableCollection<Producer> _producers;
+        private ObservableCollection<Studio> _studios;
+        private Producer _selectedProducer;
+        private Studio _selectedStudio;
         private string _minRuntimeText;
         private string _maxRuntimeText;
         private string _errorMessage;
+        IDataService<Producer> _producerSet;
+        IDataService<Studio> _studioSet;
+        IDataService<Movie> _movieSet;
 
         public event EventHandler CanExecuteChanged;
 
@@ -49,9 +56,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         #region Properties
 
-
-        public IDataService<Movie> MovieSet {get;set;}
-
         public ObservableCollection<Movie> Movies
         {
             get => _movies;
@@ -59,6 +63,26 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             {
                 _movies = value;
                 OnPropertyChanged(nameof(Movies));
+            }
+        }
+
+        public ObservableCollection<Producer> Producers
+        {
+            get => _producers;
+            set
+            {
+                _producers = value;
+                OnPropertyChanged(nameof(Producers));
+            }
+        }
+
+        public ObservableCollection<Studio> Studios
+        {
+            get => _studios;
+            set
+            {
+                _studios = value;
+                OnPropertyChanged(nameof(Studios));
             }
         }
 
@@ -82,7 +106,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        public Movie SelectedProducer
+        public Producer SelectedProducer
         {
             get => _selectedProducer;
             set
@@ -92,7 +116,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        public Movie SelectedStudio
+        public Studio SelectedStudio
         {
             get => _selectedStudio;
             set
@@ -132,18 +156,22 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        public IEnumerable<Movie> MovieList { get; set; }
-
-
-
         #endregion
+
 
         #region Constructor
 
-        public HomeViewModel()
+        public HomeViewModel(IDataService<Movie> movieRepo, IDataService<Studio> studioRepo, IDataService<Producer> producerRepo)
         {
-            Movies = new ObservableCollection<Movie>(SeedData.GetAllMovies());
+            _movieSet = movieRepo;
+            _studioSet = studioRepo;
+            _producerSet = producerRepo;
+            Movies = new ObservableCollection<Movie>(_movieSet.GetAll());
+            Studios = new ObservableCollection<Studio>(_studioSet.GetAll());
+            Producers = new ObservableCollection<Producer>(_producerSet.GetAll());
+
             if (Movies.Any()) SelectedMovie = Movies[0];
+            _errorMessage = "";
         }
 
         #endregion
@@ -155,36 +183,35 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             if (_searchString != null)
                 Movies = new ObservableCollection<Movie>(_movies.Where(m =>
                     m.Title.ToLower().Contains(_searchString.ToLower())));
-            else
-                _errorMessage = "Sorry, you must type a movie name to search by";
         }
 
         private void SearchByProducer()
         {
-            _errorMessage = "";
-
             if (_selectedProducer != null)
                 try
                 {
                     Movies = new ObservableCollection<Movie>(_movies.Where(p =>
-                        p.Producer.Name.ToLower().Contains(_selectedProducer.Producer.Name.ToLower().ToString())));
+                        p.Producer.Name.ToLower().Contains(_selectedProducer.Name.ToLower().ToString())));
                 }
                 catch (Exception ex)
                 {
-                    _errorMessage = ex.ToString();
+                    _errorMessage = ex.Message;
                     throw;
                 }
-            else
-                _errorMessage = "Sorry, you must select a Producer to search by";
         }
 
         private void SearchByStudio()
         {
             if (_selectedStudio != null)
-                Movies = new ObservableCollection<Movie>(_movies.Where(s =>
-                    s.Studio.Name.ToLower().Contains(_selectedStudio.Studio.Name.ToLower().ToString())));
-            else
-                _errorMessage = "Sorry, you must select a Studio to search by";
+                try
+                {
+                    Movies = new ObservableCollection<Movie>(_movies.Where(s =>
+                        s.Studio.Name.ToLower().Contains(_selectedStudio.Name.ToLower().ToString())));
+                }
+                catch (Exception ex)
+                {
+                    _errorMessage = ex.Message;
+                }
         }
 
         private void FilterByRuntime()
@@ -200,13 +227,13 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             switch (sortBy)
             {
                 case "Producer":
-                    Movies = new ObservableCollection<Movie>(Movies.OrderBy(p => p.Producer.Name));
+                    Movies = new ObservableCollection<Movie>(_movies.OrderBy(p => p.Producer.Name));
                     break;
                 case "Studio":
-                    Movies = new ObservableCollection<Movie>(Movies.OrderBy(s => s.Studio.Name));
+                    Movies = new ObservableCollection<Movie>(_movies.OrderBy(s => s.Studio.Name));
                     break;
                 case "Year":
-                    Movies = new ObservableCollection<Movie>(Movies.OrderBy(y => y.ReleaseDate.Date));
+                    Movies = new ObservableCollection<Movie>(_movies.OrderBy(y => y.ReleaseDate.Date));
                     break;
                 default:
                     break;
@@ -218,8 +245,9 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             SearchString = "";
             MinRuntimeText = "";
             MaxRuntimeText = "";
-            _movies = new ObservableCollection<Movie>(SeedData.GetAllMovies());
-            Movies = _movies;
+            SelectedProducer = null;
+            SelectedStudio = null;
+            Movies = new ObservableCollection<Movie>((IEnumerable<Movie>)_movieSet.GetAll());
         }
 
         public void EditMovie(object param)

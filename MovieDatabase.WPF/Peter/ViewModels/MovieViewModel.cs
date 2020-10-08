@@ -1,33 +1,40 @@
-﻿using MovieDatabase.Domain.Models;
+﻿using MovieDatabase.Domain;
+using MovieDatabase.Domain.Models;
+using MovieDatabase.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows.Input;
 
 namespace MovieDatabase.WPF.Peter.ViewModels
 {
     public class MovieViewModel : BaseViewModel
     {
-        //private ObservableCollection<Movie> _movies;
+        IDataService<Movie> _movieRepo;
 
-        //public MovieViewModel(ObservableCollection<Movie> movies)
-        //{
-        //    _movies = movies;
-        //}
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public DateTime ReleaseDate { get; set; }
+        public int RunTime { get; set; }
+        public string IMDBLink { get; set; }
+        public int Studio { get; set; }
+        public int Producer { get; set; }
 
-        public MovieViewModel()
+
+        public ICommand SaveMovieCommand => new RelayCommand(SaveMovieToDB);
+
+        public MovieViewModel(IDataService<Movie> movieRepo)
         {
-            
+            _movieRepo = movieRepo;
+            Title = "";
         }
 
-        //public ObservableCollection<Movie> Movies
-        //{
-        //    get => _movies;
-        //    set
-        //    {
-        //        _movies = value;
-        //        OnPropertyChanged(nameof(Movies));
-        //    }
-        //}
+        void SaveMovieToDB()
+        {
+            var title = Title;
+        }
+
+
     }
 }

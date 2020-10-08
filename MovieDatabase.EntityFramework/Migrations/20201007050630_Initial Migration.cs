@@ -1,30 +1,33 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.Data.EntityFrameworkCore.Metadata;
-using System;
 
 namespace MovieDatabase.EntityFramework.Migrations
 {
-    public partial class initial : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                "Producers",
-                table => new
+                name: "Producers",
+                columns: table => new
                 {
-                    ProducerID = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     DOB = table.Column<DateTime>(nullable: false),
                     Biography = table.Column<string>(nullable: true)
                 },
-                constraints: table => { table.PrimaryKey("PK_Producers", x => x.ProducerID); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Producers", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
-                "Studios",
-                table => new
+                name: "Studios",
+                columns: table => new
                 {
-                    StudioID = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -36,13 +39,16 @@ namespace MovieDatabase.EntityFramework.Migrations
                     State = table.Column<string>(nullable: true),
                     Zipcode = table.Column<int>(nullable: false)
                 },
-                constraints: table => { table.PrimaryKey("PK_Studios", x => x.StudioID); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Studios", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
-                "Movies",
-                table => new
+                name: "Movies",
+                columns: table => new
                 {
-                    MovieID = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: true),
                     ReleaseDate = table.Column<DateTime>(nullable: false),
@@ -50,47 +56,47 @@ namespace MovieDatabase.EntityFramework.Migrations
                     Description = table.Column<string>(nullable: true),
                     IMDBLink = table.Column<string>(nullable: true),
                     Image = table.Column<byte[]>(nullable: true),
-                    StudioID = table.Column<int>(nullable: true),
-                    ProducerID = table.Column<int>(nullable: true)
+                    StudioId = table.Column<int>(nullable: true),
+                    ProducerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Movies", x => x.MovieID);
+                    table.PrimaryKey("PK_Movies", x => x.Id);
                     table.ForeignKey(
-                        "FK_Movies_Producers_ProducerID",
-                        x => x.ProducerID,
-                        "Producers",
-                        "ProducerID",
+                        name: "FK_Movies_Producers_ProducerId",
+                        column: x => x.ProducerId,
+                        principalTable: "Producers",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        "FK_Movies_Studios_StudioID",
-                        x => x.StudioID,
-                        "Studios",
-                        "StudioID",
+                        name: "FK_Movies_Studios_StudioId",
+                        column: x => x.StudioId,
+                        principalTable: "Studios",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                "IX_Movies_ProducerID",
-                "Movies",
-                "ProducerID");
+                name: "IX_Movies_ProducerId",
+                table: "Movies",
+                column: "ProducerId");
 
             migrationBuilder.CreateIndex(
-                "IX_Movies_StudioID",
-                "Movies",
-                "StudioID");
+                name: "IX_Movies_StudioId",
+                table: "Movies",
+                column: "StudioId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                "Movies");
+                name: "Movies");
 
             migrationBuilder.DropTable(
-                "Producers");
+                name: "Producers");
 
             migrationBuilder.DropTable(
-                "Studios");
+                name: "Studios");
         }
     }
 }

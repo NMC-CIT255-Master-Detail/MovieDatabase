@@ -41,7 +41,7 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
-                        <Image Source="/Peter/Resources/Images/about.png" Grid.RowSpan="6" HorizontalAlignment="Left"
+                        <Image Source="/Peter/Resources/Images/default.jpg" Height="150" Width="120" Grid.RowSpan="6" HorizontalAlignment="Left"
                                Margin="0 0 20 0" />
 
                         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
