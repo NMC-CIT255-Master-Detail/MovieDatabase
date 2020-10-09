@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Windows.Input;
 using MovieDatabase.Domain;
+using MovieDatabase.Domain.Models;
+using MovieDatabase.Domain.Services;
 using MovieDatabase.WPF.Peter.Commands;
 using MovieDatabase.WPF.Peter.ViewModels;
 using MovieDatabase.WPF.Peter.ViewModels.ViewModelFactories;

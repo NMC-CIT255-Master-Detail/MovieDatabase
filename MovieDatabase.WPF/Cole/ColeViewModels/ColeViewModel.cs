@@ -3,16 +3,20 @@ using MovieDatabase.Domain.Seed_Data;
 using MovieDatabase.EntityFramework.Services;
 using System.Collections.ObjectModel;
 using System.Linq;
+using MovieDatabase.Domain.Services;
+using MovieDatabase.EntityFramework;
 
 namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 {
     public class ColeViewModel : BaseViewModel
     {
         #region Constructor
-        private MovieRepository _movieRepo;
+        private readonly IDataService<Movie> _movieRepo;
+        private MovieDatabaseDBContext _context;
         public ColeViewModel()
         {
-            Movies = new ObservableCollection<Movie>(SeedData.GetAllMovies());
+            _movieRepo = new MovieRepository(new MovieDatabaseDbContextFactory());
+            Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
             if (Movies.Any()) SelectedMovie = Movies[0];
         }
 
