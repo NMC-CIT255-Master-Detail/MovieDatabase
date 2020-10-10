@@ -18,7 +18,7 @@ namespace MovieDatabase.WPF.Peter.Controls
         {
             var psi = new ProcessStartInfo
             {
-                FileName = e.Uri.ToString(), //Shocked as hell I figured that out so fast lol
+                FileName = e.Uri.ToString(), 
                 UseShellExecute = true
             };
             Process.Start(psi);

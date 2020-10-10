@@ -177,14 +177,20 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             
             if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
-                MessageBox.Show("Action is Edit");
+                Title = _selectedMovie.Title;
+                Description = _selectedMovie.Description;
+                ReleaseDate = _selectedMovie.ReleaseDate;
+                RunTime = _selectedMovie.Runtime;
+                SelectedProducer = _selectedMovie.Producer;
+                SelectedStudio = _selectedMovie.Studio;
+                IMDBLink = _selectedMovie.IMDBLink;
             }
 
         }
 
         void SaveMovieToDB()
         {
-            if (Title != "")
+            if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
                 Movie newMovieToAdd = new Movie();
                 newMovieToAdd.Title = _title;
@@ -194,13 +200,35 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 newMovieToAdd.IMDBLink = _imdbLink;
                 newMovieToAdd.ProducerId = _selectedProducer.Id;
                 newMovieToAdd.StudioId = _selectedStudio.Id;
-                SaveMovieToDB(newMovieToAdd);
+                UpdateMovieToDB(newMovieToAdd);
             } else
             {
-                _message = "Looks like some fields are not filled in!";
-                MessageBox.Show(_message);
+                if (Title != "")
+                {
+                    Movie movieToEdit = new Movie();
+                    movieToEdit.Title = _title;
+                    movieToEdit.Description = _description;
+                    movieToEdit.ReleaseDate = (DateTime)_releaseDate;
+                    movieToEdit.Runtime = (int)_runtime;
+                    movieToEdit.IMDBLink = _imdbLink;
+                    movieToEdit.ProducerId = _selectedProducer.Id;
+                    movieToEdit.StudioId = _selectedStudio.Id;
+                    SaveMovieToDB(movieToEdit);
+                }
+                else
+                {
+                    _message = "Looks like some fields are not filled in!";
+                    MessageBox.Show(_message);
+                }
             }
-            
+        }
+
+        private void UpdateMovieToDB(Movie movieToEdit)
+        {
+            if (movieToEdit != null)
+            {
+                _movieRepo.Update(_selectedMovie.Id, movieToEdit);
+            }
         }
 
         private void SaveMovieToDB(Movie newMovieToAdd)

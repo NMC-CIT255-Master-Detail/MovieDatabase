@@ -60,9 +60,9 @@
 
         <TextBlock Text="Producer" Grid.Row="7" Grid.Column="4" Style="{DynamicResource TextBlock}" />
         <ComboBox Grid.Row="8" Grid.Column="4" Style="{DynamicResource ComboBox}"
-                  DisplayMemberPath="{Binding Name}"
                   ItemsSource="{Binding Producers}"
-                  SelectedItem="{Binding SelectedProducer}">
+                  SelectedItem="{Binding SelectedProducer}"
+                  IsSynchronizedWithCurrentItem="True">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}"/>
@@ -73,7 +73,8 @@
         <TextBlock Text="Studio" Grid.Row="9" Grid.Column="4" Style="{DynamicResource TextBlock}" />
         <ComboBox x:Name="MovieStudio" Grid.Row="10" Grid.Column="4" Style="{DynamicResource ComboBox}"
                   ItemsSource="{Binding Studios}"
-                  SelectedItem="{Binding SelectedStudio}">
+                  SelectedItem="{Binding SelectedStudio}"
+                  IsSynchronizedWithCurrentItem="True">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}"/>

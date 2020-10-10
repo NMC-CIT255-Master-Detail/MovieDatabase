@@ -67,8 +67,9 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         public ICommand ButtonResetFormCommand => new RelayCommand(ResetForm);
 
-        public ICommand ButtonEditMovieCommand { get; set; }
         public ICommand DeleteMovieCommand => new RelayCommand(DeleteMovie);
+
+        public ICommand EditMovieCommand => new RelayCommand(EditMovie);
 
         #endregion
 
@@ -281,10 +282,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             SelectedProducer = null;
             SelectedStudio = null;
             Movies = new ObservableCollection<Movie>((IEnumerable<Movie>)_movieSet.GetAll());
-        }
-
-        public void EditMovie(object param)
-        {
         }
 
         private void DeleteMovie()

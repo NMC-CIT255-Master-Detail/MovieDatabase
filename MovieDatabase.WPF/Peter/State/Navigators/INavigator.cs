@@ -21,7 +21,6 @@ namespace MovieDatabase.WPF.Peter.State.Navigator
     public interface INavigator
     {
         BaseViewModel CurrentViewModel { get; set; }
-        ICommand UpdateViewModelCommand { get; }
     }
     
 }

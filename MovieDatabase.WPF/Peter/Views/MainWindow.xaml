@@ -28,7 +28,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-           <uc:RibbonMenu DataContext="{Binding Navigator}" Grid.ColumnSpan="2" Margin="0 -43 0 0" x:Name="RibbonMenu"/>
+           <uc:RibbonMenu Grid.ColumnSpan="2" Margin="0 -43 0 0" x:Name="RibbonMenu"/>
         <ContentControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Content="{Binding Navigator.CurrentViewModel}"/>
 
     </Grid>
