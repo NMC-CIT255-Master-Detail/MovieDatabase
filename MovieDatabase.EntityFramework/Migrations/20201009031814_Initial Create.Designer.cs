@@ -9,8 +9,8 @@ using MovieDatabase.EntityFramework;
 namespace MovieDatabase.EntityFramework.Migrations
 {
     [DbContext(typeof(MovieDatabaseDBContext))]
-    [Migration("20201007050630_Initial Migration")]
-    partial class InitialMigration
+    [Migration("20201009031814_Initial Create")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,10 +31,7 @@ namespace MovieDatabase.EntityFramework.Migrations
                     b.Property<string>("IMDBLink")
                         .HasColumnType("text");
 
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(4000)");
-
-                    b.Property<int?>("ProducerId")
+                    b.Property<int>("ProducerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ReleaseDate")
@@ -43,7 +40,7 @@ namespace MovieDatabase.EntityFramework.Migrations
                     b.Property<int>("Runtime")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StudioId")
+                    b.Property<int>("StudioId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -99,8 +96,8 @@ namespace MovieDatabase.EntityFramework.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<int>("Phone")
-                        .HasColumnType("int");
+                    b.Property<long>("Phone")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("State")
                         .HasColumnType("text");
@@ -120,11 +117,15 @@ namespace MovieDatabase.EntityFramework.Migrations
                 {
                     b.HasOne("MovieDatabase.Domain.Models.Producer", "Producer")
                         .WithMany()
-                        .HasForeignKey("ProducerId");
+                        .HasForeignKey("ProducerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MovieDatabase.Domain.Models.Studio", "Studio")
                         .WithMany()
-                        .HasForeignKey("StudioId");
+                        .HasForeignKey("StudioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

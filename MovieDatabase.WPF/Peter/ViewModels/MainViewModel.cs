@@ -21,7 +21,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         {
             Navigator = navigator;
             Navigator.UpdateViewModelCommand.Execute(ViewType.Home);
-
         }
     }
 }

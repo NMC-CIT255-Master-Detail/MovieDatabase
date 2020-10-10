@@ -3,30 +3,38 @@ using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Seed_Data;
 using MovieDatabase.Domain.Services;
 using MovieDatabase.EntityFramework.Services;
+using MovieDatabase.WPF.Peter.State.Navigator;
+using MovieDatabase.WPF.Peter.ViewModels.ViewModelFactories;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using MovieDatabase.WPF.Peter.Commands;
 
 namespace MovieDatabase.WPF.Peter.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
 
-
+        public enum Action {
+            ADD,
+            EDIT
+        }
 
         #region Fields
 
-        private Movie _selectedMovie;
         private string _searchString;
         private ObservableCollection<Movie> _movies;
         private ObservableCollection<Producer> _producers;
         private ObservableCollection<Studio> _studios;
         private Producer _selectedProducer;
         private Studio _selectedStudio;
+        private Movie _selectedMovie;
+        private static Movie _selection; 
         private string _minRuntimeText;
         private string _maxRuntimeText;
         private string _errorMessage;
@@ -34,8 +42,16 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         IDataService<Studio> _studioSet;
         IDataService<Movie> _movieSet;
         string _message;
+        static Action _action;
 
-        public event EventHandler CanExecuteChanged;
+        public static Action ActionToTake
+        {
+            get => _action;
+            set
+            {
+                _action = value;
+            }
+        }
 
         #endregion
 
@@ -95,6 +111,16 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             {
                 _selectedMovie = value;
                 if (_selectedMovie != null) OnPropertyChanged(nameof(SelectedMovie));
+                Selection = SelectedMovie;
+            }
+        }
+
+        public static Movie Selection
+        {
+            get => _selection;
+            set
+            {
+                _selection = value;
             }
         }
 
@@ -158,8 +184,9 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        #endregion
+        public BaseViewModel CurrentViewModel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
+        #endregion
 
         #region Constructor
 
@@ -176,6 +203,10 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             _errorMessage = "";
         }
 
+        public HomeViewModel()
+        {
+
+        }
         #endregion
 
         #region Methods
@@ -267,9 +298,12 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                     _message = "Movie Successfully Deleted";
                     MessageBox.Show(_message);
                 }
-                
-                
+
             }
+        }
+
+        void EditMovie()
+        {
             
         }
 

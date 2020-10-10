@@ -1,6 +1,8 @@
 ﻿using MovieDatabase.Domain;
 using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Services;
+using MovieDatabase.WPF.Peter.Commands;
+using MovieDatabase.WPF.Peter.State.Navigator;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,13 +23,12 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         DateTime? _releaseDate;
         int? _runtime;
         string _imdbLink;
-        string _studioId;
-        string _producerId;
         ObservableCollection<Movie> _movies;
         ObservableCollection<Studio> _studios;
         ObservableCollection<Producer> _producers;
         string _message;
         Producer _selectedProducer;
+        Studio _selectedStudio;
 
         public string Title {
             get => _title;
@@ -70,22 +71,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 OnPropertyChanged(nameof(IMDBLink));
             }
         }
-        public string StudioId {
-            get => _studioId;
-            set
-            {
-                _studioId = value;
-                OnPropertyChanged(nameof(Studio));
-            }
-        }
-        public string ProducerId {
-            get => _producerId;
-            set
-            {
-                _producerId = value;
-                OnPropertyChanged(nameof(Producer));
-            }
-        }
 
         public ObservableCollection<Movie> Movies
         {
@@ -94,6 +79,34 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             {
                 _movies = value;
                 OnPropertyChanged(nameof(Movies));
+            }
+        }
+
+        private int _studioId;
+        public int StudioId
+        {
+            get
+            {
+                return _studioId;
+            }
+            set
+            {
+                _studioId = value;
+                OnPropertyChanged(nameof(StudioId));
+            }
+        }
+
+        private int _producerId;
+        public int ProducerId
+        {
+            get
+            {
+                return _producerId;
+            }
+            set
+            {
+                _producerId = value;
+                OnPropertyChanged(nameof(ProducerId));
             }
         }
 
@@ -117,13 +130,34 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        Producer SelectedProducer
+        public Producer SelectedProducer
         {
             get => _selectedProducer;
             set
             {
                 _selectedProducer = value;
                 OnPropertyChanged(nameof(SelectedProducer));
+            }
+        }
+
+        public Studio SelectedStudio
+        {
+            get => _selectedStudio;
+            set
+            {
+                _selectedStudio = value;
+                OnPropertyChanged(nameof(SelectedStudio));
+            }
+        }
+
+        private Movie _selectedMovie;
+        public Movie SelectedMovie
+        {
+            get => _selectedMovie;
+            set
+            {
+                _selectedMovie = value;
+                OnPropertyChanged(nameof(SelectedMovie));
             }
         }
 
@@ -139,12 +173,18 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
             Studios = new ObservableCollection<Studio>(_studioRepo.GetAll());
             Producers = new ObservableCollection<Producer>(_producerRepo.GetAll());
+           _selectedMovie = HomeViewModel.Selection;
+            
+            if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
+            {
+                MessageBox.Show("Action is Edit");
+            }
 
         }
 
         void SaveMovieToDB()
         {
-            if (Title != "" && Description != "" && ReleaseDate != null && RunTime != null && IMDBLink != "" && ProducerId != "" && StudioId != "")
+            if (Title != "")
             {
                 Movie newMovieToAdd = new Movie();
                 newMovieToAdd.Title = _title;
@@ -152,8 +192,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 newMovieToAdd.ReleaseDate = (DateTime)_releaseDate;
                 newMovieToAdd.Runtime = (int)_runtime;
                 newMovieToAdd.IMDBLink = _imdbLink;
-                newMovieToAdd.Producer.Id = _selectedProducer.Id;
-                newMovieToAdd.Studio.Id = int.Parse(_studioId);
+                newMovieToAdd.ProducerId = _selectedProducer.Id;
+                newMovieToAdd.StudioId = _selectedStudio.Id;
                 SaveMovieToDB(newMovieToAdd);
             } else
             {

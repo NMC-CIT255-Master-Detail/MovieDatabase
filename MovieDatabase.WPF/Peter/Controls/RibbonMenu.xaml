@@ -71,7 +71,7 @@
                 <!-- Home -->
                 <RibbonGroup x:Name="Home" Header="View">
                     <RibbonMenuButton LargeImageSource="/Peter/Resources/Images/home.png" Label="Home" KeyTip="H">
-                        <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View" KeyTip="A"
+                        <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View" x:Name="ParentBinding" KeyTip="A"
                                         Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}" />
                     </RibbonMenuButton>
                 </RibbonGroup>

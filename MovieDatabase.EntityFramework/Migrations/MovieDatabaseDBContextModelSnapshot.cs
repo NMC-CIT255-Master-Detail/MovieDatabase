@@ -29,7 +29,7 @@ namespace MovieDatabase.EntityFramework.Migrations
                     b.Property<string>("IMDBLink")
                         .HasColumnType("text");
 
-                    b.Property<int?>("ProducerId")
+                    b.Property<int>("ProducerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ReleaseDate")
@@ -38,7 +38,7 @@ namespace MovieDatabase.EntityFramework.Migrations
                     b.Property<int>("Runtime")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StudioId")
+                    b.Property<int>("StudioId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -115,11 +115,15 @@ namespace MovieDatabase.EntityFramework.Migrations
                 {
                     b.HasOne("MovieDatabase.Domain.Models.Producer", "Producer")
                         .WithMany()
-                        .HasForeignKey("ProducerId");
+                        .HasForeignKey("ProducerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MovieDatabase.Domain.Models.Studio", "Studio")
                         .WithMany()
-                        .HasForeignKey("StudioId");
+                        .HasForeignKey("StudioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

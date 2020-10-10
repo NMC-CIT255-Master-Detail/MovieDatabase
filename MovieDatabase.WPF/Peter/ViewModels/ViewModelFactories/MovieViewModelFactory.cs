@@ -1,5 +1,6 @@
 ﻿using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Services;
+using MovieDatabase.WPF.Peter.State.Navigator;
 using System;
 using System.Collections.Generic;
 using System.Text;

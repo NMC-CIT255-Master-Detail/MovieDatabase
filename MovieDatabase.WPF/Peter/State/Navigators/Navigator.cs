@@ -10,7 +10,7 @@ using MovieDatabase.WPF.Peter.ViewModels.ViewModelFactories;
 
 namespace MovieDatabase.WPF.Peter.State.Navigator
 {
-    public class Navigator : ObservableCollection, INavigator
+    public class Navigator : ObservableObject, INavigator
     {
         private BaseViewModel _currentViewModel;
 
@@ -25,9 +25,9 @@ namespace MovieDatabase.WPF.Peter.State.Navigator
         }
 
         public Navigator(IMovieDatabaseViewModelAbstractFactory viewModelFactory)
-        {
+        {   
             UpdateViewModelCommand = new UpdateViewModelCommand(this, viewModelFactory);
-    }
+        }
 
         #region ICommands
         public ICommand UpdateViewModelCommand { get; set; }
