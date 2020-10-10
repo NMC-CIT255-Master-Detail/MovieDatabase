@@ -8,6 +8,8 @@ namespace MovieDatabase.Domain.Models
         public int _runTime;
         public string _description;
         public string _imdbLink;
+        public int _studioId;
+        public int _producerId;
 
         public string Title { get; set; }
 
@@ -51,7 +53,27 @@ namespace MovieDatabase.Domain.Models
             }
         }
 
-        public virtual Studio Studio { get; set; }
-        public virtual Producer Producer { get; set; }
+        public int StudioId
+        {
+            get => _studioId;
+            set
+            {
+                _studioId = value;
+                OnPropertyChanged(nameof(StudioId));
+            }
+        }
+
+        public int ProducerId
+        {
+            get => _producerId;
+            set
+            {
+                _producerId = value;
+                OnPropertyChanged(nameof(ProducerId));
+            }
+        }
+
+        public Studio Studio { get; set; }
+        public Producer Producer { get; set; }
     }
 }

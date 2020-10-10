@@ -4,7 +4,7 @@ using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace MovieDatabase.EntityFramework.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,7 +31,7 @@ namespace MovieDatabase.EntityFramework.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Phone = table.Column<int>(nullable: false),
+                    Phone = table.Column<long>(nullable: false),
                     Email = table.Column<string>(nullable: true),
                     Website = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
@@ -55,9 +55,8 @@ namespace MovieDatabase.EntityFramework.Migrations
                     Runtime = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     IMDBLink = table.Column<string>(nullable: true),
-                    Image = table.Column<byte[]>(nullable: true),
-                    StudioId = table.Column<int>(nullable: true),
-                    ProducerId = table.Column<int>(nullable: true)
+                    StudioId = table.Column<int>(nullable: false),
+                    ProducerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,13 +66,13 @@ namespace MovieDatabase.EntityFramework.Migrations
                         column: x => x.ProducerId,
                         principalTable: "Producers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Movies_Studios_StudioId",
                         column: x => x.StudioId,
                         principalTable: "Studios",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

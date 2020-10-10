@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:nav="clr-namespace:MovieDatabase.WPF.Peter.State.Navigator"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -72,7 +73,7 @@
             <TextBlock Text="{Binding SelectedMovie.Studio.Email}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="13" Margin="360 0 0 0">
-            <Button Style="{DynamicResource EditButton}" Content="Edit" />
+            <Button Style="{DynamicResource EditButton}" Content="Edit" Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.EditMovie}"/>
             <Button Style="{DynamicResource DeleteButton}" Content="Delete" Command="{Binding DeleteMovieCommand}"/>
         </StackPanel>
     </Grid>

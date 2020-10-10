@@ -15,18 +15,18 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
-
+        public static HomeViewModel HomeViewModelStatic { get; } = new HomeViewModel();
 
 
         #region Fields
 
-        private Movie _selectedMovie;
         private string _searchString;
         private ObservableCollection<Movie> _movies;
         private ObservableCollection<Producer> _producers;
         private ObservableCollection<Studio> _studios;
         private Producer _selectedProducer;
         private Studio _selectedStudio;
+        private Movie _selectedMovie;
         private string _minRuntimeText;
         private string _maxRuntimeText;
         private string _errorMessage;
@@ -35,7 +35,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         IDataService<Movie> _movieSet;
         string _message;
 
-        public event EventHandler CanExecuteChanged;
+        public ICommand UpdateViewModelCommand { get; set; }
 
         #endregion
 
@@ -160,7 +160,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         #endregion
 
-
         #region Constructor
 
         public HomeViewModel(IDataService<Movie> movieRepo, IDataService<Studio> studioRepo, IDataService<Producer> producerRepo)
@@ -176,6 +175,10 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             _errorMessage = "";
         }
 
+        public HomeViewModel()
+        {
+
+        }
         #endregion
 
         #region Methods
@@ -267,8 +270,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                     _message = "Movie Successfully Deleted";
                     MessageBox.Show(_message);
                 }
-                
-                
+
             }
             
         }

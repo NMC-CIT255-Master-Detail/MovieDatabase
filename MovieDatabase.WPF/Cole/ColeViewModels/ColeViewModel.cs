@@ -12,7 +12,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
     {
         #region Constructor
         private readonly IDataService<Movie> _movieRepo;
-        private MovieDatabaseDBContext _context;
+ 
         public ColeViewModel()
         {
             _movieRepo = new MovieRepository(new MovieDatabaseDbContextFactory());

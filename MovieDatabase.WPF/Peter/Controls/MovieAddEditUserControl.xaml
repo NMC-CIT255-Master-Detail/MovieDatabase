@@ -59,14 +59,13 @@
         <Button Style="{DynamicResource BrowseButton}" x:Name="Browse" Grid.Row="12" Grid.Column="2" Content="Browse" />-->
 
         <TextBlock Text="Producer" Grid.Row="7" Grid.Column="4" Style="{DynamicResource TextBlock}" />
-        <ComboBox x:Name="MovieProducer" Grid.Row="8" Grid.Column="4" Style="{DynamicResource ComboBox}"
-                  ItemsSource="{Binding Producers}"
+        <ComboBox Grid.Row="8" Grid.Column="4" Style="{DynamicResource ComboBox}"
                   DisplayMemberPath="{Binding Name}"
-                  SelectedItem="{Binding Producer}"
-                  SelectedValuePath="{Binding ProducerId}">
+                  ItemsSource="{Binding Producers}"
+                  SelectedItem="{Binding SelectedProducer}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}" Tag="{Binding Id}"/>
+                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
@@ -74,11 +73,10 @@
         <TextBlock Text="Studio" Grid.Row="9" Grid.Column="4" Style="{DynamicResource TextBlock}" />
         <ComboBox x:Name="MovieStudio" Grid.Row="10" Grid.Column="4" Style="{DynamicResource ComboBox}"
                   ItemsSource="{Binding Studios}"
-                  DisplayMemberPath="{Binding Name}"
-                  SelectedValuePath="{Binding StudioId}">
+                  SelectedItem="{Binding SelectedStudio}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}" Tag="{Binding Id}"/>
+                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
