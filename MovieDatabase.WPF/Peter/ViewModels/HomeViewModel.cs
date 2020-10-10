@@ -15,9 +15,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
-        public static HomeViewModel HomeViewModelStatic { get; } = new HomeViewModel();
-
-
         #region Fields
 
         private string _searchString;

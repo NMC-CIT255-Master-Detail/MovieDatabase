@@ -28,7 +28,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         string _message;
         Producer _selectedProducer;
         Studio _selectedStudio;
-        Movie _selectedMovie;
 
         public string Title {
             get => _title;
@@ -150,15 +149,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        public Movie SelectedMovie {
-            get => _selectedMovie;
-            set
-            {
-                _selectedMovie = value;
-                OnPropertyChanged(nameof(SelectedMovie));
-            }
-        }
-
         public ICommand SaveMovieCommand => new RelayCommand(SaveMovieToDB);
 
         public MovieViewModel(IDataService<Movie> movieRepo, IDataService<Studio> studioRepo, IDataService<Producer> producerRepo)
@@ -170,7 +160,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
             Studios = new ObservableCollection<Studio>(_studioRepo.GetAll());
             Producers = new ObservableCollection<Producer>(_producerRepo.GetAll());
-            Movies = HomeViewModel.HomeViewModelStatic.Movies;
 
         }
 
