@@ -73,7 +73,8 @@
             <TextBlock Text="{Binding SelectedMovie.Studio.Email}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="13" Margin="360 0 0 0">
-            <Button Style="{DynamicResource EditButton}" Content="Edit" Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.EditMovie}"/>
+            <Button Style="{DynamicResource EditButton}" Content="Edit" Command="{Binding ElementName=RibbonMenu, Path=UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.EditMovie}">
+            </Button>
             <Button Style="{DynamicResource DeleteButton}" Content="Delete" Command="{Binding DeleteMovieCommand}"/>
         </StackPanel>
     </Grid>

@@ -2,6 +2,7 @@
 using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Services;
 using MovieDatabase.WPF.Peter.Commands;
+using MovieDatabase.WPF.Peter.State.Navigator;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -149,6 +150,18 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
+        private Movie _selectedMovie;
+        public Movie SelectedMovie
+        {
+            get => _selectedMovie;
+            set
+            {
+                _selectedMovie = value;
+                OnPropertyChanged(nameof(SelectedMovie));
+            }
+        }
+
+
         public ICommand SaveMovieCommand => new RelayCommand(SaveMovieToDB);
 
         public MovieViewModel(IDataService<Movie> movieRepo, IDataService<Studio> studioRepo, IDataService<Producer> producerRepo)
@@ -160,6 +173,12 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
             Studios = new ObservableCollection<Studio>(_studioRepo.GetAll());
             Producers = new ObservableCollection<Producer>(_producerRepo.GetAll());
+           _selectedMovie = HomeViewModel.Selection;
+            
+            if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
+            {
+                MessageBox.Show("Action is Edit");
+            }
 
         }
 

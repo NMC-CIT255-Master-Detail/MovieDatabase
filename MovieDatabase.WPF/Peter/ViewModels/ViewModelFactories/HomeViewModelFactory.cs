@@ -1,6 +1,7 @@
 ﻿using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Services;
 using MovieDatabase.EntityFramework.Services;
+using MovieDatabase.WPF.Peter.State.Navigator;
 
 namespace MovieDatabase.WPF.Peter.ViewModels.ViewModelFactories
 {
