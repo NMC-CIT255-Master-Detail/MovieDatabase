@@ -15,22 +15,30 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 {
     public class MovieViewModel : BaseViewModel
     {
-        IDataService<Movie> _movieRepo;
-        IDataService<Studio> _studioRepo;
-        IDataService<Producer> _producerRepo;
+
+        #region Fields
+
         string _title;
         string _description;
-        DateTime? _releaseDate;
+        string _message;
         int? _runtime;
         string _imdbLink;
+        DateTime? _releaseDate;
         ObservableCollection<Movie> _movies;
         ObservableCollection<Studio> _studios;
         ObservableCollection<Producer> _producers;
-        string _message;
         Producer _selectedProducer;
         Studio _selectedStudio;
+        IDataService<Movie> _movieRepo;
+        IDataService<Studio> _studioRepo;
+        IDataService<Producer> _producerRepo;
 
-        public string Title {
+        #endregion
+
+        #region Properties
+
+        public string Title
+        {
             get => _title;
             set
             {
@@ -47,7 +55,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 OnPropertyChanged(nameof(Description));
             }
         }
-        public DateTime? ReleaseDate {
+        public DateTime? ReleaseDate
+        {
             get => _releaseDate;
             set
             {
@@ -55,7 +64,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 OnPropertyChanged(nameof(ReleaseDate));
             }
         }
-        public int? RunTime {
+        public int? RunTime
+        {
             get => _runtime;
             set
             {
@@ -63,7 +73,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 OnPropertyChanged(nameof(RunTime));
             }
         }
-        public string IMDBLink {
+        public string IMDBLink
+        {
             get => _imdbLink;
             set
             {
@@ -161,8 +172,16 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
+        #endregion
+
+        #region ICommands
 
         public ICommand SaveMovieCommand => new RelayCommand(SaveMovieToDB);
+        public ICommand ResetFormCommand => new RelayCommand(ResetForm);
+
+        #endregion
+
+        #region Constructor
 
         public MovieViewModel(IDataService<Movie> movieRepo, IDataService<Studio> studioRepo, IDataService<Producer> producerRepo)
         {
@@ -173,52 +192,55 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
             Studios = new ObservableCollection<Studio>(_studioRepo.GetAll());
             Producers = new ObservableCollection<Producer>(_producerRepo.GetAll());
-           _selectedMovie = HomeViewModel.Selection;
-            
+            _selectedMovie = HomeViewModel.Selection;
+
             if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
-                Title = _selectedMovie.Title;
-                Description = _selectedMovie.Description;
-                ReleaseDate = _selectedMovie.ReleaseDate;
-                RunTime = _selectedMovie.Runtime;
-                SelectedProducer = _selectedMovie.Producer;
-                SelectedStudio = _selectedMovie.Studio;
-                IMDBLink = _selectedMovie.IMDBLink;
+                SetSelectedData();
             }
-
         }
+
+        #endregion
+
+        #region Methods
 
         void SaveMovieToDB()
         {
             if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
-                Movie newMovieToAdd = new Movie();
-                newMovieToAdd.Title = _title;
-                newMovieToAdd.Description = _description;
-                newMovieToAdd.ReleaseDate = (DateTime)_releaseDate;
-                newMovieToAdd.Runtime = (int)_runtime;
-                newMovieToAdd.IMDBLink = _imdbLink;
-                newMovieToAdd.ProducerId = _selectedProducer.Id;
-                newMovieToAdd.StudioId = _selectedStudio.Id;
+                Movie newMovieToAdd = new Movie() 
+                {
+                    Title = _title,
+                    Description = _description,
+                    ReleaseDate = (DateTime)_releaseDate,
+                    Runtime = (int)_runtime,
+                    IMDBLink = _imdbLink,
+                    ProducerId = _selectedProducer.Id,
+                    StudioId = _selectedStudio.Id
+                };
                 UpdateMovieToDB(newMovieToAdd);
-            } else
+            }
+            else
             {
                 if (Title != "")
                 {
-                    Movie movieToEdit = new Movie();
-                    movieToEdit.Title = _title;
-                    movieToEdit.Description = _description;
-                    movieToEdit.ReleaseDate = (DateTime)_releaseDate;
-                    movieToEdit.Runtime = (int)_runtime;
-                    movieToEdit.IMDBLink = _imdbLink;
-                    movieToEdit.ProducerId = _selectedProducer.Id;
-                    movieToEdit.StudioId = _selectedStudio.Id;
+                    Movie movieToEdit = new Movie() 
+                    {
+                        Title = _title,
+                        Description = _description,
+                        ReleaseDate = (DateTime)_releaseDate,
+                        Runtime = (int)_runtime,
+                        IMDBLink = _imdbLink,
+                        ProducerId = _selectedProducer.Id,
+                        StudioId = _selectedStudio.Id
+                };
                     SaveMovieToDB(movieToEdit);
                 }
                 else
                 {
                     _message = "Looks like some fields are not filled in!";
-                    MessageBox.Show(_message);
+                    string title = "Blank Fields ERROR";
+                    MessageBox.Show(_message, title);
                 }
             }
         }
@@ -228,6 +250,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             if (movieToEdit != null)
             {
                 _movieRepo.Update(_selectedMovie.Id, movieToEdit);
+                ResetFormAfterAdd();
             }
         }
 
@@ -236,14 +259,60 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             if (newMovieToAdd != null)
             {
                 _movieRepo.Create(newMovieToAdd);
+                ResetFormAfterAdd();
             }
-            ResetForm();
         }
 
-        private void ResetForm()
+        private void ResetFormAfterAdd()
         {
-            _message = "Added the Movie to the Database";
-            MessageBox.Show(_message);
+            ResetData();
+            _message = "Successfully Added/Updated the Movie to the Database";
+            string title = "SUCCESS";
+            MessageBox.Show(_message, title);
         }
+
+        void ResetForm()
+        {
+            string title = "Reset Form";
+            string message = "Are you sure you want to reset the form?";
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            MessageBoxResult result = MessageBox.Show(message, title, buttons);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
+                {
+                    SetSelectedData();
+                }
+                else
+                {
+                    ResetData();
+                }
+            }
+        }
+
+        void SetSelectedData()
+        {
+            Title = _selectedMovie.Title;
+            Description = _selectedMovie.Description;
+            ReleaseDate = _selectedMovie.ReleaseDate;
+            RunTime = _selectedMovie.Runtime;
+            SelectedProducer = _selectedMovie.Producer; // Ask John about why this doesn't work
+            SelectedStudio = _selectedMovie.Studio; // Ask John about why this doesn't work
+            IMDBLink = _selectedMovie.IMDBLink;
+        }
+
+        void ResetData()
+        {
+            Title = "";
+            Description = "";
+            ReleaseDate = new DateTime?();
+            RunTime = null;
+            SelectedProducer = null;
+            SelectedStudio = null;
+            IMDBLink = "";
+        }
+        #endregion
+
     }
 }

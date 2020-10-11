@@ -86,8 +86,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         #region ICommands
 
         public ICommand SaveButtonCommand => new RelayCommand(SaveButton);
-        public ICommand ResetFormCommand => new RelayCommand(FormReset);
-        public ICommand UpdateViewModelCommand { get; internal set; }
+        public ICommand ResetFormCommand => new RelayCommand(ResetForm);
 
         #endregion
 
@@ -134,7 +133,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 else
                 {
                     _message = "Sorry, but it looks like you didn't fill out all the fields";
-                    MessageBox.Show(_message, "Blank Fields ERROR");
+                    string title = "Blank Fields ERROR";
+                    MessageBox.Show(_message, title);
                 }
             }
         }
@@ -144,7 +144,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             if (producerToUpdate != null)
             {
                 _producerRepo.Update(_selectedProducer.Id, producerToUpdate);
-                ResetForm();
+                ResetFormAfterAdd();
             }
         }
 
@@ -153,21 +153,19 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             if (producer != null)
             {
                 _producerRepo.Create(producer);
-                ResetForm();
+                ResetFormAfterAdd();
             }
         }
 
-        void ResetForm()
+        void ResetFormAfterAdd()
         {
-            Name = "";
-            DOB = new DateTime?();
-            Biography = "";
+            ResetData();
             _message = "Successfully Added/Updated the Producer to the DataBase!";
             string title = "SUCCESS";
             MessageBox.Show(_message, title);
         }
 
-        private void FormReset()
+        private void ResetForm()
         {
             string title = "Reset Form";
             string message = "Are you sure you want to reset the form?";
@@ -182,9 +180,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 }
                 else
                 {
-                    Name = "";
-                    DOB = new DateTime?();
-                    Biography = "";
+                    ResetData();
                 }
             }
         }
@@ -194,6 +190,13 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             Name = _selectedProducer.Name;
             DOB = _selectedProducer.DOB;
             Biography = _selectedProducer.Biography;
+        }
+
+        void ResetData()
+        {
+            Name = "";
+            DOB = new DateTime?();
+            Biography = "";
         }
    
         #endregion

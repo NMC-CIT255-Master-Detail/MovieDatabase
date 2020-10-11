@@ -13,7 +13,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         #region Fields
 
-        IDataService<Studio> _studioRepo;
         string _name;
         private string _phone;
         private string _email;
@@ -25,6 +24,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         private int? _zipcode;
         string _message;
         Studio _selectedStudio;
+
+        IDataService<Studio> _studioRepo;
 
         #endregion
 
@@ -167,6 +168,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         #region ICommands
 
         public ICommand SaveButtonCommand => new RelayCommand(SaveButton);
+        public ICommand ResetFormCommand => new RelayCommand(ResetForm);
 
         #endregion
 
@@ -179,17 +181,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
             if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
-                Name = _selectedStudio.Name;
-                Phone = _selectedStudio.Phone;
-                Email = _selectedStudio.Email;
-                Website = _selectedStudio.Website;
-                Description = _selectedStudio.Description;
-                Address = _selectedStudio.Address;
-                City = _selectedStudio.City;
-                State = _selectedStudio.State;
-                Zipcode = _selectedStudio.Zipcode;
+                SetSelectedData();
             }
-
         }
 
         #endregion
@@ -200,16 +193,18 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         {
             if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
-                Studio studioToUpdate = new Studio();
-                studioToUpdate.Name = _name;
-                studioToUpdate.Phone = _phone;
-                studioToUpdate.Email = _email;
-                studioToUpdate.Website = _website;
-                studioToUpdate.Description = _description;
-                studioToUpdate.Address = _address;
-                studioToUpdate.City = _city;
-                studioToUpdate.State = _state;
-                studioToUpdate.Zipcode = (int)_zipcode;
+                Studio studioToUpdate = new Studio() 
+                {
+                    Name = _name,
+                    Phone = _phone,
+                    Email = _email,
+                    Website = _website,
+                    Description = _description,
+                    Address = _address,
+                    City = _city,
+                    State = _state,
+                    Zipcode = (int)_zipcode
+                };
                 UpdateToDB(studioToUpdate);
             }
             else
@@ -231,7 +226,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 else
                 {
                     _message = "Some fileds are not filled in!";
-                    MessageBox.Show(_message);
+                    string title = "Blank Fields ERROR";
+                    MessageBox.Show(_message, title);
                 }
             }
         }
@@ -241,10 +237,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             if (studioToUpdate != null)
             {
                 _studioRepo.Update(_selectedStudio.Id, studioToUpdate);
-                ResetForm();
+                ResetFormAfterAdd();
             }
-
-
         }
 
         private void SaveToDB(Studio newStudioToAdd)
@@ -252,16 +246,55 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             if (newStudioToAdd != null)
             {
                 _studioRepo.Create(newStudioToAdd);
+                ResetFormAfterAdd();
             }
+        }
 
-            ResetForm();
-
+        private void ResetFormAfterAdd()
+        {
+            ResetData();
+            _message = "Successfully Added/Updated the Studio to the Database!";
+            string title = "SUCCESS";
+            MessageBox.Show(_message, title);
         }
 
         private void ResetForm()
         {
+            string title = "Reset Form";
+            string message = "Are you sure you want to reset the form?";
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            MessageBoxResult result = MessageBox.Show(message, title, buttons);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
+                {
+                    SetSelectedData();
+                }
+                else
+                {
+                    ResetData();
+                }
+            }
+        }
+
+        private void SetSelectedData()
+        {
+            Name = _selectedStudio.Name;
+            Phone = _selectedStudio.Phone;
+            Email = _selectedStudio.Email;
+            Website = _selectedStudio.Website;
+            Description = _selectedStudio.Description;
+            Address = _selectedStudio.Address;
+            City = _selectedStudio.City;
+            State = _selectedStudio.State;
+            Zipcode = _selectedStudio.Zipcode;
+        }
+
+        void ResetData()
+        {
             Name = "";
-            Phone = null;
+            Phone = "";
             Email = "";
             Website = "";
             Description = "";
@@ -269,10 +302,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             City = "";
             State = "";
             Zipcode = null;
-            _message = "Successfully Added/Updated the Studio to the Database!";
-            MessageBox.Show(_message);
         }
-
         #endregion
 
     }

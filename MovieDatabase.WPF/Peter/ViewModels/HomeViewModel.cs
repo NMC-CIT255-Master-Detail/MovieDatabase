@@ -19,54 +19,37 @@ namespace MovieDatabase.WPF.Peter.ViewModels
     public class HomeViewModel : BaseViewModel
     {
 
-        public enum Action {
+        #region Enum
+
+        public enum Action
+        {
             ADD,
             EDIT
         }
 
+        #endregion
+
         #region Fields
 
-        private string _searchString;
-        private ObservableCollection<Movie> _movies;
-        private ObservableCollection<Producer> _producers;
-        private ObservableCollection<Studio> _studios;
-        private Producer _selectedProducer;
-        private Studio _selectedStudio;
-        private Movie _selectedMovie;
-        private static Movie _selection; 
-        private string _minRuntimeText;
-        private string _maxRuntimeText;
-        private string _errorMessage;
+        string _searchString;
+        ObservableCollection<Movie> _movies;
+        ObservableCollection<Producer> _producers;
+        ObservableCollection<Studio> _studios;
+        Producer _selectedProducer;
+        Studio _selectedStudio;
+        Movie _selectedMovie;
+        string _minRuntimeText;
+        string _maxRuntimeText;
         IDataService<Producer> _producerSet;
         IDataService<Studio> _studioSet;
         IDataService<Movie> _movieSet;
-        string _message;
-        static Action _action;
-
-        public static Action ActionToTake
-        {
-            get => _action;
-            set
-            {
-                _action = value;
-            }
-        }
-
-        #endregion
-
-        #region ICommands
-
-        public ICommand ButtonSearchByMovieCommand => new RelayCommand(SearchByMovie);
-        public ICommand ButtonSearchByProducerCommand => new RelayCommand(SearchByProducer);
-        public ICommand ButtonSearchByStudioCommand => new RelayCommand(SearchByStudio);
-        public ICommand ButtonFilterByRuntimeCommand => new RelayCommand(FilterByRuntime);
-        public ICommand ButtonSortByCommand => new RelayCommand(new Action<object>(SortBy));
-        public ICommand ButtonResetFormCommand => new RelayCommand(ResetForm);
-        public ICommand DeleteMovieCommand => new RelayCommand(DeleteMovie);
 
         #endregion
 
         #region Properties
+
+        public static Action ActionToTake { get; set; }
+        public static Movie Selection { get; set; }
 
         public ObservableCollection<Movie> Movies
         {
@@ -106,15 +89,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 _selectedMovie = value;
                 if (_selectedMovie != null) OnPropertyChanged(nameof(SelectedMovie));
                 Selection = SelectedMovie;
-            }
-        }
-
-        public static Movie Selection
-        {
-            get => _selection;
-            set
-            {
-                _selection = value;
             }
         }
 
@@ -168,17 +142,17 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        public string ErrorMessage
-        {
-            get => _errorMessage;
-            set
-            {
-                _errorMessage = value;
-                OnPropertyChanged(nameof(ErrorMessage));
-            }
-        }
+        #endregion
 
-        public BaseViewModel CurrentViewModel { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        #region ICommands
+
+        public ICommand ButtonSearchByMovieCommand => new RelayCommand(SearchByMovie);
+        public ICommand ButtonSearchByProducerCommand => new RelayCommand(SearchByProducer);
+        public ICommand ButtonSearchByStudioCommand => new RelayCommand(SearchByStudio);
+        public ICommand ButtonFilterByRuntimeCommand => new RelayCommand(FilterByRuntime);
+        public ICommand ButtonSortByCommand => new RelayCommand(new Action<object>(SortBy));
+        public ICommand ButtonResetFormCommand => new RelayCommand(ResetForm);
+        public ICommand DeleteMovieCommand => new RelayCommand(DeleteMovie);
 
         #endregion
 
@@ -194,27 +168,42 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             Producers = new ObservableCollection<Producer>(_producerSet.GetAll());
 
             if (Movies.Any()) SelectedMovie = Movies[0];
-            _errorMessage = "";
         }
 
-        public HomeViewModel()
-        {
-
-        }
         #endregion
 
         #region Methods
 
         private void SearchByMovie()
         {
-            if (_searchString != null)
-                Movies = new ObservableCollection<Movie>(_movies.Where(m =>
-                    m.Title.ToLower().Contains(_searchString.ToLower())));
+            if ( _searchString != null)
+            {
+                try
+                {
+                    Movies = new ObservableCollection<Movie>(_movies.Where(m => 
+                        m.Title.ToLower().Contains(_searchString.ToLower())));
+                }
+                catch (Exception ex)
+                {
+                    string message = "Looks like something went wrong " + ex;
+                    string title = "ERROR";
+                    MessageBox.Show(message, title);
+                }
+            } 
+            else
+            {
+                string message = "You must enter some text first!";
+                string title = "ERROR";
+                MessageBox.Show(message, title);
+            }
+            
+
         }
 
         private void SearchByProducer()
         {
             if (_selectedProducer != null)
+            {
                 try
                 {
                     Movies = new ObservableCollection<Movie>(_movies.Where(p =>
@@ -222,14 +211,25 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    _errorMessage = ex.Message;
+                    string message = "Looks like something went wrong" + ex;
+                    string title = "ERROR";
+                    MessageBox.Show(message, title);
                     throw;
                 }
+            }
+            else
+            {
+                string message = "You must select a Producer First!";
+                string title = "ERROR";
+                MessageBox.Show(message, title);
+            }
+            
         }
 
         private void SearchByStudio()
         {
             if (_selectedStudio != null)
+            {
                 try
                 {
                     Movies = new ObservableCollection<Movie>(_movies.Where(s =>
@@ -237,15 +237,35 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    _errorMessage = ex.Message;
+                    string message = "Looks like something went wrong " + ex;
+                    string title = "ERROR";
+                    MessageBox.Show(message, title);
                 }
+            } 
+            else
+            {
+                string message = "You must select a Studio First!";
+                string title = "ERROR";
+                MessageBox.Show(message, title);
+            }
+            
         }
 
         private void FilterByRuntime()
         {
-            if (int.TryParse(MinRuntimeText, out var minRuntime) && int.TryParse(MaxRuntimeText, out var maxRuntime))
-                Movies = new ObservableCollection<Movie>(_movies.Where(r =>
-                    r.Runtime >= minRuntime && r.Runtime <= maxRuntime));
+            if (_maxRuntimeText != null && _minRuntimeText != null)
+            {
+                if (int.TryParse(MinRuntimeText, out var minRuntime) && int.TryParse(MaxRuntimeText, out var maxRuntime))
+                    Movies = new ObservableCollection<Movie>(_movies.Where(r =>
+                        r.Runtime >= minRuntime && r.Runtime <= maxRuntime));
+            }
+            else
+            {
+                string message = "You must enter a MIN and a MAX runtime as NUMBERS first!";
+                string title = "ERROR";
+                MessageBox.Show(message, title);
+            }
+            
         }
 
         private void SortBy(object param)
@@ -274,21 +294,29 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             MaxRuntimeText = "";
             SelectedProducer = null;
             SelectedStudio = null;
-            Movies = new ObservableCollection<Movie>((IEnumerable<Movie>)_movieSet.GetAll());
+            Movies = new ObservableCollection<Movie>(_movieSet.GetAll());
         }
 
         private void DeleteMovie()
         {
             if (SelectedMovie != null)
             {
-                if (_movieSet.Delete(SelectedMovie.Id))
-                {
-                    Movies = new ObservableCollection<Movie>(_movieSet.GetAll());
-                    SelectedMovie = Movies[0];
-                    _message = "Movie Successfully Deleted";
-                    MessageBox.Show(_message);
-                }
+                string message = "Are you sure you want to DELETE the Movie?";
+                string title = "Confirm Deletion";
+                MessageBoxButton buttons = MessageBoxButton.YesNo;
+                MessageBoxResult result = MessageBox.Show(message, title, buttons);
 
+                if (result == MessageBoxResult.Yes)
+                {
+                    if (_movieSet.Delete(SelectedMovie.Id))
+                    {
+                        Movies = new ObservableCollection<Movie>(_movieSet.GetAll());
+                        SelectedMovie = Movies[0];
+                        string messageSuccess = "Movie Successfully Deleted";
+                        string titleSuccess = "SUCCESS";
+                        MessageBox.Show(messageSuccess, titleSuccess);
+                    }
+                } 
             }
         }
 

@@ -87,11 +87,11 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="14" Grid.Column="1">
             <Button Style="{DynamicResource GreenButton}" Content="Save" HorizontalAlignment="Left" Command="{Binding SaveMovieCommand}"/>
-            <Button Style="{DynamicResource PurpleButton}" Content="Reset" HorizontalAlignment="Left" Command="{Binding ResetFormCommand}"/>
+            <Button Style="{DynamicResource RedButton}" Content="Reset" HorizontalAlignment="Left" Command="{Binding ResetFormCommand}"/>
         </StackPanel>
 
-        <Button Style="{DynamicResource RedButton}" Content="Cancel" Grid.Row="14" Grid.Column="5"
-                HorizontalAlignment="Right" Command="{Binding CancelCommand}"/>
+        <!--<Button Style="{DynamicResource RedButton}" Content="Cancel" Grid.Row="14" Grid.Column="5"
+                HorizontalAlignment="Right" Command="{Binding CancelCommand}"/>-->
 
     </Grid>
 </UserControl>
