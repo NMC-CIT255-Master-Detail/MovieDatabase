@@ -14,6 +14,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         private string _name;
         IDataService<Producer> _producerRepo;
         string _message;
+        Producer _selectedProducer;
 
 
         public ObservableCollection<Producer> Producer 
@@ -61,6 +62,15 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
+        public Producer SelectedProducer {
+            get => _selectedProducer;
+            set
+            {
+                _selectedProducer = value;
+                OnPropertyChanged(nameof(SelectedProducer));
+            }
+        }
+
 
         public ICommand SaveButtonCommand => new RelayCommand(SaveButton);
 
@@ -68,25 +78,50 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         public ProducerViewModel(IDataService<Producer> producerRepo)
         {
             _producerRepo = producerRepo;
+            _selectedProducer = HomeViewModel.Selection.Producer;
+            if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
+            {
+                Name = _selectedProducer.Name;
+                DOB = _selectedProducer.DOB;
+                Biography = _selectedProducer.Biography;
+            }
         }
 
 
 
         void SaveButton()
         {
-            Producer newProducerToAdd = new Producer();
-            if (Name != "" && DOB != null && Biography != "")
+            if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
-                newProducerToAdd.Name = _name;
-                newProducerToAdd.DOB = (DateTime)_dob;
-                newProducerToAdd.Biography = _bio;
-                SaveToDB(newProducerToAdd);
+                Producer producerToUpdate = new Producer();
+                producerToUpdate.Name = _name;
+                producerToUpdate.DOB = (DateTime)_dob;
+                producerToUpdate.Biography = _bio;
+                UpdateToDB(producerToUpdate);
             } else
             {
-                _message = "Sorry, but it looks like you didn't fill out all the fields";
-                MessageBox.Show(_message);
+                if (Name != "" && DOB != null && Biography != "")
+                {
+                    Producer newProducerToAdd = new Producer();
+                    newProducerToAdd.Name = _name;
+                    newProducerToAdd.DOB = (DateTime)_dob;
+                    newProducerToAdd.Biography = _bio;
+                    SaveToDB(newProducerToAdd);
+                }
+                else
+                {
+                    _message = "Sorry, but it looks like you didn't fill out all the fields";
+                    MessageBox.Show(_message);
+                }
             }
-            
+        }
+
+        private void UpdateToDB(Producer producerToUpdate)
+        {
+            if (producerToUpdate != null)
+            {
+                _producerRepo.Update(_selectedProducer.Id, producerToUpdate);
+            }
         }
 
         void SaveToDB(Producer producer)
