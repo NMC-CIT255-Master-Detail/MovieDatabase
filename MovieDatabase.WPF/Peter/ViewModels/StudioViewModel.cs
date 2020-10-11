@@ -10,9 +10,11 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 {
     public class StudioViewModel : BaseViewModel
     {
-        IDataService<Studio> _studioRepo;
+
+        #region Fields
+
         string _name;
-        private long? _phone;
+        private string _phone;
         private string _email;
         private string _website;
         private string _description;
@@ -21,9 +23,15 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         private string _state;
         private int? _zipcode;
         string _message;
+        Studio _selectedStudio;
 
+        IDataService<Studio> _studioRepo;
 
-        public string Name 
+        #endregion
+
+        #region Properties
+
+        public string Name
         {
             get => _name;
             set
@@ -33,8 +41,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        
-        public long? Phone
+
+        public string Phone
         {
             get
             {
@@ -47,7 +55,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        
+
         public string Email
         {
             get
@@ -61,7 +69,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        
+
         public string Website
         {
             get
@@ -75,7 +83,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        
+
         public string Description
         {
             get
@@ -89,7 +97,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        
+
         public string Address
         {
             get
@@ -103,7 +111,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        
+
         public string City
         {
             get
@@ -117,7 +125,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        
+
         public string State
         {
             get
@@ -131,7 +139,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        
+
         public int? Zipcode
         {
             get
@@ -145,35 +153,92 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        public ICommand SaveButtonCommand => new RelayCommand(SaveButton);
+        public Studio SelectedStudio
+        {
+            get => _selectedStudio;
+            set
+            {
+                _selectedStudio = value;
+                OnPropertyChanged(nameof(SelectedStudio));
+            }
+        }
 
+        #endregion
+
+        #region ICommands
+
+        public ICommand SaveButtonCommand => new RelayCommand(SaveButton);
+        public ICommand ResetFormCommand => new RelayCommand(ResetForm);
+
+        #endregion
+
+        #region Constructor
 
         public StudioViewModel(IDataService<Studio> studioRepo)
         {
             _studioRepo = studioRepo;
+            _selectedStudio = HomeViewModel.Selection.Studio;
+
+            if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
+            {
+                SetSelectedData();
+            }
         }
+
+        #endregion
+
+        #region Methods
 
         private void SaveButton()
         {
-            if (Name != "" && Phone != 0 && Email != "" && Website != "" && Description != "" && Address != "" && City != "" && State != "" && Zipcode != 0)
+            if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
-                Studio newStudioToAdd = new Studio();
-                newStudioToAdd.Name = _name;
-                newStudioToAdd.Phone = (long)_phone;
-                newStudioToAdd.Email = _email;
-                newStudioToAdd.Website = _website;
-                newStudioToAdd.Description = _description;
-                newStudioToAdd.Address = _address;
-                newStudioToAdd.City = _city;
-                newStudioToAdd.State = _state;
-                newStudioToAdd.Zipcode = (int)_zipcode;
-                SaveToDB(newStudioToAdd);
-            } else
-            {
-                _message = "Some fileds are not filled in!";
-                MessageBox.Show(_message);
+                Studio studioToUpdate = new Studio() 
+                {
+                    Name = _name,
+                    Phone = _phone,
+                    Email = _email,
+                    Website = _website,
+                    Description = _description,
+                    Address = _address,
+                    City = _city,
+                    State = _state,
+                    Zipcode = (int)_zipcode
+                };
+                UpdateToDB(studioToUpdate);
             }
-            
+            else
+            {
+                if (Name != "" && Phone != "" && Email != "" && Website != "" && Description != "" && Address != "" && City != "" && State != "" && Zipcode != 0)
+                {
+                    Studio newStudioToAdd = new Studio();
+                    newStudioToAdd.Name = _name;
+                    newStudioToAdd.Phone = _phone;
+                    newStudioToAdd.Email = _email;
+                    newStudioToAdd.Website = _website;
+                    newStudioToAdd.Description = _description;
+                    newStudioToAdd.Address = _address;
+                    newStudioToAdd.City = _city;
+                    newStudioToAdd.State = _state;
+                    newStudioToAdd.Zipcode = (int)_zipcode;
+                    SaveToDB(newStudioToAdd);
+                }
+                else
+                {
+                    _message = "Some fileds are not filled in!";
+                    string title = "Blank Fields ERROR";
+                    MessageBox.Show(_message, title);
+                }
+            }
+        }
+
+        private void UpdateToDB(Studio studioToUpdate)
+        {
+            if (studioToUpdate != null)
+            {
+                _studioRepo.Update(_selectedStudio.Id, studioToUpdate);
+                ResetFormAfterAdd();
+            }
         }
 
         private void SaveToDB(Studio newStudioToAdd)
@@ -181,16 +246,55 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             if (newStudioToAdd != null)
             {
                 _studioRepo.Create(newStudioToAdd);
+                ResetFormAfterAdd();
             }
+        }
 
-            ResetForm();
-            
+        private void ResetFormAfterAdd()
+        {
+            ResetData();
+            _message = "Successfully Added/Updated the Studio to the Database!";
+            string title = "SUCCESS";
+            MessageBox.Show(_message, title);
         }
 
         private void ResetForm()
         {
+            string title = "Reset Form";
+            string message = "Are you sure you want to reset the form?";
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            MessageBoxResult result = MessageBox.Show(message, title, buttons);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
+                {
+                    SetSelectedData();
+                }
+                else
+                {
+                    ResetData();
+                }
+            }
+        }
+
+        private void SetSelectedData()
+        {
+            Name = _selectedStudio.Name;
+            Phone = _selectedStudio.Phone;
+            Email = _selectedStudio.Email;
+            Website = _selectedStudio.Website;
+            Description = _selectedStudio.Description;
+            Address = _selectedStudio.Address;
+            City = _selectedStudio.City;
+            State = _selectedStudio.State;
+            Zipcode = _selectedStudio.Zipcode;
+        }
+
+        void ResetData()
+        {
             Name = "";
-            Phone = null;
+            Phone = "";
             Email = "";
             Website = "";
             Description = "";
@@ -198,8 +302,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             City = "";
             State = "";
             Zipcode = null;
-            _message = "Added the Studio to the Database!";
-            MessageBox.Show(_message);
         }
+        #endregion
+
     }
 }
