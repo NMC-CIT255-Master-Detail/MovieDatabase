@@ -24,9 +24,11 @@ namespace MovieDatabase.EntityFramework.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("IMDBLink")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("ProducerId")
@@ -42,6 +44,7 @@ namespace MovieDatabase.EntityFramework.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -60,12 +63,14 @@ namespace MovieDatabase.EntityFramework.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Biography")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("DOB")
                         .HasColumnType("datetime");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -80,31 +85,41 @@ namespace MovieDatabase.EntityFramework.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("City")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<long>("Phone")
-                        .HasColumnType("bigint");
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("varchar(14)")
+                        .HasMaxLength(14);
 
                     b.Property<string>("State")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Website")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Zipcode")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasMaxLength(5);
 
                     b.HasKey("Id");
 

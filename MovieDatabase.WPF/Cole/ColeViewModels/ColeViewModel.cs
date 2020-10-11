@@ -1,5 +1,4 @@
 ﻿using MovieDatabase.Domain.Models;
-using MovieDatabase.Domain.Seed_Data;
 using MovieDatabase.EntityFramework.Services;
 using System.Collections.ObjectModel;
 using System.Linq;

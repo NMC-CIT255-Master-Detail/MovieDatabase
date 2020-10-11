@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Internal;
 using MovieDatabase.Domain;
 using MovieDatabase.Domain.Models;
-using MovieDatabase.Domain.Seed_Data;
 using MovieDatabase.WPF.Cole.ColeViews;
 using MovieDatabase.WPF.Peter.Views;
 using System;

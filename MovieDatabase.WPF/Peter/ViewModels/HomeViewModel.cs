@@ -1,6 +1,5 @@
 ﻿using MovieDatabase.Domain;
 using MovieDatabase.Domain.Models;
-using MovieDatabase.Domain.Seed_Data;
 using MovieDatabase.Domain.Services;
 using MovieDatabase.EntityFramework.Services;
 using MovieDatabase.WPF.Peter.State.Navigator;
@@ -59,17 +58,11 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         public ICommand ButtonSearchByMovieCommand => new RelayCommand(SearchByMovie);
         public ICommand ButtonSearchByProducerCommand => new RelayCommand(SearchByProducer);
-
         public ICommand ButtonSearchByStudioCommand => new RelayCommand(SearchByStudio);
         public ICommand ButtonFilterByRuntimeCommand => new RelayCommand(FilterByRuntime);
-
         public ICommand ButtonSortByCommand => new RelayCommand(new Action<object>(SortBy));
-
         public ICommand ButtonResetFormCommand => new RelayCommand(ResetForm);
-
         public ICommand DeleteMovieCommand => new RelayCommand(DeleteMovie);
-
-        public ICommand EditMovieCommand => new RelayCommand(EditMovie);
 
         #endregion
 
@@ -299,11 +292,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        void EditMovie()
-        {
-            
-        }
-
         #endregion
+
     }
 }

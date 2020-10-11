@@ -52,26 +52,35 @@
 
         </StackPanel>
         <Separator Grid.Row="6" />
+
         <StackPanel Orientation="Horizontal" Grid.Row="7">
-            <Label Content="Producer Name: " />
-            <TextBlock Text="{Binding SelectedMovie.Producer.Name}" />
-            <Label Content="DOB: " />
-            <TextBlock Text="{Binding SelectedMovie.Producer.DOB, StringFormat={}\{0:MM/dd/yyyy \}}" />
+            <Label Content="Producer Name: " VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding SelectedMovie.Producer.Name}" VerticalAlignment="Center"/>
+            <Label Content="DOB: " VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding SelectedMovie.Producer.DOB, StringFormat={}\{0:MM/dd/yyyy \}}" VerticalAlignment="Center"/>
         </StackPanel>
-        <Button Grid.Row="7" VerticalAlignment="Top" HorizontalAlignment="right" Command="{Binding DataContext.UpdateViewModelCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{x:Static nav:ViewType.EditProducer}"/>
-        <Separator Grid.Row="8" />
-        <StackPanel Orientation="Horizontal" Grid.Row="9">
-            <Label Content="Studio Name: " />
-            <TextBlock Text="{Binding SelectedMovie.Studio.Name}" />
-        </StackPanel>
+        
+        <Button Grid.Row="7" Content="Edit" VerticalAlignment="Center" HorizontalAlignment="right" Command="{Binding DataContext.UpdateViewModelCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{x:Static nav:ViewType.EditProducer}"/>
+        
+        <Separator Grid.Row="9" />
+        
         <StackPanel Orientation="Horizontal" Grid.Row="10">
+            <Label Content="Studio Name: " VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding SelectedMovie.Studio.Name}" VerticalAlignment="Center"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="11">
             <Label Content="Phone: " />
             <TextBlock Text="{Binding SelectedMovie.Studio.Phone}" />
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="11">
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="12">
             <Label Content="Website: " />
             <TextBlock Text="{Binding SelectedMovie.Studio.Email}" />
         </StackPanel>
+        
+        <Button Grid.Row="10" Content="Edit" HorizontalAlignment="Right" Command="{Binding DataContext.UpdateViewModelCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{x:Static nav:ViewType.EditStudio}" />
+        
         <StackPanel Orientation="Horizontal" Grid.Row="13" Margin="360 0 0 0">
             <Button Style="{DynamicResource EditButton}" Content="Edit" Command="{Binding DataContext.UpdateViewModelCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{x:Static nav:ViewType.EditMovie}"/>
             <Button Style="{DynamicResource DeleteButton}" Content="Delete" Command="{Binding DeleteMovieCommand}"/>

@@ -1,6 +1,9 @@
 ﻿using MovieDatabase.Domain;
 using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Services;
+using MovieDatabase.WPF.Peter.Commands;
+using MovieDatabase.WPF.Peter.State.Navigator;
+using MovieDatabase.WPF.Peter.ViewModels.ViewModelFactories;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -10,14 +13,20 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 {
     public class ProducerViewModel : BaseViewModel
     {
-        ObservableCollection<Producer> _producer;
+
+        #region Fields
+
         private string _name;
-        IDataService<Producer> _producerRepo;
         string _message;
+        ObservableCollection<Producer> _producer;
         Producer _selectedProducer;
+        IDataService<Producer> _producerRepo;
 
+        #endregion
 
-        public ObservableCollection<Producer> Producer 
+        #region Properties
+
+        public ObservableCollection<Producer> Producer
         {
             get => _producer;
             set
@@ -27,12 +36,12 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
-        
+
         public string Name
         {
-            get => _name; 
-            set 
-            { 
+            get => _name;
+            set
+            {
                 _name = value;
                 OnPropertyChanged(nameof(Name));
             }
@@ -42,9 +51,9 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         public DateTime? DOB
         {
-            get => _dob; 
-            set 
-            { 
+            get => _dob;
+            set
+            {
                 _dob = value;
                 OnPropertyChanged(nameof(DOB));
             }
@@ -54,15 +63,16 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         public string Biography
         {
-            get =>_bio; 
-            set 
-            { 
+            get => _bio;
+            set
+            {
                 _bio = value;
                 OnPropertyChanged(nameof(Biography));
             }
         }
 
-        public Producer SelectedProducer {
+        public Producer SelectedProducer
+        {
             get => _selectedProducer;
             set
             {
@@ -71,9 +81,17 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
         }
 
+        #endregion
+
+        #region ICommands
 
         public ICommand SaveButtonCommand => new RelayCommand(SaveButton);
+        public ICommand ResetFormCommand => new RelayCommand(FormReset);
+        public ICommand UpdateViewModelCommand { get; internal set; }
 
+        #endregion
+
+        #region Constructor
 
         public ProducerViewModel(IDataService<Producer> producerRepo)
         {
@@ -81,37 +99,42 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             _selectedProducer = HomeViewModel.Selection.Producer;
             if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
-                Name = _selectedProducer.Name;
-                DOB = _selectedProducer.DOB;
-                Biography = _selectedProducer.Biography;
+                SetSelectedData();
             }
         }
 
+        #endregion
 
+        #region Methods
 
         void SaveButton()
         {
             if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
-                Producer producerToUpdate = new Producer();
-                producerToUpdate.Name = _name;
-                producerToUpdate.DOB = (DateTime)_dob;
-                producerToUpdate.Biography = _bio;
+                Producer producerToUpdate = new Producer()
+                {
+                    Name = _name,
+                    DOB = (DateTime)_dob,
+                    Biography = _bio
+                };
                 UpdateToDB(producerToUpdate);
-            } else
+            }
+            else
             {
                 if (Name != "" && DOB != null && Biography != "")
                 {
-                    Producer newProducerToAdd = new Producer();
-                    newProducerToAdd.Name = _name;
-                    newProducerToAdd.DOB = (DateTime)_dob;
-                    newProducerToAdd.Biography = _bio;
+                    Producer newProducerToAdd = new Producer()
+                    {
+                        Name = _name,
+                        DOB = (DateTime)_dob,
+                        Biography = _bio
+                    };
                     SaveToDB(newProducerToAdd);
                 }
                 else
                 {
                     _message = "Sorry, but it looks like you didn't fill out all the fields";
-                    MessageBox.Show(_message);
+                    MessageBox.Show(_message, "Blank Fields ERROR");
                 }
             }
         }
@@ -121,6 +144,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             if (producerToUpdate != null)
             {
                 _producerRepo.Update(_selectedProducer.Id, producerToUpdate);
+                ResetForm();
             }
         }
 
@@ -129,9 +153,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             if (producer != null)
             {
                 _producerRepo.Create(producer);
+                ResetForm();
             }
-
-            ResetForm();
         }
 
         void ResetForm()
@@ -139,8 +162,41 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             Name = "";
             DOB = new DateTime?();
             Biography = "";
-            _message = "Successfully added to the DataBase!";
-            MessageBox.Show(_message);
+            _message = "Successfully Added/Updated the Producer to the DataBase!";
+            string title = "SUCCESS";
+            MessageBox.Show(_message, title);
         }
+
+        private void FormReset()
+        {
+            string title = "Reset Form";
+            string message = "Are you sure you want to reset the form?";
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            MessageBoxResult result = MessageBox.Show(message, title, buttons);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
+                {
+                    SetSelectedData();
+                }
+                else
+                {
+                    Name = "";
+                    DOB = new DateTime?();
+                    Biography = "";
+                }
+            }
+        }
+
+        void SetSelectedData()
+        {
+            Name = _selectedProducer.Name;
+            DOB = _selectedProducer.DOB;
+            Biography = _selectedProducer.Biography;
+        }
+   
+        #endregion
+
     }
 }

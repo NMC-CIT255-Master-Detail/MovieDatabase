@@ -6,7 +6,6 @@ using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Services;
 using MovieDatabase.WPF.Peter.Commands;
 using MovieDatabase.WPF.Peter.ViewModels;
-using MovieDatabase.WPF.Peter.ViewModels.ViewModelFactories;
 
 namespace MovieDatabase.WPF.Peter.State.Navigator
 {
@@ -23,10 +22,6 @@ namespace MovieDatabase.WPF.Peter.State.Navigator
                 OnPropertyChanged(nameof(CurrentViewModel));
             }
         }
-
-        #region ICommands
-
-        #endregion
 
     }
 }
