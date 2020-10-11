@@ -58,7 +58,7 @@
             <Label Content="DOB: " />
             <TextBlock Text="{Binding SelectedMovie.Producer.DOB, StringFormat={}\{0:MM/dd/yyyy \}}" />
         </StackPanel>
-
+        <Button Grid.Row="7" VerticalAlignment="Top" HorizontalAlignment="right" Command="{Binding DataContext.UpdateViewModelCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{x:Static nav:ViewType.EditProducer}"/>
         <Separator Grid.Row="8" />
         <StackPanel Orientation="Horizontal" Grid.Row="9">
             <Label Content="Studio Name: " />

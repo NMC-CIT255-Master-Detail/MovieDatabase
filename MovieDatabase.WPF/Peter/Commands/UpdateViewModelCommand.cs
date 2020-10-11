@@ -34,10 +34,15 @@ namespace MovieDatabase.WPF.Peter.Commands
         {
             if (parameter is ViewType viewType)
             {
-                if (viewType == ViewType.EditMovie)
+                switch (viewType)
                 {
-                    HomeViewModel.ActionToTake = HomeViewModel.Action.EDIT;
+                    case ViewType.EditMovie:
+                    case ViewType.EditProducer:
+                    case ViewType.EditStudio:
+                        HomeViewModel.ActionToTake = HomeViewModel.Action.EDIT;
+                        break;
                 }
+
                 _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType);
             }
         }
