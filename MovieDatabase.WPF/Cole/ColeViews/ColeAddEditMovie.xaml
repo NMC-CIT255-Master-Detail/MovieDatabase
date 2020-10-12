@@ -109,8 +109,7 @@
 
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Add/Edit Movie" Style="{Binding Header1}" Grid.ColumnSpan="7"
-                   HorizontalAlignment="Center" />
+        <TextBlock Text="Add/Edit Movie" Style="{Binding Header1}" Grid.ColumnSpan="7" HorizontalAlignment="Center" />
         <TextBlock Text="Movie Title" Grid.Row="1" Style="{Binding TextBlock}" Grid.Column="1" />
         <TextBox x:Name="MovieTitle" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" Text="{Binding Title}" />
 
@@ -159,11 +158,11 @@
         <TextBox x:Name="MovieIMDBLink" Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding IMDBLink}"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="14" Grid.Column="1">
-            <Button Style="{Binding GreenButton}" Content="Save" HorizontalAlignment="Left" Margin="0,0,10,0" Command="{Binding SaveMovieCommand}"/>
-            <Button Style="{Binding PurpleButton}" Content="Reset" Command="{Binding ResetFormCommand}"/>
+            <Button Background="Salmon" Content="Save" Margin="0,0,4,0" Width="50" Command="{Binding SaveMovieCommand}"/>
+            <Button Background="CadetBlue" Content="Reset" Width="50" Command="{Binding ResetFormCommand}"/>
         </StackPanel>
 
-        <Button Style="{Binding RedButton}" Content="Cancel" Grid.Row="14" Grid.Column="5"
+        <Button Background="ForestGreen" Content="Cancel" Grid.Row="14" Grid.Column="5"
                 HorizontalAlignment="Right" Command="{Binding CancelCommand}"/>
 
     </Grid>

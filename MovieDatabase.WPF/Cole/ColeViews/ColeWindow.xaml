@@ -10,7 +10,6 @@
         <local1:ColeViewModel/>
     </Window.DataContext>
     <!--Styles-->
-    <!--Styles-->
     <Window.Resources>
         <Style x:Key="HeaderStyle" TargetType="Label">
             <Setter Property="Foreground" Value="Black" />

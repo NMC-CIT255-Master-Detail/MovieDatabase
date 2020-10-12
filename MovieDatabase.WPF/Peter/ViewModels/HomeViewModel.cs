@@ -15,7 +15,15 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
+        #region Enums
 
+        public enum Action
+        {
+            ADD,
+            EDIT
+        }
+
+        #endregion
 
 
         #region Fields
@@ -160,7 +168,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
         #endregion
 
-
         #region Constructor
 
         public HomeViewModel(IDataService<Movie> movieRepo, IDataService<Studio> studioRepo, IDataService<Producer> producerRepo)
@@ -252,10 +259,6 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             Movies = new ObservableCollection<Movie>((IEnumerable<Movie>)_movieSet.GetAll());
         }
 
-        public void EditMovie(object param)
-        {
-        }
-
         private void DeleteMovie()
         {
             if (SelectedMovie != null)
@@ -264,7 +267,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
                 {
                     Movies = new ObservableCollection<Movie>(_movieSet.GetAll());
                     SelectedMovie = Movies[0];
-                    _message = "Movie Successfully Deleted";
+                    _message = "Deleted Movie";
                     MessageBox.Show(_message);
                 }
                 
