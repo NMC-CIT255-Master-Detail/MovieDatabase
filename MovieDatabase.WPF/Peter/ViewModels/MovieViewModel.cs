@@ -275,7 +275,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         void ResetForm()
         {
             string title = "Reset Form";
-            string message = "Are you sure you want to reset the form?";
+            string message = "You want to reset the form?";
             MessageBoxButton buttons = MessageBoxButton.YesNo;
             MessageBoxResult result = MessageBox.Show(message, title, buttons);
 

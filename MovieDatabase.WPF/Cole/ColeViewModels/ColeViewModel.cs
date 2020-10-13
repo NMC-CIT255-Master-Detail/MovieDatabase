@@ -263,10 +263,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         public ICommand ButtonFilterByRuntimeCommand => new RelayCommand(FilterByRuntime);
         public ICommand ButtonSortByCommand => new RelayCommand(new Action<object>(SortBy));
         public ICommand ButtonResetFormCommand => new RelayCommand(ResetForm);
-
         public ICommand SaveMovieCommand => new RelayCommand(SaveMovieToDB);
-
-
 
         // Edit, Delete, and Add buttons
         public ICommand EditMovieCommand => new RelayCommand(EditMovie);
@@ -274,23 +271,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         public ICommand AddMovieCommand => new RelayCommand(AddMovie);
 
         #endregion
-
-        #region Constructor
-
-        public ColeViewModel()
-        {
-            _movieRepo = new MovieRepository(new MovieDatabaseDbContextFactory());
-            _studioRepo = new GenericDataService<Studio>(new MovieDatabaseDbContextFactory());
-            _producerRepo = new GenericDataService<Producer>(new MovieDatabaseDbContextFactory());
-            Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
-            Producers = new ObservableCollection<Producer>(_producerRepo.GetAll());
-            Studios = new ObservableCollection<Studio>(_studioRepo.GetAll());
-
-            if (Movies.Any()) SelectedMovie = Movies[0];
-        }
-
-        #endregion
-
+           
         #region Methods
 
         public void SearchByMovie()
@@ -380,12 +361,21 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         {
             if (SelectedMovie != null)
             {
-                if (_movieRepo.Delete(SelectedMovie.Id))
+                string message = "You want to DELETE the Movie?";
+                string title = "Confirm Deletion";
+                MessageBoxButton buttons = MessageBoxButton.YesNo;
+                MessageBoxResult result = MessageBox.Show(message, title, buttons);
+
+                if (result == MessageBoxResult.Yes)
                 {
-                    Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
-                    SelectedMovie = Movies[0];
-                    _message = "Movie Deleted";
-                    MessageBox.Show(_message);
+                    if (_movieRepo.Delete(SelectedMovie.Id))
+                    {
+                        Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
+                        SelectedMovie = Movies[0];
+                        string messageSuccess = "Movie Deleted";
+                        string titleSuccess = "SUCCESS";
+                        MessageBox.Show(messageSuccess, titleSuccess);
+                    }
                 }
             }
         }
@@ -395,6 +385,8 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             if (newMovieToAdd != null)
             {
                 _movieRepo.Create(newMovieToAdd);
+                _message = "Movie Added";
+                MessageBox.Show(_message);
             }
             ResetForm();
         }
@@ -431,9 +423,6 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
         public void EditMovie()
         {
-
-
-
             Title = _selectedMovie.Title;
             Description = _selectedMovie.Description;
             ReleaseDate = _selectedMovie.ReleaseDate;
@@ -450,5 +439,21 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
         #endregion
 
+        #region Constructor
+
+        public ColeViewModel()
+        {
+            _movieRepo = new MovieRepository(new MovieDatabaseDbContextFactory());
+            _studioRepo = new GenericDataService<Studio>(new MovieDatabaseDbContextFactory());
+            _producerRepo = new GenericDataService<Producer>(new MovieDatabaseDbContextFactory());
+
+            Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
+            Producers = new ObservableCollection<Producer>(_producerRepo.GetAll());
+            Studios = new ObservableCollection<Studio>(_studioRepo.GetAll());
+
+            if (Movies.Any()) SelectedMovie = Movies[0];
+        }
+
+        #endregion
     }
 }
