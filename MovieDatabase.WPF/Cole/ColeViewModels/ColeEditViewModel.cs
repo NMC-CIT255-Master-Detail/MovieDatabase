@@ -280,23 +280,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels
         #region Methods
 
         void SaveMovieToDB()
-        {
-            if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
-            {
-                Movie newMovieToAdd = new Movie()
-                {
-                    Title = _title,
-                    Description = _description,
-                    ReleaseDate = (DateTime)_releaseDate,
-                    Runtime = (int)_runtime,
-                    IMDBLink = _imdbLink,
-                    ProducerId = _selectedProducer.Id,
-                    StudioId = _selectedStudio.Id
-                };
-                UpdateMovieToDB(newMovieToAdd);
-            }
-            else
-            {
+        {                        
                 if (Title != "")
                 {
                     Movie movieToEdit = new Movie()
@@ -306,10 +290,10 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels
                         ReleaseDate = (DateTime)_releaseDate,
                         Runtime = (int)_runtime,
                         IMDBLink = _imdbLink,
-                        ProducerId = _selectedProducer.Id,
-                        StudioId = _selectedStudio.Id
+                        ProducerId = _theProducer.Id,
+                        StudioId = _theStudio.Id
                     };
-                    SaveMovieToDB(movieToEdit);
+                    UpdateMovieToDB(movieToEdit);
                 }
                 else
                 {
@@ -317,7 +301,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels
                     string title = "Blank Fields ERROR";
                     MessageBox.Show(_message, title);
                 }
-            }
+            
         }
 
         private void UpdateMovieToDB(Movie movieToEdit)
