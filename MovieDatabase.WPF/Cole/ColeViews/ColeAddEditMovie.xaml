@@ -7,8 +7,7 @@
         mc:Ignorable="d"
         Title="ColeAddEditMovie" Height="500" Width="700">
     <!--Styles-->
-    <Window.Resources>
-        
+    <Window.Resources>        
         <Style x:Key="HeaderStyle" TargetType="Label">
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontSize" Value="28" />
