@@ -1,3 +1,4 @@
+using DocumentFormat.OpenXml.Drawing.Charts;
 using MovieDatabase.Domain;
 using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Services;
@@ -44,11 +45,21 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         string _producerId;
         DateTime? _releaseDate;
         int? _runtime;
+        static Movie _selection;
 
 
         #endregion
 
         #region Properties
+
+        public static Movie Selection
+        {
+            get => _selection;
+            set
+            {
+                _selection = value;
+            }
+        }
 
         public ObservableCollection<Studio> Studios
         {
@@ -93,6 +104,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             {
                 _selectedMovie = value;
                 if (_selectedMovie != null) OnPropertyChanged(nameof(SelectedMovie));
+                _selection = SelectedMovie;
             }
         }
 
@@ -418,6 +430,9 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
         public void EditMovie()
         {
+
+
+
             Title = _selectedMovie.Title;
             Description = _selectedMovie.Description;
             ReleaseDate = _selectedMovie.ReleaseDate;
@@ -426,7 +441,8 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             TheProducer = _selectedMovie.Producer;
             TheStudio = _selectedMovie.Studio;
 
-            ColeAddEditMovie editWindow = new ColeAddEditMovie();
+            ColeEditViewModel cevm = new ColeEditViewModel();
+            ColeEditMovieView editWindow = new ColeEditMovieView();
             editWindow.Show();
         }
 
