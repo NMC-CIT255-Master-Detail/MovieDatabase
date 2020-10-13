@@ -16,7 +16,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        private readonly IMovieDatabaseViewModelAbstractFactory _viewModelFactory;
+        readonly IMovieDatabaseViewModelAbstractFactory _viewModelFactory;
 
         public INavigator Navigator { get; set; }
         public ICommand UpdateViewModelCommand { get; }

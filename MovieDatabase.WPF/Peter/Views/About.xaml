@@ -5,5 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="About" Height="450" Width="800">
-    <Grid />
+    <Grid Background="#285B6F">
+        <DockPanel>
+            <TextBlock Text="ABOUT" HorizontalAlignment="center" DockPanel.Dock="Top" FontSize="24" FontWeight="Bold" Foreground="White" Margin="0 20 0 0"/>
+            <TextBlock Text="Application Name: MovieDatabase" FontSize="18" Foreground="white" Margin="10 20 0 0" DockPanel.Dock="Top" />
+            <TextBlock Text="Developer: Peter Steele" FontSize="18" Foreground="white" Margin="10 20 0 0" DockPanel.Dock="Top"/>
+            <TextBlock Text="Version: 1.0" FontSize="18" Foreground="White" Margin="10 20 0 0" DockPanel.Dock="Top"/>
+            <TextBlock Text="Release Date: 10/13/2020" FontSize="18" Foreground="White" Margin="10 20 0 0" DockPanel.Dock="Top"/>
+            <TextBlock Text="License: GNU v3" FontSize="18" Foreground="White" Margin="10 20 0 0" DockPanel.Dock="Top" />
+            <TextBlock Text="Contact Information: info@pbsteele.com" FontSize="18" Foreground="White" Margin="10 20 0 0" DockPanel.Dock="Top" />
+
+        </DockPanel>
+    </Grid>
 </Window>

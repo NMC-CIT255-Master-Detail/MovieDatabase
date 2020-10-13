@@ -11,7 +11,7 @@ namespace MovieDatabase.WPF.Peter.State.Navigator
 {
     public class Navigator : ObservableObject, INavigator
     {
-        private BaseViewModel _currentViewModel;
+        BaseViewModel _currentViewModel;
 
         public BaseViewModel CurrentViewModel
         {

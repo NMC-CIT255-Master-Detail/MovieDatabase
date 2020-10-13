@@ -111,6 +111,10 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         {
             if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
+                if (Name != "" && DOB != null && Biography != "")
+                {
+
+                }
                 Producer producerToUpdate = new Producer()
                 {
                     Name = _name,
