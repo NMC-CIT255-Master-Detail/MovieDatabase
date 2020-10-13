@@ -18,9 +18,8 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
-
-        #region Enum
-
+        #region Enums
+        
         public enum Action
         {
             ADD,
@@ -294,6 +293,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             MaxRuntimeText = "";
             SelectedProducer = null;
             SelectedStudio = null;
+
             Movies = new ObservableCollection<Movie>(_movieSet.GetAll());
         }
 
