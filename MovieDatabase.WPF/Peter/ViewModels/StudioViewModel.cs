@@ -177,10 +177,11 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         public StudioViewModel(IDataService<Studio> studioRepo)
         {
             _studioRepo = studioRepo;
-            _selectedStudio = HomeViewModel.Selection.Studio;
+
 
             if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
+                _selectedStudio = HomeViewModel.Selection.Studio;
                 SetSelectedData();
             }
         }
