@@ -196,6 +196,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
 
             if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
+                _selectedMovie = HomeViewModel.Selection;
                 SetSelectedData();
             }
         }
