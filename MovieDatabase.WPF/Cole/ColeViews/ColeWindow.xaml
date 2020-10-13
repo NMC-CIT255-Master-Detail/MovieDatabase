@@ -242,12 +242,12 @@
                         x:Name="Button_Delete"
                         Content="Delete"
                         Style="{StaticResource ButtonStyleLarge}"
-                        Command="{Binding DataContext.DeleteMovieCommand, ElementName=ListWindow}" />
+                        Command="{Binding DeleteMovieCommand}" />
                     <Button
                         x:Name="Button_Edit"
                         Content="Edit"
                         Style="{StaticResource ButtonStyleLarge}"
-                        Command="{Binding DataContext.EditMovieCommand, ElementName=ListWindow}" />
+                        Command="{Binding EditMovieCommand}" />
                 </StackPanel>
             </StackPanel>
         </Grid>
