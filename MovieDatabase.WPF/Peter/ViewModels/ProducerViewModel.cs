@@ -95,9 +95,10 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         public ProducerViewModel(IDataService<Producer> producerRepo)
         {
             _producerRepo = producerRepo;
-            _selectedProducer = HomeViewModel.Selection.Producer;
+
             if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
+                _selectedProducer = HomeViewModel.Selection.Producer;
                 SetSelectedData();
             }
         }
