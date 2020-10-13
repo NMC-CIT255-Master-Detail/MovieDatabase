@@ -400,6 +400,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
                 newMovieToAdd.ProducerId = _theProducer.Id;
                 newMovieToAdd.StudioId = _theStudio.Id;
                 _movieRepo.Create(newMovieToAdd);
+                Movies.Add(newMovieToAdd);
             }
             else
             {
