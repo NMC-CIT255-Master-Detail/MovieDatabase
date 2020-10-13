@@ -15,6 +15,8 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         public ColeViewModel()
         {
             _movieRepo = new MovieRepository(new MovieDatabaseDbContextFactory());
+            _studioRepo = new GenericDataService<Studio>(new MovieDatabaseDbContextFactory());
+            _producerRepo = new GenericDataService<Producer>(new MovieDatabaseDbContextFactory());
             Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
             if (Movies.Any()) SelectedMovie = Movies[0];
         }
