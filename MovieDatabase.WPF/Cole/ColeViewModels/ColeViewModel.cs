@@ -18,9 +18,12 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         #region Fields
 
         private ObservableCollection<Movie> _movies;
-        
-        private readonly IDataService<Movie> _movieRepo;
+        private ObservableCollection<Producer> _producers;
+        private ObservableCollection<Studio> _studios;
 
+        readonly IDataService<Movie> _movieRepo;
+        readonly IDataService<Studio> _studioRepo;
+        readonly IDataService<Producer> _producerRepo;
 
         private Movie _selectedMovie;
         private Movie _selectedProducer;
@@ -45,21 +48,33 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
         #endregion
 
-        #region Constructor
+        #region Properties
 
-        public ColeViewModel()
+        public ObservableCollection<Studio> Studios
         {
-            _movieRepo = new MovieRepository(new MovieDatabaseDbContextFactory());
-            //_studioRepo = new GenericDataService<Studio>(new MovieDatabaseDbContextFactory());
-            //_producerRepo = new GenericDataService<Producer>(new MovieDatabaseDbContextFactory());
-            Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
-
-            if (Movies.Any()) SelectedMovie = Movies[0];
+            get
+            {
+                return _studios;
+            }
+            set
+            {
+                _studios = value;
+                OnPropertyChanged(nameof(Studios));
+            }
+        }
+        public ObservableCollection<Producer> Producers
+        {
+            get
+            {
+                return _producers;
+            }
+            set
+            {
+                _producers = value;
+                OnPropertyChanged(nameof(Producers));
+            }
         }
 
-        #endregion
-
-        #region Properties
 
         public ObservableCollection<Movie> Movies
         {
@@ -205,6 +220,63 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             }
         }
 
+        public Producer TheProducer
+        {
+            get => _theProducer;
+            set
+            {
+                _theProducer = value;
+                OnPropertyChanged(nameof(TheProducer));
+            }
+        }
+
+        public Studio TheStudio
+        {
+            get => _theStudio;
+            set
+            {
+                _theStudio = value;
+                OnPropertyChanged(nameof(TheStudio));
+            }
+        }
+
+        #endregion
+
+        #region ICommands
+
+        //Search Buttons
+        public ICommand ButtonSearchByMovieCommand => new RelayCommand(SearchByMovie);
+        public ICommand ButtonSearchByProducerCommand => new RelayCommand(SearchByProducer);
+        public ICommand ButtonSearchByStudioCommand => new RelayCommand(SearchByStudio);
+        public ICommand ButtonFilterByRuntimeCommand => new RelayCommand(FilterByRuntime);
+        public ICommand ButtonSortByCommand => new RelayCommand(new Action<object>(SortBy));
+        public ICommand ButtonResetFormCommand => new RelayCommand(ResetForm);
+
+        public ICommand SaveMovieCommand => new RelayCommand(SaveMovieToDB);
+
+
+
+        // Edit, Delete, and Add buttons
+        public ICommand EditMovieCommand => new RelayCommand(EditMovie);
+        public ICommand DeleteMovieCommand => new RelayCommand(DeleteMovie);
+        public ICommand AddMovieCommand => new RelayCommand(AddMovie);
+
+        #endregion
+
+        #region Constructor
+
+        public ColeViewModel()
+        {
+            _movieRepo = new MovieRepository(new MovieDatabaseDbContextFactory());
+            _studioRepo = new GenericDataService<Studio>(new MovieDatabaseDbContextFactory());
+            _producerRepo = new GenericDataService<Producer>(new MovieDatabaseDbContextFactory());
+            Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
+            Producers = new ObservableCollection<Producer>(_producerRepo.GetAll());
+            Studios = new ObservableCollection<Studio>(_studioRepo.GetAll());
+
+            if (Movies.Any()) SelectedMovie = Movies[0];
+        }
+
         #endregion
 
         #region Methods
@@ -317,7 +389,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
         void SaveMovieToDB()
         {
-            if (Title != "" && Description != "" && ReleaseDate != null && RunTime != null && IMDBLink != "" && ProducerId != "" && StudioId != "")
+            if (Title != "" && Description != "" && ReleaseDate != null && RunTime != null && IMDBLink != "")
             {
                 Movie newMovieToAdd = new Movie();
                 newMovieToAdd.Title = _title;
@@ -325,9 +397,9 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
                 newMovieToAdd.ReleaseDate = (DateTime)_releaseDate;
                 newMovieToAdd.Runtime = (int)_runtime;
                 newMovieToAdd.IMDBLink = _imdbLink;
-                newMovieToAdd.Producer.Id = _selectedProducer.Id;
-                newMovieToAdd.Studio.Id = int.Parse(_studioId);
-                SaveMovieToDB(newMovieToAdd);
+                newMovieToAdd.ProducerId = _theProducer.Id;
+                newMovieToAdd.StudioId = _theStudio.Id;
+                _movieRepo.Create(newMovieToAdd);
             }
             else
             {
@@ -341,50 +413,22 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         {
             ColeAddEditMovie MovieAdd = new ColeAddEditMovie();
             MovieAdd.Show();
-
-
-
-            //Movie NewAddMovie = new Movie();
-            //NewAddMovie.Title = _title;
-            //NewAddMovie.Description = _description;
-            //NewAddMovie.ReleaseDate = (DateTime)_releaseDate;
-            //NewAddMovie.Runtime = (int)_runtime;
-            //NewAddMovie.Producer = _producerId;
-            //NewAddMovie.Studio = _studioId
-
-            //_movieRepo.Create(NewAddMovie);
-            //_movieRepo.Update(_selectedMovie.Id, NewAddMovie);
-
         }
 
 
-        //public void EditMovie(object param)
-        //{
+        public void EditMovie()
+        {
+            Title = _selectedMovie.Title;
+            Description = _selectedMovie.Description;
+            ReleaseDate = _selectedMovie.ReleaseDate;
+            RunTime = _selectedMovie.Runtime;
+            IMDBLink = _selectedMovie.IMDBLink;
+            TheProducer = _selectedMovie.Producer;
+            TheStudio = _selectedMovie.Studio;
 
-
-        //}
-
-
-        #endregion
-
-        #region ICommands
-
-        //Search Buttons
-        public ICommand ButtonSearchByMovieCommand => new RelayCommand(SearchByMovie);
-        public ICommand ButtonSearchByProducerCommand => new RelayCommand(SearchByProducer);
-        public ICommand ButtonSearchByStudioCommand => new RelayCommand(SearchByStudio);
-        public ICommand ButtonFilterByRuntimeCommand => new RelayCommand(FilterByRuntime);
-        public ICommand ButtonSortByCommand => new RelayCommand(new Action<object>(SortBy));
-        public ICommand ButtonResetFormCommand => new RelayCommand(ResetForm);
-
-        public ICommand SaveMovieCommand => new RelayCommand(SaveMovieToDB);
-
-
-
-        // Edit, Delete, and Add buttons
-        public ICommand ButtonEditMovieCommand { get; set; }
-        public ICommand DeleteMovieCommand => new RelayCommand(DeleteMovie);
-
+            ColeAddEditMovie editWindow = new ColeAddEditMovie();
+            editWindow.Show();
+        }
 
 
         #endregion
