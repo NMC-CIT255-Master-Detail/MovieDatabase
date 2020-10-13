@@ -209,6 +209,10 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         {
             if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
+                if (Title != "" && Description != "" && ReleaseDate != null && RunTime != null && IMDBLink != "")
+                {
+
+                }
                 Movie newMovieToAdd = new Movie() 
                 {
                     Title = _title,
@@ -223,7 +227,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
             else
             {
-                if (Title != "")
+                if (Title != "" && Description != "" && ReleaseDate != null && RunTime != null && IMDBLink != "")
                 {
                     Movie movieToEdit = new Movie() 
                     {

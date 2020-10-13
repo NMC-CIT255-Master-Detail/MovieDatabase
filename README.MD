@@ -60,13 +60,9 @@ Regarding the database for the application, this will be handled by Entity Frame
 
 The Presentation layer will be the general WPF stuff. Views and ViewModels. The Domain aspect normally put here like we have with past projects has been split into its own project for better decoupling and organization. This layer will heavily rely on the dependency injection to get what it needs and to build the ViewModels needed for the views. This is also where the Resource Dictionaries, UserControls, and DataContexts will reside (in this project). There will be a lot added here over the other assemblies in this solution, but we will update with that information as needed as the sprints progress. 
 
-# Contributing
+# Technical Documentation
 
-TBA
-
-# Running the Application
-
-TBA
+**Technical Documentation** 
 
 # Project Links
 

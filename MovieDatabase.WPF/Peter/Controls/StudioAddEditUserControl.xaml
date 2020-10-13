@@ -48,7 +48,7 @@
         <TextBox Text="{Binding Website}" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" />
 
         <TextBlock Style="{DynamicResource TextBlock}" Text="Description" Grid.Row="9" Grid.Column="1" />
-        <TextBox Text="{Binding Description}" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="3" Height="200"
+        <TextBox Text="{Binding Description}" TextWrapping="WrapWithOverflow" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="3" Height="200"
                  MaxHeight="200" />
 
         <TextBlock Style="{DynamicResource TextBlock}" Text="Address" Grid.Row="11" Grid.Column="1" />

@@ -5,5 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Help" Height="450" Width="800">
-    <Grid />
+    <Grid Background="#285B6F">
+        <DockPanel>
+            <TextBlock Text="HELP" FontSize="28" Foreground="White" FontWeight="bold" HorizontalAlignment="Center" Margin="0 20 0 0" DockPanel.Dock="Top"/>
+            <TextBlock TextWrapping="WrapWithOverflow" Text="Adding a Movie: To add a movie, you will want to first make sure your produce and studio have been added. Then navigate to the ribbon menu, click on Movie, and select the dropdown that says Add. Fill in the information and then hit save." Margin="10 20" FontSize="18" Foreground="white" DockPanel.Dock="Top" />
+            <TextBlock TextWrapping="WrapWithOverflow" Text="Adding a Producer: To add a producer, navigate to the ribbon menu, select Producer and hit the Add icon. Fill in the information and then hit save." Margin="10 20" FontSize="18" Foreground="white" DockPanel.Dock="Top" />
+            <TextBlock TextWrapping="WrapWithOverflow" Text="Adding a Studio: To add a studio, navigate to the ribbon menu, select Studio and hit the Add icon. Fill in the information and then hit save." Margin="10 20" FontSize="18" Foreground="white" DockPanel.Dock="Top" />
+        </DockPanel>
+    </Grid>
 </Window>

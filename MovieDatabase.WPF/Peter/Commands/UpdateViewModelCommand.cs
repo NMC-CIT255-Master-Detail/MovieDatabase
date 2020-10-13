@@ -51,7 +51,5 @@ namespace MovieDatabase.WPF.Peter.Commands
                 _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType);
             }
         }
-
-        
     }
 }

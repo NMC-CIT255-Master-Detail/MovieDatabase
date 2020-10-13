@@ -194,6 +194,10 @@ namespace MovieDatabase.WPF.Peter.ViewModels
         {
             if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
             {
+                if (Name != "" && Phone != "" && Email != "" && Website != "" && Description != "" && Address != "" && City != "" && State != "" && Zipcode != 0)
+                {
+
+                }
                 Studio studioToUpdate = new Studio() 
                 {
                     Name = _name,
@@ -210,7 +214,7 @@ namespace MovieDatabase.WPF.Peter.ViewModels
             }
             else
             {
-                if (Name != "" && Phone != "" && Email != "" && Website != "" && Description != "" && Address != "" && City != "" && State != "" && Zipcode != 0)
+                if (Name != "" && Phone != "" && Email != "" && Website != "" && Description != "" && Address != "" && City != "" && State != "" && Zipcode != null)
                 {
                     Studio newStudioToAdd = new Studio();
                     newStudioToAdd.Name = _name;

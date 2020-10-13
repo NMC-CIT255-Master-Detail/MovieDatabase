@@ -35,7 +35,7 @@
                     Grid.Row="4" Grid.Column="1" SelectedDate="{Binding DOB, Mode=TwoWay}"/>
 
         <TextBlock Style="{DynamicResource TextBlock}" Text="Biography" Grid.Row="5" Grid.Column="1" />
-        <TextBox Text="{Binding Biography}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Height="200"
+        <TextBox Text="{Binding Biography}" TextWrapping="WrapWithOverflow" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Height="200"
                  MaxHeight="200"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="14" Grid.Column="1">
