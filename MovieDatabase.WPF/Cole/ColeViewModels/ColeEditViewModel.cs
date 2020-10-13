@@ -1,16 +1,21 @@
-﻿using MovieDatabase.Domain.Models;
+﻿using MovieDatabase.Domain;
+using MovieDatabase.Domain.Models;
 using MovieDatabase.Domain.Services;
 using MovieDatabase.EntityFramework;
 using MovieDatabase.EntityFramework.Services;
+using MovieDatabase.WPF.Peter.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows;
+using System.Windows.Input;
 
 namespace MovieDatabase.WPF.Cole.ColeViewModels
 {
     class ColeEditViewModel : BaseViewModel
     {
+
         #region Fields
 
         private ObservableCollection<Movie> _movies;
@@ -243,7 +248,14 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels
         public ColeEditViewModel()        
         {
             _movieRepo = new MovieRepository(new MovieDatabaseDbContextFactory());
+            _studioRepo = new GenericDataService<Studio>(new MovieDatabaseDbContextFactory());
+            _producerRepo = new GenericDataService<Producer>(new MovieDatabaseDbContextFactory());
+
+            Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
+            Producers = new ObservableCollection<Producer>(_producerRepo.GetAll());
+            Studios = new ObservableCollection<Studio>(_studioRepo.GetAll());
             _selectedMovie = ColeViewModel.ColeViewModel.Selection;
+
             Title = _selectedMovie.Title;
             Description = _selectedMovie.Description;
             ReleaseDate = _selectedMovie.ReleaseDate;
@@ -253,6 +265,114 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels
             TheStudio = _selectedMovie.Studio;
         }
 
+
+
         #endregion
+
+        #region ICommand
+
+        public ICommand SaveMovieCommand => new RelayCommand(SaveMovieToDB);
+
+        public ICommand ResetFormCommand => new RelayCommand(ResetForm);
+
+        #endregion
+
+        #region Methods
+
+        void SaveMovieToDB()
+        {                        
+                if (Title != "")
+                {
+                    Movie movieToEdit = new Movie()
+                    {
+                        Title = _title,
+                        Description = _description,
+                        ReleaseDate = (DateTime)_releaseDate,
+                        Runtime = (int)_runtime,
+                        IMDBLink = _imdbLink,
+                        ProducerId = _theProducer.Id,
+                        StudioId = _theStudio.Id
+                    };
+                    UpdateMovieToDB(movieToEdit);
+                }
+                else
+                {
+                    _message = "Some fields are not filled in!";
+                    string title = "Blank Fields ERROR";
+                    MessageBox.Show(_message, title);
+                }
+            
+        }
+
+        private void UpdateMovieToDB(Movie movieToEdit)
+        {
+            if (movieToEdit != null)
+            {
+                _movieRepo.Update(_selectedMovie.Id, movieToEdit);
+                ResetFormAfterAdd();
+            }
+        }
+
+        private void SaveMovieToDB(Movie newMovieToAdd)
+        {
+            if (newMovieToAdd != null)
+            {
+                _movieRepo.Create(newMovieToAdd);
+                ResetFormAfterAdd();
+            }
+        }
+
+        private void ResetFormAfterAdd()
+        {
+            ResetData();
+            _message = "Successfully Added/Updated the Movie to the Database";
+            string title = "SUCCESS";
+            MessageBox.Show(_message, title);
+        }
+
+        void ResetForm()
+        {
+            string title = "Reset Form";
+            string message = "You want to reset the form?";
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            MessageBoxResult result = MessageBox.Show(message, title, buttons);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                if (HomeViewModel.ActionToTake == HomeViewModel.Action.EDIT)
+                {
+                    SetSelectedData();
+                }
+                else
+                {
+                    ResetData();
+                }
+            }
+        }
+
+        void SetSelectedData()
+        {
+            Title = _selectedMovie.Title;
+            Description = _selectedMovie.Description;
+            ReleaseDate = _selectedMovie.ReleaseDate;
+            RunTime = _selectedMovie.Runtime;
+            TheProducer = _selectedMovie.Producer; // Ask John about why this doesn't work
+            TheStudio = _selectedMovie.Studio; // Ask John about why this doesn't work
+            IMDBLink = _selectedMovie.IMDBLink;
+        }
+
+        void ResetData()
+        {
+            Title = "";
+            Description = "";
+            ReleaseDate = new DateTime?();
+            RunTime = null;
+            SelectedProducer = null;
+            SelectedStudio = null;
+            IMDBLink = "";
+        }
+
+        #endregion
+
     }
 }

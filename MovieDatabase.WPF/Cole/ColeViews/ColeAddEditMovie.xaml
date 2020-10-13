@@ -12,8 +12,7 @@
     </Window.DataContext>
     
     <!--Styles-->
-    <Window.Resources>
-        
+    <Window.Resources>        
         <Style x:Key="HeaderStyle" TargetType="Label">
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontSize" Value="28" />

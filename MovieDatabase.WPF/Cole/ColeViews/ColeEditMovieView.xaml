@@ -13,7 +13,6 @@
 
     <!--Styles-->
     <Window.Resources>
-
         <Style x:Key="HeaderStyle" TargetType="Label">
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontSize" Value="28" />
@@ -163,6 +162,10 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="14" Grid.Column="1">
             <Button Background="Salmon" Content="Save" Margin="0,0,4,0" Width="50" Command="{Binding SaveMovieCommand}"/>
+            <!--<Button Background="Blue" Content="Update" Width="50" Command="{Binding UpdateMovieCommand}"/>-->
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="14" Grid.Column="2">
             <Button Background="CadetBlue" Content="Reset" Width="50" Command="{Binding ResetFormCommand}"/>
         </StackPanel>
 
