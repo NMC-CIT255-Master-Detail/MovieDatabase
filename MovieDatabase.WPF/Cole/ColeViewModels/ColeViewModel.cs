@@ -1,4 +1,7 @@
+using MovieDatabase.Domain;
 using MovieDatabase.Domain.Models;
+using MovieDatabase.Domain.Services;
+using MovieDatabase.EntityFramework;
 using MovieDatabase.EntityFramework.Services;
 using MovieDatabase.WPF.Cole.ColeViews;
 using System;
@@ -22,6 +25,8 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         private Movie _selectedMovie;
         private Movie _selectedProducer;
         private Movie _selectedStudio;
+        Producer _theProducer;
+        Studio _theStudio;
 
         private string _searchString;
         private string _minRuntimeText;
@@ -45,15 +50,14 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         public ColeViewModel()
         {
             _movieRepo = new MovieRepository(new MovieDatabaseDbContextFactory());
-            _studioRepo = new GenericDataService<Studio>(new MovieDatabaseDbContextFactory());
-            _producerRepo = new GenericDataService<Producer>(new MovieDatabaseDbContextFactory());
+            //_studioRepo = new GenericDataService<Studio>(new MovieDatabaseDbContextFactory());
+            //_producerRepo = new GenericDataService<Producer>(new MovieDatabaseDbContextFactory());
             Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
 
             if (Movies.Any()) SelectedMovie = Movies[0];
         }
 
         #endregion
-
 
         #region Properties
 
