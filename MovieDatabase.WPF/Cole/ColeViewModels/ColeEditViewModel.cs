@@ -264,7 +264,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels
             TheProducer = _selectedMovie.Producer;
             TheStudio = _selectedMovie.Studio;
         }
-             
+
 
 
         #endregion
