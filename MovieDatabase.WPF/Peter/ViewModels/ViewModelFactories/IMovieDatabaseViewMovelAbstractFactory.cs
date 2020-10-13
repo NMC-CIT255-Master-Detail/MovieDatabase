@@ -1,4 +1,5 @@
-﻿using MovieDatabase.WPF.Peter.State.Navigator;
+﻿using MovieDatabase.Domain.Models;
+using MovieDatabase.WPF.Peter.State.Navigator;
 using System;
 using System.Collections.Generic;
 using System.Text;

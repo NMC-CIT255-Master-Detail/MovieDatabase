@@ -59,14 +59,13 @@
         <Button Style="{DynamicResource BrowseButton}" x:Name="Browse" Grid.Row="12" Grid.Column="2" Content="Browse" />-->
 
         <TextBlock Text="Producer" Grid.Row="7" Grid.Column="4" Style="{DynamicResource TextBlock}" />
-        <ComboBox x:Name="MovieProducer" Grid.Row="8" Grid.Column="4" Style="{DynamicResource ComboBox}"
+        <ComboBox Grid.Row="8" Grid.Column="4" Style="{DynamicResource ComboBox}"
                   ItemsSource="{Binding Producers}"
-                  DisplayMemberPath="{Binding Name}"
-                  SelectedItem="{Binding Producer}"
-                  SelectedValuePath="{Binding ProducerId}">
+                  SelectedItem="{Binding SelectedProducer}"
+                  IsSynchronizedWithCurrentItem="True">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}" Tag="{Binding Id}"/>
+                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
@@ -74,11 +73,11 @@
         <TextBlock Text="Studio" Grid.Row="9" Grid.Column="4" Style="{DynamicResource TextBlock}" />
         <ComboBox x:Name="MovieStudio" Grid.Row="10" Grid.Column="4" Style="{DynamicResource ComboBox}"
                   ItemsSource="{Binding Studios}"
-                  DisplayMemberPath="{Binding Name}"
-                  SelectedValuePath="{Binding StudioId}">
+                  SelectedItem="{Binding SelectedStudio}"
+                  IsSynchronizedWithCurrentItem="True">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}" Tag="{Binding Id}"/>
+                    <TextBlock Style="{DynamicResource SearchComboBoxItem}" Text="{Binding Name}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
@@ -88,11 +87,11 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="14" Grid.Column="1">
             <Button Style="{DynamicResource GreenButton}" Content="Save" HorizontalAlignment="Left" Command="{Binding SaveMovieCommand}"/>
-            <Button Style="{DynamicResource PurpleButton}" Content="Reset" HorizontalAlignment="Left" Command="{Binding ResetFormCommand}"/>
+            <Button Style="{DynamicResource RedButton}" Content="Reset" HorizontalAlignment="Left" Command="{Binding ResetFormCommand}"/>
         </StackPanel>
 
-        <Button Style="{DynamicResource RedButton}" Content="Cancel" Grid.Row="14" Grid.Column="5"
-                HorizontalAlignment="Right" Command="{Binding CancelCommand}"/>
+        <!--<Button Style="{DynamicResource RedButton}" Content="Cancel" Grid.Row="14" Grid.Column="5"
+                HorizontalAlignment="Right" Command="{Binding CancelCommand}"/>-->
 
     </Grid>
 </UserControl>

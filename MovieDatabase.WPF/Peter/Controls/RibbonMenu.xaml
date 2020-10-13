@@ -71,7 +71,7 @@
                 <!-- Home -->
                 <RibbonGroup x:Name="Home" Header="View">
                     <RibbonMenuButton LargeImageSource="/Peter/Resources/Images/home.png" Label="Home" KeyTip="H">
-                        <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View" KeyTip="A"
+                        <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View" x:Name="ParentBinding" KeyTip="A"
                                         Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Home}" />
                     </RibbonMenuButton>
                 </RibbonGroup>
@@ -80,8 +80,6 @@
                     <RibbonMenuButton LargeImageSource="/Peter/Resources/Images/movie.png" Label="Movies" KeyTip="M">
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/add.png" Header="Add" KeyTip="A"
                                         Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddMovie}" />
-                        <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View (Refresh)"
-                                        KeyTip="V" Command="{Binding ButtonResetFormCommand}"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Producers -->
@@ -90,8 +88,6 @@
                                       KeyTip="M">
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/add.png" Header="Add" KeyTip="A"
                                         Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddProducer}" />
-                        <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View (Refresh)"
-                                        KeyTip="V"/>
                     </RibbonMenuButton>
                 </RibbonGroup>
                 <!-- Studios -->
@@ -100,8 +96,6 @@
                                       Label="Studios" KeyTip="M">
                         <RibbonMenuItem ImageSource="/Peter/Resources/Images/add.png" Header="Add" KeyTip="A"
                                         Command="{Binding UpdateViewModelCommand}" CommandParameter="{x:Static nav:ViewType.AddStudio}" />
-                        <RibbonMenuItem ImageSource="/Peter/Resources/Images/view.png" Header="View (Refresh)"
-                                        KeyTip="V" />
                     </RibbonMenuButton>
                 </RibbonGroup>
             </RibbonTab>

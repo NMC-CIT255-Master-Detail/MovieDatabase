@@ -1,8 +1,4 @@
-﻿using MovieDatabase.Domain;
 using MovieDatabase.Domain.Models;
-using MovieDatabase.Domain.Seed_Data;
-using MovieDatabase.Domain.Services;
-using MovieDatabase.EntityFramework;
 using MovieDatabase.EntityFramework.Services;
 using MovieDatabase.WPF.Cole.ColeViews;
 using System;
@@ -21,6 +17,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         private ObservableCollection<Movie> _movies;
         
         private readonly IDataService<Movie> _movieRepo;
+
 
         private Movie _selectedMovie;
         private Movie _selectedProducer;
@@ -44,7 +41,6 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         #endregion
 
         #region Constructor
-
 
         public ColeViewModel()
         {
