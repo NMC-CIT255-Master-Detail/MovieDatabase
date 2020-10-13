@@ -4,11 +4,10 @@ using MovieDatabase.Domain.Seed_Data;
 using MovieDatabase.Domain.Services;
 using MovieDatabase.EntityFramework;
 using MovieDatabase.EntityFramework.Services;
+using MovieDatabase.WPF.Cole.ColeViews;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
@@ -17,23 +16,11 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
     public class ColeViewModel : BaseViewModel
     {
 
-        #region Constructor
-
-        private readonly IDataService<Movie> _movieRepo;
-        private MovieDatabaseDBContext _context;
-
-        public ColeViewModel()
-        {
-            _movieRepo = new MovieRepository(new MovieDatabaseDbContextFactory());
-            Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
-            if (Movies.Any()) SelectedMovie = Movies[0];
-        }
-
-        #endregion
-
         #region Fields
 
         private ObservableCollection<Movie> _movies;
+        
+        private readonly IDataService<Movie> _movieRepo;
 
         private Movie _selectedMovie;
         private Movie _selectedProducer;
@@ -46,19 +33,29 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
         string _message;
         string _title;
-        string _description;        
+        string _description;
         string _imdbLink;
         string _studioId;
         string _producerId;
         DateTime? _releaseDate;
         int? _runtime;
 
-        //IDataService<Producer> _producerSet;
-        //IDataService<Studio> _studioSet;
-        IDataService<Movie> _movieSet;
-
 
         #endregion
+
+        #region Constructor
+
+
+        public ColeViewModel()
+        {
+            _movieRepo = new MovieRepository(new MovieDatabaseDbContextFactory());
+            Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
+
+            if (Movies.Any()) SelectedMovie = Movies[0];
+        }
+
+        #endregion
+
 
         #region Properties
 
@@ -289,7 +286,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
             SearchString = "";
             MinRuntimeText = "";
             MaxRuntimeText = "";
-            _movies = new ObservableCollection<Movie>(SeedData.GetAllMovies());
+            _movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
             Movies = _movies;
         }
 
@@ -297,27 +294,14 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
         {
             if (SelectedMovie != null)
             {
-                if (_movieSet.Delete(SelectedMovie.Id))
+                if (_movieRepo.Delete(SelectedMovie.Id))
                 {
-                    Movies = new ObservableCollection<Movie>(_movieSet.GetAll());
+                    Movies = new ObservableCollection<Movie>(_movieRepo.GetAll());
                     SelectedMovie = Movies[0];
                     _message = "Movie Deleted";
                     MessageBox.Show(_message);
                 }
             }
-        }
-
-        public void AddMovie(object param)
-        {
-              
-
-
-        }
-
-        public void EditMovie(object param)
-        {
-
-
         }
 
         private void SaveMovieToDB(Movie newMovieToAdd)
@@ -351,6 +335,34 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
         }
 
+        public void AddMovie()
+        {
+            ColeAddEditMovie MovieAdd = new ColeAddEditMovie();
+            MovieAdd.Show();
+
+
+
+            //Movie NewAddMovie = new Movie();
+            //NewAddMovie.Title = _title;
+            //NewAddMovie.Description = _description;
+            //NewAddMovie.ReleaseDate = (DateTime)_releaseDate;
+            //NewAddMovie.Runtime = (int)_runtime;
+            //NewAddMovie.Producer = _producerId;
+            //NewAddMovie.Studio = _studioId
+
+            //_movieRepo.Create(NewAddMovie);
+            //_movieRepo.Update(_selectedMovie.Id, NewAddMovie);
+
+        }
+
+
+        //public void EditMovie(object param)
+        //{
+
+
+        //}
+
+
         #endregion
 
         #region ICommands
@@ -365,7 +377,7 @@ namespace MovieDatabase.WPF.Cole.ColeViewModels.ColeViewModel
 
         public ICommand SaveMovieCommand => new RelayCommand(SaveMovieToDB);
 
-        
+
 
         // Edit, Delete, and Add buttons
         public ICommand ButtonEditMovieCommand { get; set; }
