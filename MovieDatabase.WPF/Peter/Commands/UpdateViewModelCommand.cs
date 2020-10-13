@@ -41,6 +41,11 @@ namespace MovieDatabase.WPF.Peter.Commands
                     case ViewType.EditStudio:
                         HomeViewModel.ActionToTake = HomeViewModel.Action.EDIT;
                         break;
+                    case ViewType.AddMovie:
+                    case ViewType.AddProducer:
+                    case ViewType.AddStudio:
+                        HomeViewModel.ActionToTake = HomeViewModel.Action.ADD;
+                        break;
                 }
 
                 _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType);
