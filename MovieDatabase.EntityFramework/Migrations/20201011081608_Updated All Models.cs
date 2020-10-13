@@ -4,7 +4,7 @@ using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace MovieDatabase.EntityFramework.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class UpdatedAllModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,9 +14,9 @@ namespace MovieDatabase.EntityFramework.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
                     DOB = table.Column<DateTime>(nullable: false),
-                    Biography = table.Column<string>(nullable: true)
+                    Biography = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,15 +29,15 @@ namespace MovieDatabase.EntityFramework.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Phone = table.Column<int>(nullable: false),
-                    Email = table.Column<string>(nullable: true),
-                    Website = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    State = table.Column<string>(nullable: true),
-                    Zipcode = table.Column<int>(nullable: false)
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    Phone = table.Column<string>(maxLength: 14, nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Website = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: false),
+                    City = table.Column<string>(nullable: false),
+                    State = table.Column<string>(nullable: false),
+                    Zipcode = table.Column<int>(maxLength: 5, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -50,14 +50,13 @@ namespace MovieDatabase.EntityFramework.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: false),
                     ReleaseDate = table.Column<DateTime>(nullable: false),
                     Runtime = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    IMDBLink = table.Column<string>(nullable: true),
-                    Image = table.Column<byte[]>(nullable: true),
-                    StudioId = table.Column<int>(nullable: true),
-                    ProducerId = table.Column<int>(nullable: true)
+                    Description = table.Column<string>(nullable: false),
+                    IMDBLink = table.Column<string>(nullable: false),
+                    StudioId = table.Column<int>(nullable: false),
+                    ProducerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,13 +66,13 @@ namespace MovieDatabase.EntityFramework.Migrations
                         column: x => x.ProducerId,
                         principalTable: "Producers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Movies_Studios_StudioId",
                         column: x => x.StudioId,
                         principalTable: "Studios",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
