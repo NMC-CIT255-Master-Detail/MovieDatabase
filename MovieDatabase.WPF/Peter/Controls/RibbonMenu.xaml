@@ -38,19 +38,6 @@
                                                Command="{Binding HelpButtonCommand}" />
                     <RibbonApplicationMenuItem Header="Exit" ImageSource="/Peter/Resources/Images/quit.png"
                                                Command="{Binding QuitCommand}" />
-                    <RibbonApplicationMenu.AuxiliaryPaneContent>
-                        <RibbonGallery CanUserFilter="False"
-                                       ScrollViewer.VerticalScrollBarVisibility="Auto">
-                            <RibbonGalleryCategory Header="Recently Added"
-                                                   Background="Transparent">
-                                <RibbonGalleryCategory.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Vertical" IsItemsHost="True" />
-                                    </ItemsPanelTemplate>
-                                </RibbonGalleryCategory.ItemsPanel>
-                            </RibbonGalleryCategory>
-                        </RibbonGallery>
-                    </RibbonApplicationMenu.AuxiliaryPaneContent>
                     <RibbonApplicationMenu.FooterPaneContent>
                         <DockPanel LastChildFill="False">
                             <TextBlock Style="{Binding TextBlock}" Text="Application produced by Peter Steele for CIT255" />

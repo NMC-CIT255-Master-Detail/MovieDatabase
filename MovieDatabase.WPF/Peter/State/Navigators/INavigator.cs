@@ -14,7 +14,7 @@ namespace MovieDatabase.WPF.Peter.State.Navigator
         AddStudio,
         EditMovie,
         EditProducer,
-        EditStudio,
+        EditStudio
 
     }
 
