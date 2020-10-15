@@ -62,7 +62,7 @@ The Presentation layer will be the general WPF stuff. Views and ViewModels. The 
 
 # Technical Documentation
 
-**Technical Documentation** 
+**Technical Documentation:** https://docs.google.com/document/d/1M3fKEUfa_1FDglDul-_6GTZ1XgaLn6-p5JAJJsbR3bM/edit?usp=sharing 
 
 # Project Links
 
