@@ -74,7 +74,8 @@ The Presentation layer will be the general WPF stuff. Views and ViewModels. The 
 
 **Trello Sprint 3:** https://trello.com/b/f7s8NYPY/power-squad-sprint-3
 
+**Trello Sprint 4:** https://trello.com/b/5xqEBrGD/power-squad-sprint4
+
 **GitHub Repo:** https://github.com/NMC-CIT255-Master-Detail/MovieDatabase
 
-**Application Website:** https://nmc-cit255-master-detail.github.io/MovieDatabase/
 
